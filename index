@@ -1,0 +1,13 @@
+<?php
+if(file_exists("$ApplicationPath/main/cache/main.html"))
+{
+	include_once("$ApplicationPath/main/cache/main.html");
+	die();	
+}
+else
+{
+	$page = file_get_contents("$ApplicationNonSecureRoot/main/");
+	echo($page);
+	die();
+}
+?>

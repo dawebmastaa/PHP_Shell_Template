@@ -1,0 +1,86 @@
+<?php
+// you MUST auto_prepend the Application.php file!!
+
+//set the name of the directory that this file is in so other files can be included
+//this mess is so things work on both Windows and *nix
+$ThisDirectory = str_replace("/","",strrchr(str_replace("\\","/",getcwd()),'/'));
+
+//now we need a dynamic path to this Directory
+//this mess is also so things work on both Windows and *nix
+$DirectoryPath = substr_replace(str_replace("$ApplicationPath",'',str_replace('\\','/',getcwd())),'',0,1);
+
+//now get the name of the main directory that this one is in (if we're in a subdirectory)
+//this mess is also so things work on both Windows and *nix
+$MainDirectory = str_replace("/","",strrev(strrchr(strrev($DirectoryPath),'/')));
+
+//if we're not in a nested directory, the main directory is this directory
+if($MainDirectory == ""){$MainDirectory = $ThisDirectory;}
+
+//include a custom file for the left hand hand column? (from this directory) (Y or N)
+$ShowLeft = "Y";
+
+//include a custom file for the left hand hand column? (from main directory) (Y or N)
+$ShowMainLeft = "N";
+
+//set a default page to display (default page is always named the same as the directory it resides in.)
+$DefaultPage = "$ThisDirectory";
+
+//include a custom file for the right hand hand column? (from this directory) (Y or N)
+$ShowRight = "Y";
+
+//include a custom file for the right hand hand column? (from main directory) (Y or N)
+$ShowMainRight = "N";
+
+//left section of page
+if($ShowLeft == "Y" && file_exists("$ApplicationPath/$DirectoryPath/$ThisDirectory".'left.php'))
+{
+    $LeftContent = ("$ApplicationPath/$DirectoryPath/$ThisDirectory".'left');
+}
+elseif($ShowMainLeft == "Y" && file_exists("$ApplicationPath/$MainDirectory/$MainDirectory".'left.php'))
+{
+    $LeftContent = ("$ApplicationPath/$MainDirectory/$MainDirectory".'left');
+}
+else
+{
+    $LeftContent = "$ApplicationPath/template/defaultleft";
+}
+
+//center section of page
+//check for passing of 'content' variable and bring it into scope if available
+if(isset($_REQUEST['content']))
+{
+    $content = $_REQUEST['content'];
+}
+//make sure the file corresponding to the content variable exists
+if(isset($content) && file_exists("$ApplicationPath/$DirectoryPath/$content.php"))
+{
+    $StripContent = "$content";
+    $content = "$ApplicationPath/$DirectoryPath/$content";
+}
+//if it doesn't use the default page
+else
+{
+    $StripContent = "$DefaultPage";
+    $content = "$ApplicationPath/$DirectoryPath/$DefaultPage";
+}
+
+//right section of page
+if($ShowRight == "Y" && file_exists("$ApplicationPath/$DirectoryPath/$ThisDirectory".'right.php'))
+{
+    $RightContent = ("$ApplicationPath/$DirectoryPath/$ThisDirectory".'right');
+}
+elseif($ShowMainRight == "Y" && file_exists("$ApplicationPath/$MainDirectory/$MainDirectory".'right.php'))
+{
+    $RightContent = ("$ApplicationPath/$MainDirectory/$MainDirectory".'right');
+}
+else
+{
+    $RightContent = "$ApplicationPath/template/defaultright";
+}
+
+//this file controls caching
+require_once("$ApplicationPath/functions/cache.php");
+
+//include the file that builds the page
+require("$ApplicationPath/template/page.php");
+?>

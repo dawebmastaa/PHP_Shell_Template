@@ -1,0 +1,217 @@
+header {
+  grid-area: header;
+  background-color: #00686C;
+  border-right: 1px solid #d8e5d9;
+}
+
+main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 180px 642px 168px;
+  border-left: 1px solid #d8e5d9;
+}
+
+nav {
+  grid-area: nav;
+  padding: 5px 0 0 20px;
+  background-color: #efefef;
+  border-left: 1px solid #d8e5d9;
+  border-right: 1px solid #d8e5d9;
+}
+
+footer {
+  grid-area: footer;
+  background: #ffffff;
+  border: 1px solid #d8e5d9;
+  color: #999999;
+  font-size: 0.9em;
+  padding-top: 26px;
+  text-align: center;
+}
+
+.LeftMenu {
+  background-color: #ffffff;
+  border-top: 1px solid #d8e5d9;
+  positon: relative;
+  margin: 0;
+  padding: 0;  
+}
+
+.LeftMenu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.LeftMenu li {
+  border-bottom: 1px solid #d8e5d9;
+  display: block;
+  list-style-type: none;
+  padding: 5px 0px 5px 0px;
+  text-align: left;
+  background-color: #eff9f4;
+}
+
+.LeftMenu li a {
+  color: #000000;
+  padding-left: 12px;
+  padding-right: 0;
+  margin: 0;
+}
+
+.LeftMenu li a:hover, .SubNav li a:hover, #RightContent a:hover {
+  color: #00898d;
+}
+
+.LeftMenu li span {
+  color: #000000;
+  display: block;
+  font-weight: bold;
+  padding: 3px 0 3px 12px;
+}
+
+.List {
+	transition-duration: 0.5s;
+}
+
+.MainNav {
+  margin: 0;
+  padding: 0;
+}
+
+.MainNav ul, .MainNav ul li{
+  margin: 0;
+}
+
+.MainNav li{
+  display: inline;
+  margin-left: 24px;
+  transition-duration: 0.5s;
+  position: relative;
+}
+
+.MainNav li ul {
+  visibility: hidden;
+  display: none;
+}
+
+.MainNav li:hover > ul, .MainNav li ul:hover {
+  visibility: visible;
+  display: block;
+}
+
+.TwoColumn {
+  /* Chrome, Safari, Opera */
+  -webkit-column-count: 2;
+  -webkit-column-gap: 20px;
+  /* Firefox */
+  -moz-column-count: 2;
+  -moz-column-gap: 20px;
+  /* Standard syntax */
+  column-count: 2;
+  column-gap: 20px;
+}
+
+.FourColumn {
+  /* Chrome, Safari, Opera */
+  -webkit-column-count: 4;
+  -webkit-column-gap: 20px;
+  /* Firefox */
+  -moz-column-count: 4;
+  -moz-column-gap: 20px;
+  /* Standard syntax */
+  column-count: 4;
+  column-gap: 20px;
+}
+
+.RecordNavigation {
+  font-size: 90%;
+  padding-top: 0;
+  padding-bottom: 10px;
+  padding-left: 4px;
+  display: block;
+  text-align: left;
+}
+
+.RecordNavigation a {
+  font-size: 95%;
+  font-weight: bold;
+}
+
+.SingleColumn {
+  margin: 0;
+  padding: 10px 0 4px 0;
+  text-align: left;
+}
+
+.SubNav {
+  background-color: #eff9f4;
+  border-left: 1px solid #d8e5d9;
+  border-right: 1px solid #d8e5d9;
+  border-top: 1px solid #d8e5d9;
+  font-size: 11px;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  visibility: hidden;
+  white-space: nowrap;
+  z-index: 1000;
+  position: absolute;
+  top: 15px;
+  left: 5px;
+}
+
+.SubNav li a {
+  color: #000000;
+  display: inline;
+}
+
+.SubNav li {
+  border-bottom: 1px solid #d8e5d9;
+  display: block;
+  list-style-type: none;
+  padding: 5px 5px 5px 5px;
+  text-align: left;
+  background-color: #eff9f4;
+}
+
+.SubNav:hover, .SubNav li:hover, .LeftMenu li:hover, .SubNav li a:hover, .LeftMenu li a:hover {
+  background-color: #ffffff;
+}
+
+#Wrapper {
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 990px 1fr;
+  grid-template-rows: 102px 24px auto  60px;
+  grid-template-areas:
+    ". header ."
+    ". nav ."
+    ". main ."
+    ". footer .";
+}
+
+#Content {
+  margin: 0;
+  padding: 0 24px 4px 14px;
+  text-align: left;
+  border-left: 1px solid #d8e5d9;
+  border-right: 1px solid #d8e5d9;
+}
+
+#LeftContent{
+  margin: 0;
+  padding: 20px 0 0 0;
+  text-align: center;
+  background: #ffffff;
+}
+
+#RightContent{
+  margin: 0;
+  padding: 10px 0 0 0;
+  text-align: center;
+  background-color: #effaf4;
+  border-right: 1px solid #d8e5d9;
+}

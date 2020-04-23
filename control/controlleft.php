@@ -1,0 +1,14 @@
+<?php
+//no menu unless you're logged in
+if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && $_SESSION['UserRole'] && is_numeric($_SESSION['UserRole']))
+{
+ 	if($StripContent != 'control')
+	{
+		require_once("$ApplicationPath/functions/displaysubnavigation.php");
+	}
+ 	echo('<br clear="both" />'."\n".'  <div class="LeftMenu">'."\n".'   <ul>'."\n".'    <li><a href="control/index/content/logout/">Log Out</a></li>'."\n".'   </ul>'."\n".'  </div>');
+}else
+{
+ 	echo('  <br clear="both" /><div class="LeftMenu"><ul><li><a href="control/"><strong>Log In</strong></a></ul></div>');
+}
+?>

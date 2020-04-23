@@ -1,0 +1,12 @@
+Options -Indexes
+AcceptPathInfo On
+DirectoryIndex index index.html index.php index.xhtml
+
+<FilesMatch ^index$>
+#ForceType application/x-httpd-php
+SetHandler application/x-httpd-php
+</FilesMatch>
+
+php_value auto_prepend_file '/var/www/test/shell/Application.php'
+
+php_value session.use_trans_sid 0
