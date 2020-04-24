@@ -216,6 +216,12 @@ function ShowPageContent(divList,PageView)
 
       break;
 
+    case 'editsitesection' :
+
+      showDivs = ["StartDiv", "EditSiteSection", "SectionButtons"];
+
+      break;
+
     default :
 
       showDivs = ["StartDiv", "Recache"];
@@ -226,10 +232,12 @@ function ShowPageContent(divList,PageView)
 
   function SetHiddenDivs(item) {
     document.getElementById(item).style.display='none';
+    document.getElementById(item).style.visibility='hidden';
   }
 
   function SetVisibleDivs(item) {
     document.getElementById(item).style.display='block';
+    document.getElementById(item).style.visibility='visible';
   }
 }
 

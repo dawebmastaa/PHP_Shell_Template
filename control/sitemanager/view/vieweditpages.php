@@ -122,10 +122,10 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
     }
   ?>
     </select><br />
-    <input type="submit" name="Operation" value="Edit Name" class="SmallWhiteButton" id="EditNameButton" style="display: none;" onclick="document.SiteSectionEdit2.TheSectionID.value = document.SiteSectionEdit.SiteSection.options[SiteSection.selectedIndex].value; changeStyle('EditSiteSections','display','block'); document.SiteSectionEdit2.EditSiteSection.value = document.SiteSectionEdit.SiteSection.options[SiteSection.selectedIndex].text; return false;" />
-    <input type="submit" name="Operation" value="Edit Content" class="SmallWhiteButton" id="EditContentButton" style="display: none;" /><br  /><br />
-    <input type="submit" name="Operation" value="Change Section Display Order" class="SmallWhiteButton" id="SectionOrderButton" style="display: none;" onclick="changeStyle('SectionOrdering','display','block'); return false;" /><br  /><br />
-    <input type="submit" name="Operation" value="Cache Page" class="SmallWhiteButton" id="ManageCacheButton" style="display: none;" onclick="if(confirm('Are you sure you want to add this page to the site cache?')) return true,submit(); else return false;" /><br  /><br />
+    <input type="submit" name="Operation" value="Edit Name" class="SmallWhiteButton" id="EditNameButton" style="display: none;" onclick="document.SiteSectionEdit2.TheSectionID.value = document.SiteSectionEdit.SiteSection.options[SiteSection.selectedIndex].value; changeStyle('EditSiteSections','display','block'); changeStyle('EditSiteSections','visibility','visible'); changeStyle('NewSectionDiv','display','none'); document.SiteSectionEdit2.EditSiteSection.value = document.SiteSectionEdit.SiteSection.options[SiteSection.selectedIndex].text; return false;" />
+    <input type="submit" name="Operation" value="Edit Content" class="SmallWhiteButton" id="EditContentButton" style="display: none;" /><br  />
+    <input type="submit" name="Operation" value="Change Section Display Order" class="SmallWhiteButton" id="SectionOrderButton" style="display: none;" onclick="changeStyle('SectionOrdering','display','block'), changeStyle('SectionOrdering','visibility','visible', changeStyle('NewSectionDiv','display','none')); return false;" /><br  />
+    <input type="submit" name="Operation" value="Cache Page" class="SmallWhiteButton" id="ManageCacheButton" style="display: none;" onclick="if(confirm('Are you sure you want to add this page to the site cache?')) return true,submit(); else return false;" /><br  />
     <input  type="submit" name="Operation" value="Remove From Cache" class="SmallWhiteButton" id="UnCacheButton" style="display: none;" onclick="if(confirm('Are you sure you want to remove this page from the site cache?')) return true,submit(); else return false;" />
    </form>
   </div>
@@ -149,7 +149,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
     <input type="hidden" name="TheSectionID" id="TheSectionID" value="" />
 
     <label for="EditSiteSection">Edit Section Name</label>
-    <input type="text" name="EditSiteSection" />
+    <input type="text" name="EditSiteSection" /><br />
 
     <input type="submit" name="Operation" value="Update Section Name" class="SmallWhiteButton" />
    </form>
@@ -192,7 +192,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
      <label for="PageOrder">Hit 'up' or 'down' after choosing a Section to re-order it.</label>
      <select name="PageOrder" id="PageOrder" size="5" style="width: 300px;">
 <?php
-   mysqli_data_seek($GetSiteSectionsAdmin,0);
+  mysqli_data_seek($GetSiteSectionsAdmin,0);
   while($row = mysqli_fetch_object($GetSiteSectionsAdmin))
   {
     echo('    <option value="'.$row->SectionID.'">'.$row->Directory.'</option>'."\n".'    ');
@@ -321,7 +321,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
   </div>
 
   <div id="EditSubPages" class="LeftColumn" style="display: none;">
-   <h2 style="padding-bottom: 10px;">Edit Site Sub-Pages</h2>
+   <h2>Edit Site Sub-Pages</h2>
    <?php
     if(isset($SubNavLinksRecordCountAdmin) && $SubNavLinksRecordCountAdmin > 0)
     {
