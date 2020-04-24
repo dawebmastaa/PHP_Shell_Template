@@ -1,1 +1,1 @@
-this is defaultright.php
+<?php ?>

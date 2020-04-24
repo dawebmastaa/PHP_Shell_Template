@@ -45,8 +45,8 @@ require_once('functions/getvariables.php');
 $WebsiteName = 'Site Framework';
 
 // this is where we find images
-$ImagePath = $ApplicationPath.'images/';
-$ImageURL = $ApplicationNonSecureRoot.'images/';
+$ImagePath = $ApplicationPath.'img/';
+$ImageURL = $ApplicationNonSecureRoot.'img/';
 
 // site email address
 $SiteEmail = 'Webmaster<mikealberts@metrocast.net>';

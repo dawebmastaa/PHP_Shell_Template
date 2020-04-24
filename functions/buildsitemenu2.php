@@ -19,7 +19,8 @@ if(isset($LinkRecordCount) && $LinkRecordCount > 0)
 
 			if($SectionCounter != $row2->SectionID)
 			{
-				echo('   <ul class="SubNav" style="width: '.$row2->MenuWidth.'px;">');
+				echo('   <ul');
+                if(isset($MenuCall) && $MenuCall == 'main'){echo(' class="SubNav">');}else{echo('>');}
 				$CloseTag = 'Y';
 				$SectionCounter = $row2->SectionID;
 			}

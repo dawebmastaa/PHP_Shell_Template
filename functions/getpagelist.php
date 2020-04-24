@@ -11,7 +11,7 @@ if(isset($LinkRecordCount) && $LinkRecordCount > 0)
 	$PageList = trim(rtrim($PageList,','),' ');
 ?>
 
- <script type="text/javascript">
+ <script>
  <!--
   let Pages = [<?php echo($PageList); ?>];	
  -->

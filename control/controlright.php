@@ -1,1 +1,1 @@
-<p>this is conrolright</p>
+<p>this is controlright</p>

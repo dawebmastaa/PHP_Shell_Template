@@ -8,8 +8,6 @@
      //reset the query that contains the links
      mysqli_data_seek($GetLinks,0);
 
-     //echo('<h2 style="text-align: left; padding-left: 8px;">'.ucfirst($ThisDirectory).'</h2>');
-     
      while($row = mysqli_fetch_object($GetLinks))
      {
          if($ThisDirectory === $row->Directory)
@@ -17,8 +15,7 @@
              if($OpenTags == 'N')
              {
                 echo("\n");
-                echo(' <div class="LeftMenu">'."\n");
-                echo(' <ul>'."\n");
+                echo('  <ul class="LeftMenu">'."\n");
              }
              $OpenTags = 'Y';
              $CloseTags = 'Y';
@@ -35,19 +32,18 @@
                  
                  $SubLinkRecordCount = mysqli_num_rows($GetSubLinks);
 
-                 echo('  <li style="background-color: #FFFFFF;"><span>'.$row->Text.'</span></li>'."\n");
+                 echo('   <li style="background-color: #FFFFFF;"><span>'.$row->Text.'</span></li>'."\n");
              }
              else
              {
-                 echo('  <li><a href="'.$row->URL.'">'.$row->Text.'</a></li>'."\n");
+                 echo('   <li><a href="'.$row->URL.'">'.$row->Text.'</a></li>'."\n");
              }
          }
      }
 
      if($CloseTags == 'Y')
      {
-            echo(' </ul>'."\n");
-            echo(' </div>'."\n");
+            echo('  </ul>'."\n");
      }
 }
 
@@ -56,8 +52,7 @@
   ?>
   <br />
 
-  <div class="LeftMenu">
-   <ul>
+  <ul class="LeftMenu">
   <?php
    while($row = mysqli_fetch_object($GetSubLinks))
    {
@@ -98,8 +93,7 @@
   ?>
   <br />
 
-  <div class="LeftMenu">
-   <ul>
+  <ul class="LeftMenu">
   <?php
   }
     
@@ -113,8 +107,7 @@
    if((isset($SubNavSubLinkRecordCount) && $SubNavSubLinkRecordCount > 0) || (isset($SubLinkRecordCount) && $SubLinkRecordCount > 0))
    {
    ?>
-   </ul>
-  </div>
+  </ul>
    <?php
    }
    ?>

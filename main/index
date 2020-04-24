@@ -20,7 +20,7 @@ if($MainDirectory == ""){$MainDirectory = $ThisDirectory;}
 $ShowLeft = "N";
 
 //include a custom file for the left hand hand column? (from main directory) (Y or N)
-$ShowMainLeft = "N";
+$ShowMainLeft = "Y";
 
 //set a default page to display (default page is always named the same as the directory it resides in.)
 $DefaultPage = "$ThisDirectory";
