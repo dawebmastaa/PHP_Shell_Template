@@ -7,7 +7,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
  let divList = ["StartDiv","Recache", "AddPage", "AddNewPage", "AddNewSubPage", "EditSiteSection", "NewSectionDiv", "EditSiteSections", "EditSitePages", "SectionOrdering", "EditPage", "EditSection", "AddSiteSectionForm", "EditSubPagesBlurb", "EditSubPages", "EditSubPage", "AddSubPages", "AddSubPageLinks"];
  -->
  </script>
-  <header id="List" class="list"><?php if(isset($Message)){echo($Message);} ?></header>
+  <header id="List" class="list SiteBuilder"><?php if(isset($Message)){echo($Message);} ?></header>
 
   <div id="StartDiv">
    <h1>Manage Site Content</h1>
@@ -48,28 +48,28 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="SitePageAdd" id="SitePageAdd">
     <input type="hidden" name="NewPageSectionID" id="NewPageSectionID" value="" />
 
-  <label for="NewSitePage">New Page Name (link text)</label>
-  <input type="text" name="NewSitePage" id="NewSitePage" />
+    <label for="NewSitePage">New Page Name (link text)</label>
+    <input type="text" name="NewSitePage" id="NewSitePage" />
 
-  <input type="hidden" name="NewSitePageUrl" id="NewSitePageUrl" />
+    <input type="hidden" name="NewSitePageUrl" id="NewSitePageUrl" />
 
-  <label for="NewSiteLinkTitle">New Page Link Title (mouseover title, NOT page title)</label>
-  <input type="text" name="NewSiteLinkTitle" id="NewSiteLinkTitle" />
+    <label for="NewSiteLinkTitle">New Page Link Title (mouseover title, NOT page title)</label>
+    <input type="text" name="NewSiteLinkTitle" id="NewSiteLinkTitle" />
 
-  <label for="NewSitePageFileName">New Page File Name (all one word, lower case ONLY)</label>
-  <input type="text" name="NewSitePageFileName" id="NewSitePageFileName" />
+    <label for="NewSitePageFileName">New Page File Name (all one word, lower case ONLY)</label>
+    <input type="text" name="NewSitePageFileName" id="NewSitePageFileName" />
 
-  <label for="NewSitePageTitle">New Page Title (Meta page title)</label>
-  <input type="text" name="NewSitePageTitle" id="NewSitePageTitle" />
+    <label for="NewSitePageTitle">New Page Title (Meta page title)</label>
+    <input type="text" name="NewSitePageTitle" id="NewSitePageTitle" />
 
-  <label for="NewSitePageRobots">New Page robots (Meta robots; will default to 'index, follow')</label>
-  <input type="text" name="NewSitePageRobots" id="NewSitePageRobots" />
+    <label for="NewSitePageRobots">New Page robots (Meta robots; will default to 'index, follow')</label>
+    <input type="text" name="NewSitePageRobots" id="NewSitePageRobots" />
 
-  <label for="NewSitePageKeywords">New Page Keywords (Meta keywords)</label>
-  <textarea name="NewSitePageKeywords" id="NewSitePageKeywords" rows="10"></textarea><br  /><br  />
+    <label for="NewSitePageKeywords">New Page Keywords (Meta keywords)</label>
+    <textarea name="NewSitePageKeywords" id="NewSitePageKeywords" rows="10"></textarea><br  /><br  />
 
-  <label for="NewSitePageDescription">New Page Description (Meta description)</label>
-  <textarea name="NewSitePageDescription" id="NewSitePageDescription" rows="10"></textarea><br /><br  />
+    <label for="NewSitePageDescription">New Page Description (Meta description)</label>
+    <textarea name="NewSitePageDescription" id="NewSitePageDescription" rows="10"></textarea><br /><br  />
 
     <input type="submit" name="Operation" value="Add New Page" class="SmallWhiteButton" />
    </form>
@@ -82,26 +82,26 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
     <input type="hidden" name="NewSubPageDirectory" id="NewSubPageDirectory" value="" />
     <input type="hidden" name="NewSiteSubPageUrl" id="NewSiteSubPageUrl" value="" />
 
-  <label for="NewSiteSubPage">Name (link text)</label>
-  <input type="text" name="NewSiteSubPage" id="NewSiteSubPage" />
+    <label for="NewSiteSubPage">Name (link text)</label>
+    <input type="text" name="NewSiteSubPage" id="NewSiteSubPage" />
 
-  <label for="NewSiteSubLinkTitle">Link Title (mouseover title, NOT page title)</label>
-  <input type="text" name="NewSiteSubLinkTitle" id="NewSiteSubLinkTitle" value="" />
+    <label for="NewSiteSubLinkTitle">Link Title (mouseover title, NOT page title)</label>
+    <input type="text" name="NewSiteSubLinkTitle" id="NewSiteSubLinkTitle" value="" />
 
-  <label for="NewSiteSubPageFileName">File Name (NO spaces, lower case ONLY)</label>
-  <input type="text" name="NewSiteSubPageFileName" id="NewSiteSubPageFileName" />
+    <label for="NewSiteSubPageFileName">File Name (NO spaces, lower case ONLY)</label>
+    <input type="text" name="NewSiteSubPageFileName" id="NewSiteSubPageFileName" />
 
-  <label for="NewSiteSubPageTitle">Title (Meta page title)</label>
-  <input type="text" name="NewSiteSubPageTitle" id="NewSiteSubPageTitle" />
+    <label for="NewSiteSubPageTitle">Title (Meta page title)</label>
+    <input type="text" name="NewSiteSubPageTitle" id="NewSiteSubPageTitle" />
 
-  <label for="NewSiteSubPageRobots">New Sub-Page robots (Meta robots; will default to 'index, follow')</label>
-  <input type="text" name="NewSiteSubPageRobots" id="NewSiteSubPageRobots" />
+    <label for="NewSiteSubPageRobots">New Sub-Page robots (Meta robots; will default to 'index, follow')</label>
+    <input type="text" name="NewSiteSubPageRobots" id="NewSiteSubPageRobots" />
 
-  <label for="NewSiteSubPageKeywords">Keywords (Meta keywords)</label>
-  <textarea name="NewSiteSubPageKeywords" id="NewSiteSubPageKeywords" rows="10" cols=""></textarea><br  /><br  />
+    <label for="NewSiteSubPageKeywords">Keywords (Meta keywords)</label>
+    <textarea name="NewSiteSubPageKeywords" id="NewSiteSubPageKeywords" rows="10" cols=""></textarea><br  /><br  />
 
-  <label for="NewSiteSubPageDescription">Description (Meta description)</label>
-  <textarea name="NewSiteSubPageDescription" id="NewSiteSubPageDescription" rows="20" cols=""></textarea><br /><br  />
+    <label for="NewSiteSubPageDescription">Description (Meta description)</label>
+    <textarea name="NewSiteSubPageDescription" id="NewSiteSubPageDescription" rows="20" cols=""></textarea><br /><br  />
 
     <input type="submit" name="Operation" value="Add New SubPage" class="SmallWhiteButton" />
    </form>
@@ -138,7 +138,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
     <label for="NewSiteSection">Enter The New Section Name</label>
     <input type="text" name="NewSiteSection" id="NewSiteSection" onfocus="changeStyle('AddSectionButton','display','block');" />
 
-    <input type="submit" name="Operation" id="AddSectionButton"  style="display: none;" value="Add Site Section" class="SmallWhiteButton" onclick="changeStyle('NewSectionDiv','display','none'); changeStyle('EditSiteSection','display','none'); changeStyle('AddSiteSectionForm','display','block'); document.AddSiteSection.NewSiteSectionName.value = document.SiteSectionAdd.NewSiteSection.value; return false" />
+    <input type="submit" name="Operation" id="AddSectionButton"  style="display: none;" value="Add Site Section" class="SmallWhiteButton" onclick="changeStyle('NewSectionDiv','display','none'); changeStyle('EditSiteSection','display','none'); changeStyle('AddSiteSectionForm','display','block'); changeStyle('AddSiteSectionForm','visibility','visible');  document.AddSiteSection.NewSiteSectionName.value = document.SiteSectionAdd.NewSiteSection.value; return false" />
    </form>
 
   </div>
@@ -320,7 +320,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    <p>Sub-Pages are stand alone pages that you can link to from any arbitrary page. They do NOT display in the main navigation menus, only in the left column sub-navigation on the pages you specify.</p>
   </div>
 
-  <div id="EditSubPages" class="LeftColumn" style="display: none;">
+  <div id="EditSubPages" style="display: none;">
    <h2>Edit Site Sub-Pages</h2>
    <?php
     if(isset($SubNavLinksRecordCountAdmin) && $SubNavLinksRecordCountAdmin > 0)
@@ -328,8 +328,8 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    ?>
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="EditSiteSubPageForm">
        <label for="SiteSubPageMenu">Choose A SubPage</label>
-     <select name="SiteSubPageMenu" id="SiteSubPageMenu" onchange="changeStyle('EditSubPageButton','display','inline'); changeStyle('AddLinksButton','display','inline'); changeStyle('ManageSubPageCacheButton','display','inline'); changeStyle('UnCacheSubPageButton','display','inline');">
-      <option value="">Choose A SubPage</option>
+       <select name="SiteSubPageMenu" id="SiteSubPageMenu" onchange="changeStyle('EditSubPageButton','display','inline'); changeStyle('AddLinksButton','display','inline'); changeStyle('ManageSubPageCacheButton','display','inline'); changeStyle('UnCacheSubPageButton','display','inline');">
+         <option value="">Choose A SubPage</option>
     <?php
      mysqli_data_seek($GetSiteSubNavLinksAdmin,0);
     while($row = mysqli_fetch_object($GetSiteSubNavLinksAdmin))
@@ -339,9 +339,9 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
   ?>
     </select><br />
 
-    <input type="submit" name="Operation" id="EditSubPageButton" class="SmallWhiteButton" value="Edit SubPage" style="display: none;" /><br  /><br  />
-    <input type="submit" name="Operation" id="AddLinksButton" class="SmallWhiteButton" value="Add Link To Site Pages" style="display: none;" /><br /><br />
-    <input type="submit" name="Operation" value="Cache Page" class="SmallWhiteButton" id="ManageSubPageCacheButton" style="display: none;" onclick="if(confirm('Are you sure you want to add this page to the site cache?')) return true,submit(); else return false;" /><br  /><br />
+    <input type="submit" name="Operation" id="EditSubPageButton" class="SmallWhiteButton" value="Edit SubPage" style="display: none;" /><br  />
+    <input type="submit" name="Operation" id="AddLinksButton" class="SmallWhiteButton" value="Add Link To Site Pages" style="display: none;" /><br />
+    <input type="submit" name="Operation" value="Cache Page" class="SmallWhiteButton" id="ManageSubPageCacheButton" style="display: none;" onclick="if(confirm('Are you sure you want to add this page to the site cache?')) return true,submit(); else return false;" /><br  />
     <input  type="submit" name="Operation" value="Remove From Cache" class="SmallWhiteButton" id="UnCacheSubPageButton" style="display: none;" onclick="if(confirm('Are you sure you want to remove this page from the site cache?')) return true,submit(); else return false;" />
    </form>
    <?php
@@ -405,7 +405,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
     }
   ?>
    </select><br />
-   <input type="submit" class="SmallWhiteButton" value="Add SubPage" name="Operation" id="AddSubPageButton" style="display: none;" onclick="changeStyle('AddNewSubPage','display','block'); changeStyle('AddNewPage','display','none'); changeStyle('AddSubPages','display','none'); changeStyle('AddPage','display','none'); changeStyle('EditSubPages','display','none'); changeStyle('EditSubPagesBlurb','display','none'); changeStyle('EditSitePages','display','none'); document.SiteSubPageAdd.NewSiteSubPageUrl.value = document.SiteSubPageEdit.SiteSubPageSection.options[SiteSubPageSection.selectedIndex].text.split(' | ',2).pop()+'/index/content/'; document.SiteSubPageAdd.NewSubPageDirectory.value = document.SiteSubPageEdit.SiteSubPageSection.options[SiteSubPageSection.selectedIndex].text.split(' | ',2).pop(); document.SiteSubPageAdd.NewSubPageSectionID.value = document.SiteSubPageEdit.SiteSubPageSection.options[SiteSubPageSection.selectedIndex].value; return false;" />
+   <input type="submit" class="SmallWhiteButton" value="Add SubPage" name="Operation" id="AddSubPageButton" style="display: none;" onclick="ShowPageContent(divList,'addsubpage'); document.SiteSubPageAdd.NewSiteSubPageUrl.value = document.SiteSubPageEdit.SiteSubPageSection.options[SiteSubPageSection.selectedIndex].text.split(' | ',2).pop()+'/index/content/'; document.SiteSubPageAdd.NewSubPageDirectory.value = document.SiteSubPageEdit.SiteSubPageSection.options[SiteSubPageSection.selectedIndex].text.split(' | ',2).pop(); document.SiteSubPageAdd.NewSubPageSectionID.value = document.SiteSubPageEdit.SiteSubPageSection.options[SiteSubPageSection.selectedIndex].value; return false;" />
    </form>
   </div>
 

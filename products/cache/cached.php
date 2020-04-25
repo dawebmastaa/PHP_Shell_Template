@@ -1,0 +1,4 @@
+<?php
+//This is a list (array) of all of the pages we want cached for this directory.
+$CachedFiles=array('product4','product6','products');
+?>

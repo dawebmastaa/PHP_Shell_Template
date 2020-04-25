@@ -38,7 +38,7 @@ if(isset($MainConnection))
 <body>
 
 <div id="Wrapper">
- <header id="top"><?php if($MainDirectory === 'control'){echo('<img src="img/logo.png" />');} else{echo('<img src="img/logo1.png" />');}?>
+ <header id="top"><?php if($MainDirectory === 'control'){echo('<a href="control/"><img src="img/logo.png" class="logo" /></a>');} else{echo('<a href=""><img src="img/logo1.png" class="logo" /></a>');}?>
   <nav>
    <!-- 'hamburger' for the mobile menu -->
    <label for="hamburger" title="Click here to toggle a menu.">&#9776;</label>
@@ -96,7 +96,7 @@ echo("\n");
 <?php
 //remove comments below if using the left hand column
   require_once("$LeftContent.php");
-echo("\n");
+  echo("\n");
 ?>
 
  </div>
@@ -116,8 +116,8 @@ echo("\n\n");
  <div class="RightContent">
 <?php
 //remove comments below if using the right hand column
-  require_once("$RightContent.php");
-echo("\n");
+  //require_once("$RightContent.php");
+//echo("\n");
 ?>
  </div>
 

@@ -2,7 +2,7 @@
 if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] === 'Yes' && $_SESSION['UserRole'] === '1')
 {
 ?>
-  <header class="SingleColumn">
+  <header id="List" class="SingleColumn">
    <h1>Edit/Delete Users</h1><br />
     <?php if(!empty($Message)){echo($Message);} ?>
     <?php if(!isset($Operation) || $Operation === 'Update User'){ ?>
@@ -18,7 +18,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] === 'Yes' && $_
      </select><br />
 
      <input class="SmallWhiteButton" type="submit" name="Operation" value="Edit User" />
-     <input class="SmallWhiteButton" type="submit" name="Operation" value="Delete User" style="margin-left: 20px;" onclick="if(confirm('Are you sure you want to delete this user?')) return true,submit(); else return false;" />
+     <input class="SmallWhiteButton" type="submit" name="Operation" value="Delete User" onclick="if(confirm('Are you sure you want to delete this user?')) return true,submit(); else return false;" />
     </form>
    <?php } ?>
 <?php
@@ -54,8 +54,8 @@ if(isset($Operation) && $Operation == 'Edit User')
      <input type="text" id="EmailAddress" name="EmailAddress" value="<?php echo($row1->EmailAddress);?>" /><br /><br />
 
      <input class="SmallWhiteButton" type="submit" name="Operation" value="Update User" />
-     <input class="SmallWhiteButton" type="submit" name="Operation" value="Delete User" style="margin-left: 20px;" onclick="if(confirm('Are you sure you want to delete this user?')) return true,submit(); else return false;" />
-     <input class="SmallWhiteButton" type="reset" name="reset" value="Reset Values" style="margin-left: 20px;" />
+     <input class="SmallWhiteButton" type="submit" name="Operation" value="Delete User" onclick="if(confirm('Are you sure you want to delete this user?')) return true,submit(); else return false;" />
+     <input class="SmallWhiteButton" type="reset" name="reset" value="Reset Values" />
     </form>
 <?php } ?>
   </header>
@@ -65,6 +65,6 @@ if(isset($Operation) && $Operation == 'Edit User')
 }
 else
 {
- print('<header class="SingleColumn"><h2 class="AlertText">Not Logged In Or No Privileges<br /></h2></header><br clear="all" />');
+ print('<header id="List" class="SingleColumn"><h2 class="AlertText">Not Logged In Or No Privileges<br /></h2></header><br clear="all" />');
 }
 ?>

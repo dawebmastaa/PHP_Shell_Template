@@ -7,13 +7,22 @@ header#List:first-child {
     padding: 3.5vw 0 0 3.5vw;
 }
 
+header#List input {
+    display: block;
+}
+
 #SiteBuilder {
 
+}
+
+#SiteBuilder:first-child {
+    min-height: 100%;
 }
 
 #StartDiv {
 padding: 20px 0 0 20px;
 }
+
 #Recache {
     padding: 20px 0 0 20px;
 }
@@ -80,4 +89,15 @@ padding: 20px 0 0 20px;
 
 #AddSubPageLinks {
     padding: 20px 0 0 20px;
+}
+
+/* User Manager */
+#AddUser {
+    padding 0 0 0 40px;
+}
+
+/* end User Manager */
+
+.Registration {
+
 }

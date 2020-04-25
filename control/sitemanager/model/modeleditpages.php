@@ -666,7 +666,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
         $row = mysqli_fetch_object($GetSubPage);
 
         $PageList = explode(' ',trim(str_replace('/','',$row->SiteLinkID)));
-        $PageCount = substr_count($PageList,' ') + 1;
+        $PageCount = count($PageList);
       }
 
       break;
@@ -773,7 +773,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
       //update which pages have links to a certain sub-page, then clear the cache
       case 'Update SubPage Links' :
 
-      $VariableArray = array('AddLinkSubPageID');
+      $VariableArray = array('AddLinkSubPageID', 'Pages');
       GetVariables($VariableArray);
 
       if(!empty($_POST['SubPageLinks']) && isset($AddLinkSubPageID) && is_numeric($AddLinkSubPageID))
@@ -805,7 +805,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
       //update which subpages have links to a certain other sub-page, then clear the cache
       case 'Update SubPage Sub-Links' :
 
-      $VariableArray = array('AddSubLinkSubPageID');
+      $VariableArray = array('AddSubLinkSubPageID', 'Pages');
       GetVariables($VariableArray);
 
       if(!empty($_POST['SubPageSubLinks']) && isset($AddSubLinkSubPageID) && is_numeric($AddSubLinkSubPageID))

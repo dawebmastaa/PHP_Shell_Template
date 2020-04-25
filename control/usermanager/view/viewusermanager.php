@@ -3,9 +3,8 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && $_S
 {
 ?>
     <header id="List">
-   <h1>User Manager</h1>
-   <ul>  
-  <?php
+     <h1>User Manager</h1>
+<?php
   //reset the query that contains the links
   mysqli_data_seek($GetLinks,0);
   
@@ -13,32 +12,22 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && $_S
   {
    if($ThisDirectory == $row->Directory)
    {
-    	echo('  <li><a href="'.$row->URL.'">'.$row->Text.'</a></li>'."\n".'  ');
+    	echo('     <a href="'.$row->URL.'">'.$row->Text.'</a><br />'."\n");
    }	
   }
-?>
- </ul>
-      
-<?php
-if(isset($SubLinkRecordCount) && $SubLinkRecordCount > 0)
-{
- 	mysqli_data_seek($GetSubLinks,0); 
-?>
-  <br clear="all" />
-   <ul>
-  <?php
-   while($row = mysqli_fetch_object($GetSubLinks))
-   {
-    echo('<li><a href="'.$row->Link.'">'.$row->LinkTitle.'</a></li>');
-   }
-?>
-    </ul>
-    </header>
-<?php
+
+  if(isset($SubLinkRecordCount) && $SubLinkRecordCount > 0)
+  {
+      mysqli_data_seek($GetSubLinks,0);
+      while($row = mysqli_fetch_object($GetSubLinks))
+      {
+          echo('   <a href="'.$row->Link.'">'.$row->LinkTitle.'</a><br />'."\n".'  ');
+      }
   }
+?>    </header>
+<?php
 }else{
 ?>
-  <header class="SingleColumn"><h2 class="AlertText">Not Logged In Or No Privileges</h2></header><br clear="all" />
+  <header id="List" class="SingleColumn"><h2 class="AlertText">Not Logged In Or No Privileges</h2></header>
 <?php
-}
-?>
+} ?>

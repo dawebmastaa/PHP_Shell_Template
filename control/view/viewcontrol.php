@@ -11,8 +11,8 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes')
 <?php if(!empty($Message)){echo($Message);} ?>
  <h1>Log In</h1>
   <form action="<?php echo($root.$DirectoryPath.'/index/content/'.$StripContent).'/'; ?>" method="post">
-   <label for="UserName">UserName:</label><input type="text" name="UserName" id="UserName" />
-   <label for="Password">Password:</label><input type="password" name="Password" id="Password" />
+   <label for="UserName">UserName:</label><input type="text" name="UserName" id="UserName" required />
+   <label for="Password">Password:</label><input type="password" name="Password" id="Password" required />
    <input type="submit" name="Operation" value="Log In" class="SmallWhiteButton" />
   </form>
 </header>

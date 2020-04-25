@@ -216,6 +216,12 @@ function ShowPageContent(divList,PageView)
 
       break;
 
+    case 'addsubpage' :
+
+      showDivs = ["StartDiv", "AddNewSubPage"];
+
+      break;
+
     case 'editsitesection' :
 
       showDivs = ["StartDiv", "EditSiteSection", "SectionButtons"];

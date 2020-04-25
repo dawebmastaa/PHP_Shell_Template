@@ -245,6 +245,20 @@ ul {
     display: inline;
 }
 
+.RecordNavigation {
+    font-size: .9rem;
+    padding-top: 0;
+    padding-bottom: 10px;
+    padding-left: 4px;
+    display: block;
+    text-align: left;
+}
+
+.RecordNavigation a {
+    font-size: .9rem;
+    font-weight: bold;
+}
+
 .SmallWhiteButton, .SubmitButton {
     background-color: #ffffff;
     border: 1px solid #d8e5d9;
@@ -363,7 +377,7 @@ ul {
 
 /* ==========================================================================
    Print styles.
-   Inlined to avoid the additional HTTP request:
+   Inline to avoid the additional HTTP request:
    https://www.phpied.com/delay-loading-your-print-css/
    ========================================================================== */
 
