@@ -128,6 +128,7 @@ echo("\n\n");
  <script src="js/vendor/jquery-3.4.1.min.js"></script>
  <script src="js/vendor/modernizr-3.8.0.min.js"></script>
  <script src="js/plugins.js"></script>
+ <script src="js/vendor/bootstrap.min.js"></script>
 </body>
 </html>
 <?php
