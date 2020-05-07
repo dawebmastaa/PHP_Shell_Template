@@ -206,7 +206,7 @@ function ShowPageContent(divList,PageView)
     case 'subpages' :
 
       showDivs = ["StartDiv", "EditSubPages", "EditSubPagesBlurb", "AddSubPages"];
-      //ajaxLoader('http://127.0.0.1/shell1/functions/ajaxcall.php?PageCall=showimage','List');
+      ajaxLoader('http://127.0.0.1/shell1/functions/ajaxcall.php?PageCall=showimage','List');
 
       break;
 

@@ -14,10 +14,10 @@ if(isset($title)){echo (" <title>$title</title>\n");}else{echo(' <title>'.$Websi
  <meta name="robots" content="<?php if(isset($robots) && !empty($robots)){echo($robots);}else{echo('index, follow, NOYDIR');}?>" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
- <link rel="stylesheet" href="<?php echo ("$root"); ?>css/normalize.css" />
- <link rel="stylesheet" href="<?php echo ("$root"); ?>css/layout.css" />
- <link rel="stylesheet" href="<?php echo ("$root");?>css/main.css" />
- <?php if(isset($MainDirectory) && $MainDirectory == 'control'){echo('<link rel="stylesheet" href="'.$root.'css/control.css" />');} ?>
+ <link rel="stylesheet" href="<?php echo ("$root"); ?>css/normalize.min.css" />
+ <link rel="stylesheet" href="<?php echo ("$root"); ?>css/layout.min.css" />
+ <link rel="stylesheet" href="<?php echo ("$root");?>css/main.min.css" />
+ <?php if(isset($MainDirectory) && $MainDirectory == 'control'){echo('<link rel="stylesheet" href="'.$root.'css/control.min.css" />');} ?>
 
  <link rel="manifest" href="site.webmanifest" />
  <link rel="apple-touch-icon" href="icon.png" />
@@ -124,7 +124,7 @@ echo("\n\n");
     <footer><cite>&copy;<?php echo(date("Y"));?> <?php print("$WebsiteName");?></cite></footer>
 
  </div>
- <script src="js/main.js"></script>
+ <script src="js/main.min.js"></script>
  <script src="js/vendor/jquery-3.4.1.min.js"></script>
  <script src="js/vendor/modernizr-3.8.0.min.js"></script>
  <script src="js/plugins.js"></script>

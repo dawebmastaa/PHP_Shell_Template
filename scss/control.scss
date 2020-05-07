@@ -11,6 +11,9 @@ header#List input {
   display: block;
 }
 
+#SiteBuilder {
+}
+
 #SiteBuilder:first-child {
   min-height: 100%;
 }
@@ -75,7 +78,7 @@ header#List input {
   padding: 20px 0 0 20px;
 }
 
-#EditSubPage {
+#EditSubPage{
   padding: 20px 0 0 20px;
 }
 
@@ -94,4 +97,6 @@ header#List input {
 
 /* end User Manager */
 
-/*# sourceMappingURL=control.css.map */
+.Registration {
+
+}
