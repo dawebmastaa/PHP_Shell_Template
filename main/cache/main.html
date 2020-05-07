@@ -9,9 +9,9 @@
  <meta name="robots" content="index, follow" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
- <link rel="stylesheet" href="http://127.0.0.1/shell1/css/normalize.css" />
- <link rel="stylesheet" href="http://127.0.0.1/shell1/css/layout.css" />
- <link rel="stylesheet" href="http://127.0.0.1/shell1/css/main.css" />
+ <link rel="stylesheet" href="http://127.0.0.1/shell1/css/normalize.min.css" />
+ <link rel="stylesheet" href="http://127.0.0.1/shell1/css/layout.min.css" />
+ <link rel="stylesheet" href="http://127.0.0.1/shell1/css/main.min.css" />
  
  <link rel="manifest" href="site.webmanifest" />
  <link rel="apple-touch-icon" href="icon.png" />
@@ -30,7 +30,7 @@
 <body>
 
 <div id="Wrapper">
- <header id="top"><img src="img/logo1.png" />  <nav>
+ <header id="top"><a href=""><img src="img/logo1.png" class="logo" /></a>  <nav>
    <!-- 'hamburger' for the mobile menu -->
    <label for="hamburger" title="Click here to toggle a menu.">&#9776;</label>
    <input type="checkbox" id="hamburger" />
@@ -49,6 +49,11 @@
     <ul class="SubNav">
       <li><a href="products/index/content/product4/" title="MouseOver Text">Product4</a></li>
       <li><a href="products/index/content/product6/" title="mouseover title for product 6">Product 6</a></li>
+    </ul>
+   </li>
+
+  <li><a href="services/" title="This Is The Services Page Title"><img src="img/arrow.gif" alt="ServicesList" />Services</a>
+ 
     </ul>
    </li>
 
@@ -71,6 +76,11 @@
     <ul>
       <li><a href="products/index/content/product4/" title="MouseOver Text">Product4</a></li>
       <li><a href="products/index/content/product6/" title="mouseover title for product 6">Product 6</a></li>
+    </ul>
+   </li>
+
+  <li><a href="services/" title="This Is The Services Page Title"><img src="img/arrow.gif" alt="ServicesList" />Services</a>
+ 
     </ul>
    </li>
 
@@ -118,13 +128,12 @@
  </main>
 
  <div class="RightContent">
-
  </div>
 
     <footer><cite>&copy;2020 Site Framework</cite></footer>
 
  </div>
- <script src="js/main.js"></script>
+ <script src="js/main.min.js"></script>
  <script src="js/vendor/jquery-3.4.1.min.js"></script>
  <script src="js/vendor/modernizr-3.8.0.min.js"></script>
  <script src="js/plugins.js"></script>
