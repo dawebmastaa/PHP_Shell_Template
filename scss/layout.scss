@@ -83,14 +83,16 @@ section {
   margin: 0;
   padding: 0;
 
-  ul, ul li{
-  margin: 0;
+  ul, ul li {
+    margin: 0;
+  }
 
-  li{
-  display: inline;
-  margin-left: 2vw;
-  transition-duration: 0.5s;
-  position: relative;
+  li {
+    display: inline;
+    margin-left: 2vw;
+    transition-duration: 0.5s;
+    position: relative;
+  }
 
   li ul {
   visibility: hidden;
@@ -168,23 +170,23 @@ Phones and small screens
   nav {
     text-align: right;
     padding: 0 14px 0 0;
-  }
 
-  /* Show hamburger and hide checkbox */
-  nav label {
-    display: inline;
-    font-size: 1.5rem;
-    margin: 0;
-    padding: 0;
-  }
+    /* Show hamburger and hide checkbox */
+    label {
+      display: inline;
+      font-size: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
 
-  nav input {
-    display: none;
-  }
+    input {
+      display: none;
+    }
 
-  /* Toggle show/hide menu on checkbox click */
-  nav input:checked ~ ul, nav input:checked ~ ul li {
-    display: block;
+    /* Toggle show/hide menu on checkbox click */
+    input:checked ~ ul, input:checked ~ ul li {
+      display: block;
+    }
   }
 
   .LeftContent, .RightContent {
@@ -234,11 +236,11 @@ Desktops and big screen
       padding-right: 0;
       margin: 0;
     }
-      li span {
-        color: #000000;
-        display: block;
-        font-weight: bold;
-        padding: 3px 0 3px 12px;
+    li span {
+      color: #000000;
+      display: block;
+      font-weight: bold;
+      padding: 3px 0 3px 12px;
      }
   }
 

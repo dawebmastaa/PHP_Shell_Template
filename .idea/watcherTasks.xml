@@ -63,26 +63,6 @@
         <env name="PATH" value="/opt/GitHub Desktop:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/mikea/.dotnet/tools:/home/mikea/.komodoide/12.0/XRE/state:/home/mikea/.rvm/bin" />
       </envs>
     </TaskOptions>
-    <TaskOptions isEnabled="false">
-      <option name="arguments" value="$FileName$ -o $FileNameWithoutExtension$.min.css" />
-      <option name="checkSyntaxErrors" value="true" />
-      <option name="description" />
-      <option name="exitCodeBehavior" value="ERROR" />
-      <option name="fileExtension" value="css" />
-      <option name="immediateSync" value="true" />
-      <option name="name" value="YUI Compressor CSS" />
-      <option name="output" value="$FileNameWithoutExtension$.min.css" />
-      <option name="outputFilters">
-        <array />
-      </option>
-      <option name="outputFromStdout" value="false" />
-      <option name="program" value="$USER_HOME$/n/bin/yuicompressor" />
-      <option name="runOnExternalChanges" value="true" />
-      <option name="scopeName" value="CurrentDirectory" />
-      <option name="trackOnlyRoot" value="true" />
-      <option name="workingDir" value="$FileDir$" />
-      <envs />
-    </TaskOptions>
     <TaskOptions isEnabled="true">
       <option name="arguments" value="$FileName$ -o $FileNameWithoutExtension$.min.js" />
       <option name="checkSyntaxErrors" value="true" />
