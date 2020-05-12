@@ -182,11 +182,9 @@ Phones and small screens
 
     input {
       display: none;
-    }
-
-    /* Toggle show/hide menu on checkbox click */
-    &:checked ~ ul,&:checked ~ ul li {
-      display: block;
+      &:checked ~ ul, &:checked ~ ul li {
+        display: block;
+      }
     }
   }
 

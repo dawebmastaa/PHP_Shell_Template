@@ -93,7 +93,6 @@ section {
   visibility: hidden;
   display: none;
 }
-
 .MainNav li:hover > ul, .MainNav li ul:hover {
   transition-duration: 0.5s;
   visibility: visible;
@@ -167,7 +166,6 @@ Phones and small screens
     text-align: right;
     padding: 0 14px 0 0;
     /* Show hamburger and hide checkbox */
-    /* Toggle show/hide menu on checkbox click */
   }
   nav label {
     display: inline;
@@ -178,7 +176,7 @@ Phones and small screens
   nav input {
     display: none;
   }
-  nav:checked ~ ul, nav:checked ~ ul li {
+  nav input:checked ~ ul, nav input:checked ~ ul li {
     display: block;
   }
 
