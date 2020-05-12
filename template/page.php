@@ -14,9 +14,7 @@ if(isset($title)){echo (" <title>$title</title>\n");}else{echo(' <title>'.$Websi
  <meta name="robots" content="<?php if(isset($robots) && !empty($robots)){echo($robots);}else{echo('index, follow, NOYDIR');}?>" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
- <link rel="stylesheet" href="<?php echo ("$root"); ?>css/normalize.min.css" />
- <link rel="stylesheet" href="<?php echo ("$root"); ?>css/layout.min.css" />
- <link rel="stylesheet" href="<?php echo ("$root");?>css/main.min.css" />
+ <link rel="stylesheet" href="<?php echo ("$root"); ?>css/site.min.css" />
  <?php if(isset($MainDirectory) && $MainDirectory == 'control'){echo('<link rel="stylesheet" href="'.$root.'css/control.min.css" />');} ?>
 
  <link rel="manifest" href="site.webmanifest" />
@@ -103,14 +101,11 @@ echo("\n");
 
  <main id="Content">
 
-  <section>
-
 <?php
 require_once("$content.php");
 echo("\n\n");
 ?>
 
-  </section>
  </main>
 
  <div class="RightContent">
@@ -127,7 +122,7 @@ echo("\n\n");
  <script src="js/main.min.js"></script>
  <script src="js/vendor/jquery-3.4.1.min.js"></script>
  <script src="js/vendor/modernizr-3.8.0.min.js"></script>
- <script src="js/plugins.js"></script>
+ <script src="js/plugins.min.js"></script>
 </body>
 </html>
 <?php

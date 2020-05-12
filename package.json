@@ -1,0 +1,26 @@
+{
+  "name": "shell",
+  "version": "1.0.0",
+  "description": "php website template",
+  "main": "index",
+  "dependencies": {
+    "sass": "^1.26.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dawebmastaa/PHP_Shell_Template.git"
+  },
+  "keywords": [
+    "php"
+  ],
+  "author": "Mike Alberts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dawebmastaa/PHP_Shell_Template/issues"
+  },
+  "homepage": "https://github.com/dawebmastaa/PHP_Shell_Template#readme"
+}

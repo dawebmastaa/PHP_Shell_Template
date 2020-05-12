@@ -4,24 +4,18 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 ?>
  <script>
  <!--
- let divList = ["StartDiv","Recache", "AddPage", "AddNewPage", "AddNewSubPage", "EditSiteSection", "NewSectionDiv", "EditSiteSections", "EditSitePages", "SectionOrdering", "EditPage", "EditSection", "AddSiteSectionForm", "EditSubPagesBlurb", "EditSubPages", "EditSubPage", "AddSubPages", "AddSubPageLinks"];
- -->
+ let divList = ["StartDiv", "AddPage", "AddNewPage", "AddNewSubPage", "EditSiteSection", "NewSectionDiv", "EditSiteSections", "EditSitePages", "SectionOrdering", "EditPage", "EditSection", "AddSiteSectionForm", "EditSubPagesBlurb", "EditSubPages", "EditSubPage", "AddSubPages", "AddSubPageLinks", "Messages"];
+  -->
  </script>
-  <header id="List" class="list SiteBuilder"><?php if(isset($Message)){echo($Message);} ?></header>
 
-  <div id="StartDiv">
+  <div id="StartDiv"> <div id="Messages"><?php if(isset($Message)){echo($Message);} ?></div>
    <h1>Manage Site Content</h1>
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="Start">
     <input type="submit" class="SmallWhiteButton" value="Site Sections" title="This is where you create or edit main 'sections' or directories for the site" onclick="ShowPageContent(divList, 'sections'); return false" />
     <input type="submit" class="SmallWhiteButton" value="Site Pages" title="This is where you create or edit individual pages on the site. These pages will display in the drop-down navigation menus." onclick="ShowPageContent(divList, 'pages'); return false"  />
     <input type="submit" class="SmallWhiteButton" value="Site Sub-Pages" title="This is where you create or edit pages that appear in the sub-navigation of individual pages." onclick="ShowPageContent(divList, 'subpages'); return false" />
     <input type="submit" class="SmallWhiteButton" value="Reset" title="Reset this page to the default display" onclick="ShowPageContent(divList, 'start'); return false" />
-   </form>
-  </div>
-
-  <div id="Recache" style="display: <?php if(isset($Operation) && ($Operation == 'Edit Page') || $Operation == 'Edit SubPage' || $Operation == 'Edit Content'){echo('none');}else{echo('block');}?>">
-   <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="RecachePages">
-    <input type="submit" class="SmallWhiteButton" title="Click here to delete all cached pages on the site" name="Operation" value="Recache Site Pages" />
+    <input type="submit" class="SmallWhiteButton" value="Recache Site Pages" title="Click here to delete all cached pages on the site" onclick="ShowPageContent(divList, 'recache'); return false" />
    </form>
   </div>
 
@@ -112,7 +106,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="SiteSectionEdit">
     <label for="SiteSection">Choose A Section To Edit</label>
-    <select name="SiteSection" id="SiteSection" onchange="changeStyle('EditNameButton','display','inline'); changeStyle('EditContentButton','display','inline'); changeStyle('SectionOrderButton','display','inline'); changeStyle('ManageCacheButton','display','inline'); changeStyle('UnCacheButton','display','inline');">
+    <select name="SiteSection" id="SiteSection" required title="Please make a selection"  onchange="">
         <option value="">Choose A Site Section</option>
     <?php
      mysqli_data_seek($GetSiteSectionsAdmin,0);
@@ -122,11 +116,11 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
     }
   ?>
     </select><br />
-    <input type="submit" name="Operation" value="Edit Name" class="SmallWhiteButton" id="EditNameButton" style="display: none;" onclick="document.SiteSectionEdit2.TheSectionID.value = document.SiteSectionEdit.SiteSection.options[SiteSection.selectedIndex].value; changeStyle('EditSiteSections','display','block'); changeStyle('EditSiteSections','visibility','visible'); changeStyle('NewSectionDiv','display','none'); document.SiteSectionEdit2.EditSiteSection.value = document.SiteSectionEdit.SiteSection.options[SiteSection.selectedIndex].text; return false;" />
-    <input type="submit" name="Operation" value="Edit Content" class="SmallWhiteButton" id="EditContentButton" style="display: none;" /><br  />
-    <input type="submit" name="Operation" value="Change Section Display Order" class="SmallWhiteButton" id="SectionOrderButton" style="display: none;" onclick="changeStyle('SectionOrdering','display','block'), changeStyle('SectionOrdering','visibility','visible', changeStyle('NewSectionDiv','display','none')); return false;" /><br  />
-    <input type="submit" name="Operation" value="Cache Page" class="SmallWhiteButton" id="ManageCacheButton" style="display: none;" onclick="if(confirm('Are you sure you want to add this page to the site cache?')) return true,submit(); else return false;" /><br  />
-    <input  type="submit" name="Operation" value="Remove From Cache" class="SmallWhiteButton" id="UnCacheButton" style="display: none;" onclick="if(confirm('Are you sure you want to remove this page from the site cache?')) return true,submit(); else return false;" />
+    <input type="submit" name="Operation" value="Edit Name" class="SmallWhiteButton" id="EditNameButton" onclick="document.SiteSectionEdit2.TheSectionID.value = document.SiteSectionEdit.SiteSection.options[SiteSection.selectedIndex].value; changeStyle('EditSiteSections','display','block'); changeStyle('EditSiteSections','visibility','visible'); changeStyle('NewSectionDiv','display','none'); document.SiteSectionEdit2.EditSiteSection.value = document.SiteSectionEdit.SiteSection.options[SiteSection.selectedIndex].text; return false;" />
+    <input type="submit" name="Operation" value="Edit Content" class="SmallWhiteButton" id="EditContentButton" disabled /><br  />
+    <input type="submit" name="Operation" value="Change Section Display Order" class="SmallWhiteButton" id="SectionOrderButton" disabled onclick="changeStyle('SectionOrdering','display','block'), changeStyle('SectionOrdering','visibility','visible', changeStyle('NewSectionDiv','display','none')); return false;" /><br  />
+    <input type="submit" name="Operation" value="Cache Page" class="SmallWhiteButton" id="ManageCacheButton" disabled onclick="if(confirm('Are you sure you want to add this page to the site cache?')) return true,submit(); else return false;" /><br  />
+    <input  type="submit" name="Operation" value="Remove From Cache" class="SmallWhiteButton" id="UnCacheButton" disabled onclick="if(confirm('Are you sure you want to remove this page from the site cache?')) return true,submit(); else return false;" />
    </form>
   </div>
 
@@ -486,7 +480,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 }else
 {
 ?>
-  <header class="SingleColumn"><h2>Not Logged In<br /></h2></header>
+  <header class="SingleColumn"><h2 class="AlertText">Not Logged In<br /></h2></header>
 <?php
 }
 ?>

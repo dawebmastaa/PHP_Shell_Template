@@ -95,14 +95,15 @@ section {
   }
 
   li ul {
-  visibility: hidden;
-  display: none;
-}
+    visibility: hidden;
+    display: none;
+  }
 
-.MainNav li:hover > ul, .MainNav li ul:hover {
-  transition-duration: 0.5s;
-  visibility: visible;
-  display: block;
+  li:hover > ul, li ul:hover {
+    transition-duration: 0.5s;
+    visibility: visible;
+    display: block;
+  }
 }
 
 .RightContent{
@@ -184,7 +185,7 @@ Phones and small screens
     }
 
     /* Toggle show/hide menu on checkbox click */
-    input:checked ~ ul, input:checked ~ ul li {
+    &:checked ~ ul,&:checked ~ ul li {
       display: block;
     }
   }

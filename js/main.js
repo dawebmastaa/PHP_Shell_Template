@@ -205,8 +205,8 @@ function ShowPageContent(divList,PageView)
 
     case 'subpages' :
 
-      showDivs = ["StartDiv", "EditSubPages", "EditSubPagesBlurb", "AddSubPages"];
-      ajaxLoader('http://127.0.0.1/shell1/functions/ajaxcall.php?PageCall=showimage','List');
+      showDivs = ["StartDiv", "EditSubPages", "EditSubPagesBlurb", "AddSubPages", "Messages"];
+      ajaxLoader('http://127.0.0.1/shell1/functions/ajaxcall.php?PageCall=sitemanager','Messages');
 
       break;
 
@@ -228,13 +228,21 @@ function ShowPageContent(divList,PageView)
 
       break;
 
+    case 'recache' :
+
+      showDivs = ["StartDiv", "Messages"];
+      ajaxLoader('http://127.0.0.1/shell1/functions/ajaxcall.php?PageCall=recache','Messages');
+
+    break;
+
     default :
 
-      showDivs = ["StartDiv", "Recache"];
+      showDivs = ["StartDiv"];
   }
 
   divList.forEach(SetHiddenDivs);
   showDivs.forEach(SetVisibleDivs);
+  //document.getElementById('SiteBuilder').style.display = 'block';
 
   function SetHiddenDivs(item) {
     document.getElementById(item).style.display='none';
@@ -244,7 +252,20 @@ function ShowPageContent(divList,PageView)
   function SetVisibleDivs(item) {
     document.getElementById(item).style.display='block';
     document.getElementById(item).style.visibility='visible';
+    //document.getElementById('SiteBuilder').appendChild(document.getElementById(item));
   }
+}
+
+function CreateFragment(FragmentName, ContentIds)
+{
+  FragmentName = document.createDocumentFragment();
+  ContentIds.forEach(AddToFragment);
+
+  function AddToFragment(item)
+  {
+    document.getElementById('FragmentName').appendChild(document.getElementById(item));
+  }
+  document.getElementById('StartDiv').appendChild(FragmentName);
 }
 
 function ajaxLoader(url,id)
@@ -280,3 +301,27 @@ function toggleDiv(divid)
   var dv = document.getElementById(divid);
   dv.style.display = (dv.style.display == 'none'? 'block':'none');
 }
+
+//window.onclick = function(event) {
+//  if (event.target == document.getElementById("SiteBuilder")) {
+    //SiteBuilder.style.display = "none";
+
+    //var el = document.querySelector("#SiteBuilder");
+    //var parent = el.parentNode;
+    //while (el.firstChild) parent.insertBefore(el.firstChild, el);
+    //parent.removeChild(el);
+
+    //var NewStartDiv = document.createElement("div");
+    //NewStartDiv.id = NewStartDiv;
+    //NewStartDiv.id = 'SiteBuilder';
+    //Content.appendChild(NewStartDiv);
+    //ShowPageContent(divList, 'start');
+    //document.body.insertBefore(NewStartDiv, Wrapper);
+    //List.appendChild(NewStartDiv);
+    //NewStartDiv.outerHTML = document.getElementById('StartDiv').outerHTML;
+    //document.getElementById('List').outerHTML = document.getElementById('StartDiv').outerHTML;
+    //document.getElementById("SiteBuilder").removeChild(document.getElementById('SiteBuilder').childNodes[0]);
+    //CreateFragment(FragmentName, SiteBuilder.children);
+    //document.getElementById('StartDiv').appendChild(document.getElementById('SiteBuilder').childNodes[0]);
+//  }
+//}

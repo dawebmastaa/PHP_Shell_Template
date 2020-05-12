@@ -15,10 +15,22 @@ if(isset($PageCall) && !empty($PageCall))
     switch($PageCall)
     {
         case 'showimage':
-
-        require_once('ajaxcalls/showimage.php');
-
+            require_once('ajaxcalls/showimage.php');
         break;
+
+        case 'sitemanager':
+            require_once('ajaxcalls/sitemanager.php');
+            if(isset($Message)){echo($Message);}
+            //require_once ($ApplicationPath.'/control/sitemanager/model/modeleditpages.php');
+        break;
+
+        case 'recache':
+            require_once('ajaxcalls/recache.php');
+            if(isset($Message)){echo($Message);}
+        break;
+
+        default:
+            echo('Nobody Home');
     }
 }
 ?>

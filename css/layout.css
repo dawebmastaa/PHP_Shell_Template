@@ -80,18 +80,15 @@ section {
   margin: 0;
   padding: 0;
 }
-
 .MainNav ul, .MainNav ul li {
   margin: 0;
 }
-
 .MainNav li {
   display: inline;
   margin-left: 2vw;
   transition-duration: 0.5s;
   position: relative;
 }
-
 .MainNav li ul {
   visibility: hidden;
   display: none;
@@ -169,22 +166,19 @@ Phones and small screens
   nav {
     text-align: right;
     padding: 0 14px 0 0;
+    /* Show hamburger and hide checkbox */
+    /* Toggle show/hide menu on checkbox click */
   }
-
-  /* Show hamburger and hide checkbox */
   nav label {
     display: inline;
     font-size: 1.5rem;
     margin: 0;
     padding: 0;
   }
-
   nav input {
     display: none;
   }
-
-  /* Toggle show/hide menu on checkbox click */
-  nav input:checked ~ ul, nav input:checked ~ ul li {
+  nav:checked ~ ul, nav:checked ~ ul li {
     display: block;
   }
 
@@ -195,7 +189,7 @@ Phones and small screens
 }
 /*
 ------------------------------
-Desktops and big screens
+Desktops and big screen
 --------------------------------
  */
 @media screen and (min-width: 600px) {
@@ -210,14 +204,12 @@ Desktops and big screens
     margin: 0;
     padding: 20px 0 0 0;
   }
-
   .LeftMenu ul {
     list-style-type: none;
     border-top: 1px solid #d8e5d9;
     margin: 0;
     padding: 0;
   }
-
   .LeftMenu li {
     border-bottom: 1px solid #d8e5d9;
     display: block;
@@ -226,18 +218,15 @@ Desktops and big screens
     text-align: left;
     background-color: #eff9f4;
   }
-
   .LeftMenu:last-child {
     padding-bottom: 300px;
   }
-
   .LeftMenu li a {
     color: #000000;
     padding-left: 12px;
     padding-right: 0;
     margin: 0;
   }
-
   .LeftMenu li span {
     color: #000000;
     display: block;
@@ -263,12 +252,10 @@ Desktops and big screens
     left: 5px;
     min-width: 200px;
   }
-
   .SubNav li a {
     color: #000000;
     display: inline;
   }
-
   .SubNav li {
     border-bottom: 1px solid #d8e5d9;
     display: block;
