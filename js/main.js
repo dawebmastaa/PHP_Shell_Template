@@ -178,28 +178,18 @@ function changeStyle(id, property, value, literal)
   }
 }
 
-function FilterDivList(divList, filterList)
-{
-  filterList.forEach(StripVisibleDivs);
-
-  function StripVisibleDivs(item1)
-  {
-
-  }
-}
-
 function ShowPageContent(divList,PageView)
 {
   switch(PageView) {
     case 'sections' :
 
-      showDivs = ["StartDiv", "NewSectionDiv", "EditSiteSection"];
+      showDivs = ["StartDiv", "NewSectionDiv", "EditSiteSection", "Messages"];
 
       break;
 
     case 'pages' :
 
-      showDivs = ["StartDiv", "AddPage","EditSitePages"];
+      showDivs = ["StartDiv", "AddPage","EditSitePages", "Messages"];
 
       break;
 
@@ -212,19 +202,19 @@ function ShowPageContent(divList,PageView)
 
     case 'addpage' :
 
-      showDivs = ["StartDiv", "AddNewPage"];
+      showDivs = ["StartDiv", "AddNewPage", "Messages"];
 
       break;
 
     case 'addsubpage' :
 
-      showDivs = ["StartDiv", "AddNewSubPage"];
+      showDivs = ["StartDiv", "AddNewSubPage", "Messages"];
 
       break;
 
     case 'editsitesection' :
 
-      showDivs = ["StartDiv", "EditSiteSection", "SectionButtons"];
+      showDivs = ["StartDiv", "EditSiteSection", "SectionButtons", "Messages"];
 
       break;
 

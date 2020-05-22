@@ -31,5 +31,11 @@ while($row = mysqli_fetch_object($GetSiteSectionsAdmin))
 		}
 	}
 }
-if($DeletedFiles == 0){$Message.='<span class="AlertText">No cached files found to delete.<br /></span>';}
+if($DeletedFiles == 0)
+{
+    $Message.='<span class="AlertText">No cached files found to delete.<br /></span>';
+}else
+{
+    $Message .= '<span class="AlertText">Total of '.$DeletedFiles.' were deleted<br /></span>';
+}
 ?>

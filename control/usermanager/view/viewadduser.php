@@ -32,7 +32,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && $_S
      <label for="EmailAddress">Email Address</label>
      <input type="text" id="EmailAddress" name="EmailAddress" class="Registration" required />
 
-     <input class="SmallWhiteButton" type="submit" name="Operation" value="Add User" />
+     <input class="SmallWhiteButton Block" type="submit" name="Operation" value="Add User" />
     </form>
   </header>
 <?php

@@ -603,7 +603,7 @@ Desktops and big screen
     background-color: #eff9f4;
   }
 }
-/*! HTML5 Boillerplate v7.3.0 | MIT License | https://html5boilerplate.com/ */
+/*! HTML5 Boilerplate v7.3.0 | MIT License | https://html5boilerplate.com/ */
 /* main.css 2.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
 /*
  * What follows is the result of much research on cross-browser styling.
@@ -820,6 +820,10 @@ ul {
 
 .AlertText {
   color: #990000;
+}
+
+.Block {
+  display: block;
 }
 
 .LabelInline {

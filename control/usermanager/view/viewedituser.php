@@ -2,7 +2,7 @@
 if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] === 'Yes' && $_SESSION['UserRole'] === '1')
 {
 ?>
-  <header id="List" class="SingleColumn">
+  <section class="SingleColumn">
    <h1>Edit/Delete Users</h1><br />
     <?php if(!empty($Message)){echo($Message);} ?>
     <?php if(!isset($Operation) || $Operation === 'Update User'){ ?>
@@ -58,13 +58,13 @@ if(isset($Operation) && $Operation == 'Edit User')
      <input class="SmallWhiteButton" type="reset" name="reset" value="Reset Values" />
     </form>
 <?php } ?>
-  </header>
+  </section>
   <br clear="all" />
 
 <?php
 }
 else
 {
- print('<header id="List" class="SingleColumn"><h2 class="AlertText">Not Logged In Or No Privileges<br /></h2></header><br clear="all" />');
+ print('<header class="SingleColumn"><h2 class="AlertText">Not Logged In Or No Privileges<br /></h2></header><br clear="all" />');
 }
 ?>

@@ -2,7 +2,7 @@
 if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && $_SESSION['UserRole'] == '1')
 {
 ?>
-    <header id="List">
+    <section class="SingleColumn">
      <h1>User Manager</h1>
 <?php
   //reset the query that contains the links
@@ -24,10 +24,10 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && $_S
           echo('   <a href="'.$row->Link.'">'.$row->LinkTitle.'</a><br />'."\n".'  ');
       }
   }
-?>    </header>
+?>    </section>
 <?php
 }else{
 ?>
-  <header id="List" class="SingleColumn"><h2 class="AlertText">Not Logged In Or No Privileges</h2></header>
+  <header class="SingleColumn"><h2 class="AlertText">Not Logged In Or No Privileges</h2></header>
 <?php
 } ?>
