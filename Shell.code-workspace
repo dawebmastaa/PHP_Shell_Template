@@ -1,0 +1,36 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			".buildpath": true,
+			".project": true,
+			".settings": true
+		},
+		"sqltools.connections": [
+			{
+				"database": "postgres",
+				"dialect": "PostgreSQL",
+				"name": "localhost",
+				"password": "blues12345",
+				"port": 5432,
+				"server": "localhost",
+				"username": "postgres"
+			},
+			{
+				"database": "shell",
+				"dialect": "MariaDB",
+				"isActive": true,
+				"isConnected": true,
+				"name": "localhost",
+				"password": "blues12345",
+				"port": 3306,
+				"server": "localhost",
+				"username": "root"
+			}
+		]
+	}
+}
