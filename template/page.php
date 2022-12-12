@@ -3,7 +3,6 @@
 <head>
  <meta charset="utf-8" />
 <?php
-//get the page title and meta and add a little more to watch repo cascade, and now remove it locally.
 //get the page title and meta
 if(isset($MainConnection) && isset($StripContent)){require_once("$ApplicationPath/functions/getpagetitles.php");}
 
