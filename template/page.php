@@ -3,7 +3,7 @@
 <head>
  <meta charset="utf-8" />
 <?php
-//get the page title and meta and add a little more to watch repo cascade
+//get the page title and meta and stuff.
 if(isset($MainConnection) && isset($StripContent)){require_once("$ApplicationPath/functions/getpagetitles.php");}
 
 if(isset($title)){echo (" <title>$title</title>\n");}else{echo(' <title>'.$WebsiteName.'</title>');}
