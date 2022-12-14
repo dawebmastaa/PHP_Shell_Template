@@ -8,9 +8,9 @@
 //start or continue the session
 session_start();
 
-//set the web roots (use https if implementing a secure certificate)
-$ApplicationSecureRoot = 'http://127.0.0.1/shell1/';
-$ApplicationNonSecureRoot = 'http://127.0.0.1/shell1/';
+//set the web roots (updated to make everything SSL)
+$ApplicationSecureRoot = 'https://127.0.0.1/shell1/';
+$ApplicationNonSecureRoot = 'https://127.0.0.1/shell1/';
 
 //set the user and group for permissions purposes
 $ApplicationUser = 'mikea';
@@ -28,7 +28,7 @@ $DirectAccessFiles = array('index.php','index','ajaxcall.php');
 //if the file being called isn't in the list, nobody gets in.
 if(!in_array(basename($_SERVER['SCRIPT_NAME']), $DirectAccessFiles))
 {
-    header("location: $ApplicationNonSecureRoot"."main/index/content/404");
+    header("location: $ApplicationSecureRoot"."main/index/content/404");
     die();
 };
 
@@ -46,10 +46,10 @@ $WebsiteName = 'Site Framework';
 
 // this is where we find images
 $ImagePath = $ApplicationPath.'img/';
-$ImageURL = $ApplicationNonSecureRoot.'img/';
+$ImageURL = $ApplicationSecureRoot.'img/';
 
 // site email address
-$SiteEmail = 'Webmaster<mikealberts@metrocast.net>';
+$SiteEmail = 'Webmaster<mikealberts@gmail.com>';
 
 //initialize a variable to track users' last page visited
 if(!isset($_SESSION['SessionReturn']))
@@ -63,15 +63,6 @@ if (!isset($content))
     $content = 'main';
 }
 
-// set root variable so images on secure pages are displayed properly
-switch($content)
-{
-    case 'checkout':
-    $root = "$ApplicationSecureRoot";
-    break;
-
-    default :
-    $root = "$ApplicationNonSecureRoot";
-    break;
-}
+// set root variable (simplified to only use SSL now)
+$root = "$ApplicationSecureRoot";
 ?>
