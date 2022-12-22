@@ -475,7 +475,7 @@ section {
 
 /*
 ------------------------------
-Phones and small screens
+Phones and small screens ok then
 --------------------------------
  */
 @media screen and (max-width: 600px) {
@@ -608,7 +608,7 @@ Desktops and big screen
 /*
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and teams.
+ * Kroc Camen, and the H5BP dev community and teams. combine and minimize
  */
 html {
   color: #222;
@@ -628,7 +628,7 @@ html {
 }
 
 /*
- * A better looking default horizontal rule
+ * A better looking default horizontal rule, hopefully
  */
 hr {
   display: block;

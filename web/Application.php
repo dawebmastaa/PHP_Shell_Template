@@ -1,5 +1,5 @@
 <?php
-//This is the main web site configuration file. It is prepended on every page request.
+//This is the main website configuration file. It is prepended on every page request.
 
 //uncomment this to take the site down for maintenance.
 //header("location: updating.htm");

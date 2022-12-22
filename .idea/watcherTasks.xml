@@ -14,9 +14,9 @@
         <array />
       </option>
       <option name="outputFromStdout" value="false" />
-      <option name="program" value="sass" />
+      <option name="program" value="$PROJECT_DIR$/node_modules/.bin/sass" />
       <option name="runOnExternalChanges" value="true" />
-      <option name="scopeName" value="SCSS Directory" />
+      <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="false" />
       <option name="workingDir" value="$FileDir$" />
       <envs />
@@ -34,9 +34,9 @@
         <array />
       </option>
       <option name="outputFromStdout" value="false" />
-      <option name="program" value="$USER_HOME$/n/bin/csso" />
+      <option name="program" value="$PROJECT_DIR$/node_modules/.bin/csso" />
       <option name="runOnExternalChanges" value="true" />
-      <option name="scopeName" value="CSS Directory" />
+      <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="true" />
       <option name="workingDir" value="$FileDir$" />
       <envs />
@@ -54,9 +54,9 @@
         <array />
       </option>
       <option name="outputFromStdout" value="false" />
-      <option name="program" value="$USER_HOME$/n/bin/uglifyjs" />
+      <option name="program" value="$PROJECT_DIR$/node_modules/.bin/uglifyjs" />
       <option name="runOnExternalChanges" value="true" />
-      <option name="scopeName" value="JS Directory" />
+      <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="true" />
       <option name="workingDir" value="$FileDir$" />
       <envs />

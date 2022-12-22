@@ -1,4 +1,4 @@
-//put your javascript functions in here.
+//put your javascript functions in here to test.
 
 function YY_checkform() { //v4.71
 //copyright (c)1998,2002 Yaromat.com

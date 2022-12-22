@@ -4,9 +4,12 @@
   "description": "php website template",
   "main": "index",
   "dependencies": {
-    "sass": "^1.26.5"
+    "csso": "^5.0.5",
+    "csso-cli": "^4.0.1",
+    "sass": "^1.26.5",
+    "uglify-js": "^3.17.4",
+    "uglifyjs": "^2.4.11"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
