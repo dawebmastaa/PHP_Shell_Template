@@ -8,7 +8,7 @@
 //start or continue the session
 session_start();
 
-//set the web roots (updated to make everything SSL)
+//set the web roots (use https on both now)
 $ApplicationSecureRoot = 'http://localhost';
 $ApplicationNonSecureRoot = 'http://localhost';
 
