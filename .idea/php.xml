@@ -9,6 +9,20 @@
   <component name="PHPCodeSnifferOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="" />
+    </include_path>
+  </component>
+  <component name="PhpInterpreters">
+    <interpreters>
+      <interpreter id="6496e752-366c-4ab2-8dcb-cce89c805f47" name="PHP 8.2" home="/usr/bin/php8.2" debugger_id="php.debugger.XDebug">
+        <configuration_options>
+          <configuration_option name=" auto_prepend_file" value="$PROJECT_DIR$/web/Application.php" />
+        </configuration_options>
+      </interpreter>
+    </interpreters>
+  </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />

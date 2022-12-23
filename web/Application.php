@@ -9,8 +9,8 @@
 session_start();
 
 //set the web roots (updated to make everything SSL)
-$ApplicationSecureRoot = 'https://127.0.0.1/shell1/';
-$ApplicationNonSecureRoot = 'https://127.0.0.1/shell1/';
+$ApplicationSecureRoot = 'http://localhost';
+$ApplicationNonSecureRoot = 'http://localhost';
 
 //set the user and group for permissions purposes
 $ApplicationUser = 'mikea';
@@ -36,7 +36,7 @@ if(!in_array(basename($_SERVER['SCRIPT_NAME']), $DirectAccessFiles))
 require_once('functions/sesurls.php');
 
 //this file connects to the database
-require_once('functions/dataconnect.php');
+//require_once('functions/dataconnect.php');
 
 //this file brings passed variables into scope so they can be called directly.
 require_once('functions/getvariables.php');

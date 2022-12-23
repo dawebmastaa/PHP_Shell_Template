@@ -3,5 +3,29 @@
         {
             "path": "."
         }
-    ]
+    ],
+    "settings": {
+        "compile-hero.typescriptx-output-toggle": false,
+        "compile-hero.typescript-output-toggle": false,
+        "compile-hero.stylus-output-toggle": false,
+        "compile-hero.scss-output-toggle": true,
+        "compile-hero.sass-output-toggle": true,
+        "compile-hero.pug-output-toggle": false,
+        "compile-hero.less-output-toggle": true,
+        "compile-hero.javascript-output-toggle": true,
+        "compile-hero.jade-output-toggle": false,
+        "compile-hero.html-output-toggle": false,
+        
+        "compile-hero.scss-output-directory": "../web/css",
+        "compile-hero.sass-output-directory": "../web/css",        
+        "compile-hero.less-output-directory": "../web/css",
+        "compile-hero.javascript-output-directory": "../web/js",
+        "compile-hero.typescript-output-directory": "../web/js",
+        
+        "compile-hero.x-omit-dev-ext-js": true,        
+        "compile-hero.ignore": "/**/_*.node_modules",
+        "compile-hero.generate-minified-css": true,
+        "compile-hero.watch": "/**/_*.scss",
+        "compile-hero.disable-compile-files-on-did-save-code": false,
+    }
 }

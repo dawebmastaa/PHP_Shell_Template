@@ -80,19 +80,23 @@ section {
   margin: 0;
   padding: 0;
 }
+
 .MainNav ul, .MainNav ul li {
   margin: 0;
 }
+
 .MainNav li {
   display: inline;
   margin-left: 2vw;
   transition-duration: 0.5s;
   position: relative;
 }
+
 .MainNav li ul {
   visibility: hidden;
   display: none;
 }
+
 .MainNav li:hover > ul, .MainNav li ul:hover {
   transition-duration: 0.5s;
   visibility: visible;
@@ -135,33 +139,29 @@ section {
 
 /*
 ------------------------------
-Phones and small screens ok then
+Phones and small screens
 --------------------------------
  */
 @media screen and (max-width: 600px) {
   .logo {
-    content: url("http://127.0.0.1/shell1/img/logo1sm.png");
+    content: url("img/logo1sm.png");
     padding: 4vw 0 4vw 1vw;
   }
-
   .MainNav {
     display: none;
     background-color: white;
     border: 1px solid #efefef;
   }
-
   .MainNav li {
     margin: 0;
     background-color: white;
     padding: 0;
     text-align: center;
   }
-
   .SubNav li {
     text-align: left;
     padding-left: 40px;
   }
-
   nav {
     text-align: right;
     padding: 0 14px 0 0;
@@ -179,12 +179,12 @@ Phones and small screens ok then
   nav input:checked ~ ul, nav input:checked ~ ul li {
     display: block;
   }
-
   .LeftContent, .RightContent {
     display: none;
     visibility: hidden;
   }
 }
+
 /*
 ------------------------------
 Desktops and big screen
@@ -195,7 +195,6 @@ Desktops and big screen
   nav label, #hamburger {
     display: none;
   }
-
   .LeftMenu {
     background-color: #ffffff;
     position: relative;
@@ -231,14 +230,13 @@ Desktops and big screen
     font-weight: bold;
     padding: 3px 0 3px 12px;
   }
-
   .SubNav {
     background-color: #eff9f4;
     border-left: 1px solid #d8e5d9;
     border-right: 1px solid #d8e5d9;
     border-top: 1px solid #d8e5d9;
     /* box-shadow: 2px 2px 6px 0 #c4bec4; */
-    font-size: 0.8rem;
+    font-size: .8rem;
     margin: 0;
     padding: 0;
     text-align: left;

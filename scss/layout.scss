@@ -141,12 +141,12 @@ section {
 }
 /*
 ------------------------------
-Phones and small screens ok then
+Phones and small screens
 --------------------------------
  */
 @media screen and (max-width:600px) {
   .logo {
-    content: url("http://127.0.0.1/shell1/img/logo1sm.png");
+    content: url("img/logo1sm.png");
     padding: 4vw 0 4vw 1vw;
   }
 

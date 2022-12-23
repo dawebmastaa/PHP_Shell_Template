@@ -1,6 +1,6 @@
 <?php
 //this is how we turn something.com/parameter/value/ into something.com?parameter=value.
-if(strpos($_SERVER['REQUEST_URI'],'index'))
+if(isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'],'index'))
 {
     $vardata = explode('/', strstr($_SERVER['REQUEST_URI'],'index'));
     $num_param = count($vardata);

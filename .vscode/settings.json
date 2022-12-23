@@ -1,0 +1,12 @@
+{
+    "css.format.spaceAroundSelectorSeparator": true,
+    "css.lint.float": "warning",
+    "css.lint.ieHack": "warning",
+    "less.lint.float": "warning",
+    "less.lint.ieHack": "warning",
+    "scss.format.spaceAroundSelectorSeparator": true,
+    "scss.lint.float": "warning",
+    "scss.lint.ieHack": "warning",
+    "php.validate.executablePath": "/usr/bin/php",
+    "liveSassCompile.settings.forceBaseDirectory": "/scss",
+}
