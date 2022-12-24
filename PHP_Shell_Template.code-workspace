@@ -27,5 +27,48 @@
         "compile-hero.generate-minified-css": true,
         "compile-hero.watch": "/**/_*.scss",
         "compile-hero.disable-compile-files-on-did-save-code": false,
+        "projectManager.git.baseFolders": [
+            "/media/mikea/86022EF5022EE9BF/web/repos/PHP_Shell_Template"
+        ],
+        "projectManager.vscode.baseFolders": [
+            "/media/mikea/86022EF5022EE9BF/web/repos/PHP_Shell_Template"
+        ],
+        "phpserver.phpConfigPath": "/media/mikea/86022EF5022EE9BF/web/repos/PHP_Shell_Template/conf/php.ini",
+        "phpserver.phpPath": "/usr/bin/php",
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Launch built-in server and debug",
+                "type": "php",
+                "request": "launch",
+                "runtimeArgs": [
+                    "-S",
+                    "localhost:8000",
+                    "-t",
+                    "."
+                ],
+                "port": 9003,
+                "serverReadyAction": {
+                    "action": "openExternally"
+                }
+            },
+            {
+                "name": "Debug current script in console",
+                "type": "php",
+                "request": "launch",
+                "program": "${file}",
+                "cwd": "${fileDirname}",
+                "externalConsole": false,
+                "port": 9003
+            },
+            {
+                "name": "Listen for Xdebug",
+                "type": "php",
+                "request": "launch",
+                "port": 9003
+            }
+        ]
     }
 }

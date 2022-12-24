@@ -1,7 +1,7 @@
 <?php
-if(file_exists("$ApplicationPath/main/cache/main.html"))
+if(file_exists("index.html"))
 {
-	include_once("$ApplicationPath/main/cache/main.html");
+	include_once("index.html");
 	die();	
 }
 else

@@ -188,9 +188,9 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+[type=button],
+[type=reset],
+[type=submit] {
   -webkit-appearance: button;
 }
 
@@ -198,9 +198,9 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -209,9 +209,9 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -261,8 +261,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type="checkbox"],
-[type="radio"] {
+[type=checkbox],
+[type=radio] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -272,8 +272,8 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -281,7 +281,7 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type="search"] {
+[type=search] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -291,7 +291,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type="search"]::-webkit-search-decoration {
+[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -420,23 +420,19 @@ section {
   margin: 0;
   padding: 0;
 }
-
 .MainNav ul, .MainNav ul li {
   margin: 0;
 }
-
 .MainNav li {
   display: inline;
   margin-left: 2vw;
   transition-duration: 0.5s;
   position: relative;
 }
-
 .MainNav li ul {
   visibility: hidden;
   display: none;
 }
-
 .MainNav li:hover > ul, .MainNav li ul:hover {
   transition-duration: 0.5s;
   visibility: visible;
@@ -487,21 +483,25 @@ Phones and small screens
     content: url("img/logo1sm.png");
     padding: 4vw 0 4vw 1vw;
   }
+
   .MainNav {
     display: none;
     background-color: white;
     border: 1px solid #efefef;
   }
+
   .MainNav li {
     margin: 0;
     background-color: white;
     padding: 0;
     text-align: center;
   }
+
   .SubNav li {
     text-align: left;
     padding-left: 40px;
   }
+
   nav {
     text-align: right;
     padding: 0 14px 0 0;
@@ -519,12 +519,12 @@ Phones and small screens
   nav input:checked ~ ul, nav input:checked ~ ul li {
     display: block;
   }
+
   .LeftContent, .RightContent {
     display: none;
     visibility: hidden;
   }
 }
-
 /*
 ------------------------------
 Desktops and big screen
@@ -535,6 +535,7 @@ Desktops and big screen
   nav label, #hamburger {
     display: none;
   }
+
   .LeftMenu {
     background-color: #ffffff;
     position: relative;
@@ -570,13 +571,14 @@ Desktops and big screen
     font-weight: bold;
     padding: 3px 0 3px 12px;
   }
+
   .SubNav {
     background-color: #eff9f4;
     border-left: 1px solid #d8e5d9;
     border-right: 1px solid #d8e5d9;
     border-top: 1px solid #d8e5d9;
     /* box-shadow: 2px 2px 6px 0 #c4bec4; */
-    font-size: .8rem;
+    font-size: 0.8rem;
     margin: 0;
     padding: 0;
     text-align: left;
@@ -601,7 +603,6 @@ Desktops and big screen
     background-color: #eff9f4;
   }
 }
-
 /*! HTML5 Boilerplate v7.3.0 | MIT License | https://html5boilerplate.com/ */
 /* main.css 2.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
 /*
@@ -733,15 +734,15 @@ h3 {
 }
 
 h4 {
-  font-size: 1.0em;
+  font-size: 1em;
 }
 
 h5 {
-  font-size: .9em;
+  font-size: 0.9em;
 }
 
 h6 {
-  font-size: .8em;
+  font-size: 0.8em;
 }
 
 img {
@@ -757,7 +758,7 @@ input {
   vertical-align: top;
 }
 
-input[type="checkbox"] {
+input[type=checkbox] {
   margin: 0;
   padding: 0;
   border: none;
@@ -765,7 +766,7 @@ input[type="checkbox"] {
   height: 15px;
 }
 
-input[type="radio"] {
+input[type=radio] {
   margin: 0;
   padding: 0;
   border: none;
@@ -773,7 +774,7 @@ input[type="radio"] {
   height: 15px;
 }
 
-input[type="text"]:focus, textarea:focus {
+input[type=text]:focus, textarea:focus {
   border: 1px solid #917e70;
 }
 
@@ -830,7 +831,7 @@ ul {
 }
 
 .RecordNavigation {
-  font-size: .9rem;
+  font-size: 0.9rem;
   padding-top: 0;
   padding-bottom: 10px;
   padding-left: 4px;
@@ -839,7 +840,7 @@ ul {
 }
 
 .RecordNavigation a {
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: bold;
 }
 
@@ -948,7 +949,6 @@ ul {
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx), (min-resolution: 120dpi) {
   /* Style adjustments for high resolution devices */
 }
-
 /* ==========================================================================
    Print styles.
    Inline to avoid the additional HTTP request:
@@ -964,16 +964,20 @@ ul {
     box-shadow: none !important;
     text-shadow: none !important;
   }
+
   a,
 a:visited {
     text-decoration: underline;
   }
+
   a[href]:after {
     content: " (" attr(href) ")";
   }
+
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
+
   /*
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
@@ -982,14 +986,17 @@ a:visited {
 a[href^="javascript:"]:after {
     content: "";
   }
+
   pre {
     white-space: pre-wrap !important;
   }
+
   pre,
 blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
+
   /*
      * Printing Tables:
      * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
@@ -997,16 +1004,19 @@ blockquote {
   thead {
     display: table-header-group;
   }
+
   tr,
 img {
     page-break-inside: avoid;
   }
+
   p,
 h2,
 h3 {
     orphans: 3;
     widows: 3;
   }
+
   h2,
 h3 {
     page-break-after: avoid;

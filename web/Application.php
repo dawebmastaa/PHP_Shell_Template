@@ -9,8 +9,8 @@
 session_start();
 
 //set the web roots (use https on both now)
-$ApplicationSecureRoot = 'http://localhost';
-$ApplicationNonSecureRoot = 'http://localhost';
+$ApplicationSecureRoot = 'http://localhost:3000/web/';
+$ApplicationNonSecureRoot = 'http://localhost:3000/web';
 
 //set the user and group for permissions purposes
 $ApplicationUser = 'mikea';
@@ -62,7 +62,7 @@ if (!isset($content))
 {
     $content = 'main';
 }
-
+echo ('Testing');
 // set root variable (simplified to only use SSL now)
 $root = "$ApplicationSecureRoot";
 ?>
