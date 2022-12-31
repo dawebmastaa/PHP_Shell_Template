@@ -6,29 +6,31 @@ if($MainDirectory == 'control')
 {
  	$title = 'Admin';
 	
-	$GetSectionTitle = mysqli_query($MainConnection,"
+	$GetSectionTitle = $MainConnection->query("
 	SELECT SectionTitle
 	FROM AdminSiteSections
 	WHERE Directory = '$ThisDirectory'
 	LIMIT 1");
+
+    $GetSectionTitle->setFetchMode(PDO::FETCH_OBJ);
 	
-	if(mysqli_num_rows($GetSectionTitle) > 0)
+	if($GetSectionTitle)
 	{
-		$row = mysqli_fetch_object($GetSectionTitle);
-		$title = $row->SectionTitle;
-		$SectionTitle = $row->SectionTitle;
+		//$row = mysqli_fetch_object($GetSectionTitle);
+		$title = $GetSectionTitle['SectionTitle, 0'];
+		$SectionTitle = $GetSectionTitle['SectionTitle, 0'];
 	}
 	
-	$GetPageTitle = mysqli_query($MainConnection,"
+	$GetPageTitle = $MainConnection->query("
 	SELECT PageTitle, PageKeywords, PageDescription
 	FROM AdminSiteLinks
 	WHERE FileName = '$StripContent'
 	LIMIT 1");
 		
-	if(mysqli_num_rows($GetPageTitle) > 0)
+	if($GetPageTitle)
 	{
-		$row2 = mysqli_fetch_object($GetPageTitle);
-		$title = $row2->PageTitle;
+		//$row2 = mysqli_fetch_object($GetPageTitle);
+		$title = $GetPageTitle['PageTitle'];
 	}
 }
 else
@@ -48,67 +50,84 @@ else
         
         //the real site pages need keywords, descriptions and meta robots as well as titles
         //first we check if it's a 'main' section page
-        $GetSectionTitle = mysqli_query($MainConnection,"
+        $GetSectionTitle = $MainConnection->query("
         SELECT SectionTitle, SectionKeywords, SectionDescription, SectionRobots
         FROM SiteSections
-        WHERE Directory = '$StripContent'
-        LIMIT 1");
-        
-        if(mysqli_num_rows($GetSectionTitle) > 0)
+        WHERE Directory = '$StripContent'");
+
+        $SectionsCount = $GetSectionTitle->fetchAll();
+        $GetSectionTitle->closeCursor();
+
+        if(count($SectionsCount) != 0)
         {
-            $row = mysqli_fetch_object($GetSectionTitle);
+            $GetSectionTitle->execute();
+            $row = $GetSectionTitle->fetch(PDO::FETCH_ASSOC);
             
-            $SectionTitle = $row->SectionTitle;
-            $title = $row->SectionTitle;
-            $keywords = $row->SectionKeywords;
-            $description = $row->SectionDescription;
-            $robots = $row->SectionRobots;
+            $SectionTitle = $row['SectionTitle'];
+            $title = $SectionTitle;
+            $keywords = $row['SectionKeywords'];
+            $description = $row['SectionDescription'];
+            $robots = $row['SectionRobots'];
+
+            $GetSectionTitle->closeCursor();
         }        
         //if it isn't, then it's an internal sub-page
         else
         {
-            $GetPageTitle = mysqli_query($MainConnection,"
+            $GetSubPageTitle = $MainConnection->query("
             SELECT PageTitle, PageKeywords, PageDescription, PageRobots, SectionID
             FROM SiteLinks
-            WHERE FileName = '$StripContent'
-            LIMIT 1");
+            WHERE FileName = '$StripContent'");
+
+            $SubPageCount = $GetSubPageTitle->fetchAll();
+            $GetSubPageTitle->closeCursor();
             
-            if(mysqli_num_rows($GetPageTitle) > 0)
+            if(count($SubPageCount) != 0)
             {
-                $row = mysqli_fetch_object($GetPageTitle);
-                $title = $row->PageTitle;
-                $keywords = $row->PageKeywords;
-                $description = $row->PageDescription;
-                $robots = $row->PageRobots;
+                $GetSubPageTitle->execute();
+                $row = $GetSubPageTitle->fetch(PDO::FETCH_ASSOC);
+
+                $title = $row['PageTitle'];
+                $keywords = $row['PageKeywords'];
+                $description = $row['PageDescription'];
+                $robots = $row['PageRobots'];
                 
-                $SectionID = $row->SectionID;
+                $SectionID = $row['SectionID'];
+
+                $GetSubPageTitle->closeCursor();
                 
-                $GetSectionTitle = mysqli_query($MainConnection,"
+                $GetSubPageSectionTitle = $MainConnection->query("
                 SELECT SectionTitle
                 FROM SiteSections
-                WHERE SiteSections.SectionID = $SectionID
-                LIMIT 1");
+                WHERE SiteSections.SectionID = $SectionID");
+
+                $GetSubPageSectionTitle->execute();
+                $row = $GetSubPageSectionTitle->fetch(PDO::FETCH_ASSOC);
                 
-                $row = mysqli_fetch_object($GetSectionTitle);
-                
-                $SectionTitle = $row->SectionTitle;
+                $SectionTitle = $row['SectionTitle'];
+
+                $GetSubPageSectionTitle->closeCursor();
             }
             else
             {
-                $GetSubPageTitle = mysqli_query($MainConnection,"
+                $GetSubPageTitle = $MainConnection->query("
                 SELECT PageTitle, PageKeywords, PageDescription, PageRobots
                 FROM SiteSubNavLinks
-                WHERE FileName = '$StripContent'
-                LIMIT 1");
+                WHERE FileName = '$StripContent'");
+
+                $SubPageCount = $GetSubPageTitle->fetchAll();
+                $GetSubPageTitle->closeCursor();
                 
-                if(mysqli_num_rows($GetSubPageTitle) > 0)
+                if(count($SubPageCount) != 0)
                 {
-                    $row = mysqli_fetch_object($GetSubPageTitle);
+                    $row = $GetSubPageTitle->execute();
                     
-                    $title = $row->PageTitle;
-                    $keywords = $row->PageKeywords;
-                    $description = $row->PageDescription;
-                    $robots = $row->PageRobots;
+                    $title = $row['PageTitle'];
+                    $keywords = $row['PageKeywords'];
+                    $description = $row['PageDescription'];
+                    $robots = $row['PageRobots'];
+
+                    $GetSubPageTitle->closeCursor();
                 }
             }
         }

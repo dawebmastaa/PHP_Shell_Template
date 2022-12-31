@@ -8,9 +8,14 @@
 //start or continue the session
 session_start();
 
+set_include_path(get_include_path().PATH_SEPARATOR.'/media/mikea/86022EF5022EE9BF/web/repos/PHP_Shell_Template/vendor/aura/sql/');
+spl_autoload_extensions('.php');
+spl_autoload('Aura\Sql');
+spl_autoload_register();
+
 //set the web roots (use https on both now)
-$ApplicationSecureRoot = 'http://localhost:3000/web/';
-$ApplicationNonSecureRoot = 'http://localhost:3000/web';
+$ApplicationSecureRoot = 'http://localhost:3000/';
+$ApplicationNonSecureRoot = 'http://localhost:3000/';
 
 //set the user and group for permissions purposes
 $ApplicationUser = 'mikea';
@@ -36,7 +41,7 @@ if(!in_array(basename($_SERVER['SCRIPT_NAME']), $DirectAccessFiles))
 require_once('functions/sesurls.php');
 
 //this file connects to the database
-//require_once('functions/dataconnect.php');
+require_once('functions/dataconnect.php');
 
 //this file brings passed variables into scope so they can be called directly.
 require_once('functions/getvariables.php');
@@ -62,7 +67,6 @@ if (!isset($content))
 {
     $content = 'main';
 }
-echo ('Testing');
 // set root variable (simplified to only use SSL now)
 $root = "$ApplicationSecureRoot";
 ?>

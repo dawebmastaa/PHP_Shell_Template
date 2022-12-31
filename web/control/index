@@ -3,11 +3,11 @@
 
 //set the name of the directory that this file is in so other files can be included
 //this mess is so things work on both Windows and *nix
-$ThisDirectory = str_replace("/","",strrchr(str_replace("\\","/",getcwd()),'/'));
+$ThisDirectory = str_replace("/","",strrchr(str_replace("\\","/",dirname(__FILE__)),'/'));
 
 //now we need a dynamic path to this Directory
 //this mess is also so things work on both Windows and *nix
-$DirectoryPath = substr_replace(str_replace("$ApplicationPath",'',str_replace('\\','/',getcwd())),'',0,1);
+$DirectoryPath = substr_replace(str_replace("$ApplicationPath",'',str_replace('\\','/',dirname(__FILE__))),'',0,1);
 
 //now get the name of the main directory that this one is in (if we're in a subdirectory)
 //this mess is also so things work on both Windows and *nix
@@ -79,7 +79,7 @@ else
 }
 
 //this file controls caching
-require_once("$ApplicationPath/functions/cache.php");
+//require_once("$ApplicationPath/functions/cache.php");
 
 //include the file that builds the page
 require("$ApplicationPath/template/page.php");

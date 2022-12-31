@@ -1,14 +1,15 @@
 <?php
 if(isset($LinkRecordCount) && $LinkRecordCount > 0)
 {
-	mysqli_data_seek($GetLinks,0);
+	reset($GetLinks);
 	$PageList = '';
 	
-	while($Page = mysqli_fetch_object($GetLinks))
+	foreach($GetLinks AS $Page)
 	{
-		$PageList .= ' "'.$Page->Text.'",';
+		$PageList .= ' "'.$Page['Text'].'",';
 	}
 	$PageList = trim(rtrim($PageList,','),' ');
+	//echo ('Page List: ' . $PageList);
 ?>
 
  <script>

@@ -2,6 +2,11 @@ Options -Indexes
 AcceptPathInfo On
 DirectoryIndex index index.html index.php index.xhtml
 
+ForceType application/x-httpd-php
+
+DefaultType  application/x-httpd-php
+
+AddType application/x-httpd-php .php3 .php .html index
 <FilesMatch ^index$>
 ForceType application/x-httpd-php
 SetHandler application/x-httpd-php

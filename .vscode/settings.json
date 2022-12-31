@@ -9,4 +9,15 @@
     "scss.lint.ieHack": "warning",
     "php.validate.executablePath": "/usr/bin/php",
     "liveSassCompile.settings.forceBaseDirectory": "/scss",
+    "phpserver.phpConfigPath": "/media/mikea/86022EF5022EE9BF/web/repos/PHP_Shell_Template/conf/php.ini",
+    "phpserver.relativePath": ".",
+    "sqltools.useNodeRuntime": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:PHP_Shell_Template}/conf/shell.sqlite",
+            "name": "Shell"
+        }
+    ],
 }

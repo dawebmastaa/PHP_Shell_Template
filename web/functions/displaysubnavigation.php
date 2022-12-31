@@ -1,17 +1,16 @@
  <?php
  //this does default sub-navigation for pages.
- if(isset($LinkRecordCount) && $LinkRecordCount > 0)
+ if($LinkRecordCount > 0)
  {
      $OpenTags = 'N';
      $CloseTags = 'N';
 
      //reset the query that contains the links
-     mysqli_data_seek($GetLinks,0);
+     $GetLinks->execute();
 
-     while($row = mysqli_fetch_object($GetLinks))
+     foreach($GetLinks AS $row)
      {
-         if($ThisDirectory === $row->Directory)
-         {
+         if($ThisDirectory === $row['Directory']) {
              if($OpenTags == 'N')
              {
                 echo("\n");
@@ -20,17 +19,20 @@
              $OpenTags = 'Y';
              $CloseTags = 'Y';
 
-             if($StripContent === $row->FileName)
+             if($StripContent === $row['FileName'])
              {
-                 $PageID = $row->PageID;
+                 $PageID = $row['PageID'];
                  
-                 $GetSubLinks = mysqli_query($MainConnection,"
+                 $GetSubLinks = $MainConnection->query("
                  SELECT *
                  FROM SiteSubNavLinks
                  WHERE MakeLive = 'Y' AND SiteLinkID LIKE '%\/$PageID\/%'
                  ORDER BY SiteSubNavLinks.SubNavID");
+
+                 $SubLinkRecordCount = count($GetSectionTitle->fetchAll());
+                 $GetSubLinks->closeCursor();
                  
-                 $SubLinkRecordCount = mysqli_num_rows($GetSubLinks);
+                 //$SubLinkRecordCount = $SubLinkCount;
 
                  echo('   <li style="background-color: #FFFFFF;"><span>'.$row->Text.'</span></li>'."\n");
              }
@@ -54,7 +56,9 @@
 
   <ul class="LeftMenu">
   <?php
-   while($row = mysqli_fetch_object($GetSubLinks))
+  $GetSubLinks->execute();
+  //$row = $GetSubLinks->fetch(PDO::FETCH_ASSOC);
+   while($row = $GetSubLinks->fetch(PDO::FETCH_OBJ))
    {
         if($StripContent == $row->FileName)
         {
@@ -66,26 +70,35 @@
         }
    }
   }
-  
-  $GetSubPage = mysqli_query($MainConnection,"
+
+  $GetSubPage = $MainConnection->query("
   SELECT SubNavID
   FROM SiteSubNavLinks
   WHERE FileName = '$StripContent'
   LIMIT 1");
+
+  $SubPageCount = $GetSubPage->fetchAll();
+  $GetSubPage->closeCursor();
   
-  if(@mysqli_num_rows($GetSubPage) > 0)
+  if(count($SubPageCount) != 0)
   {
-      $row = mysqli_fetch_object($GetSubPage);
+      $GetSubPage->execute();
+      $row = $GetSubPage->fetch(PDO::FETCH_OBJ);
       
       $SubNavSubPageID = $row->SubNavID;
+
+      $GetSubPage->closeCursor();
       
-      $GetSubNavSubLinks = mysqli_query($MainConnection,"
+      $GetSubNavSubLinks = $MainConnection->query("
       SELECT *
       FROM SiteSubNavLinks
       WHERE MakeLive = 'Y' AND SubNavLinkID LIKE '%\/$SubNavSubPageID\/%'
       ORDER BY SiteSubNavLinks.SubNavID");
+
+      $SubNavSubCount = $GetSubNavSubLinks->fetchAll();
+      $GetSubNavSubLinks->closeCursor();
       
-      $SubNavSubLinkRecordCount = mysqli_num_rows($GetSubNavSubLinks);
+      $SubNavSubLinkRecordCount = count($SubNavSubCountbNavSub);
   }
   
   if((!isset($SubLinkRecordCount) || $SubLinkRecordCount == 0) && isset($SubNavSubLinkRecordCount) && $SubNavSubLinkRecordCount > 0)
@@ -99,7 +112,8 @@
     
   if(isset($SubNavSubLinkRecordCount) && $SubNavSubLinkRecordCount > 0)
   {
-       while($row = mysqli_fetch_object($GetSubNavSubLinks))
+    $GetSubNavSubLinks->execute();
+    while($row = $GetSubNavSubLinks->fetch(PDO::FETCH_OBJ))
        {
            echo('  <li><a href="'.$row->Link.'">'.$row->LinkText.'</a></li>'."\n");
        }

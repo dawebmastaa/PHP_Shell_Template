@@ -19,15 +19,15 @@ if(isset($title)){echo (" <title>$title</title>\n");}else{echo(' <title>'.$Websi
 
  <link rel="manifest" href="site.webmanifest" />
  <link rel="apple-touch-icon" href="icon.png" />
- <link rel="icon" href="<?php echo ("$root") ?>favicon.ico" />
+ <link rel="icon" href="<?php echo ("$root") ?>img/favicon.ico" />
 
  <base href="<?php echo($root);?>" />
 <?php
 //get the navigation links from the database
 if(isset($MainConnection))
 {
-  require_once("$ApplicationPath/functions/getnavigationlinks.php");
-  require_once("$ApplicationPath/functions/getpagelist.php");
+require_once("$ApplicationPath/functions/getnavigationlinks.php");
+  //require_once("$ApplicationPath/functions/getpagelist.php");
 }
 ?>
 
@@ -50,7 +50,7 @@ if($MainDirectory === 'control')
   {
     if(isset($SectionRecordCount) && $SectionRecordCount > 0)
     {
-	  mysqli_data_seek($GetSiteSections,0);
+	  reset($GetSiteSections);
 	  //This builds the Admin navigation
 	  echo('   <ul class="MainNav">'."\n\n  ");
       while($row = mysqli_fetch_object($GetSiteSections))
@@ -71,11 +71,11 @@ if($MainDirectory === 'control')
 elseif(isset($MainConnection))
 {
   echo(' <ul class="MainNav">'."\n\n   ".'<li><a href="">Home</a></li>'."\n ");
-  @mysqli_data_seek($GetSiteSections,0);
+  reset($GetSiteSections);
   //this builds the 'main navigation'
-  while($row = mysqli_fetch_object($GetSiteSections))
+  foreach($GetSiteSections AS $row)
   {
-	  echo('  <li><a href="'.$row->Directory.'/" title="'.$row->SectionTitle.'"><img src="img/arrow.gif" alt="'.ucfirst($row->Directory).'List" />'.$row->Section.'</a>'."\n ");
+	  echo('  <li><a href="'.$row['Directory'].'/" title="'.$row['SectionTitle'].'"><img src="img/arrow.gif" alt="'.ucfirst($row['Directory']).'List" />'.$row['Section'].'</a>'."\n ");
       $MenuCall = 'main';
       require("$ApplicationPath/functions/buildsitemenu.php");
 	echo('  </li>'."\n\n");
@@ -93,7 +93,7 @@ echo("\n");
  <div class="LeftContent">
 <?php
 //remove comments below if using the left hand column
-  require_once("$LeftContent.php");
+//require_once("$LeftContent.php");
   echo("\n");
 ?>
 
@@ -129,5 +129,5 @@ echo("\n\n");
 //this file tracks where the user came from.
 require_once("$ApplicationPath/functions/return.php");
 //close all data connections
-@mysqli_close($MainConnection);
+//@mysqli_close($MainConnection);
 ?>
