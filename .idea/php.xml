@@ -12,9 +12,9 @@
   <component name="PhpIncludePathManager">
     <include_path>
       <path value="" />
-      <path value="$PROJECT_DIR$/vendor/aura/sql" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/aura/sql" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

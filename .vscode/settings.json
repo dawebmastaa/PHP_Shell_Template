@@ -10,7 +10,7 @@
     "php.validate.executablePath": "/usr/bin/php",
     "liveSassCompile.settings.forceBaseDirectory": "/scss",
     "phpserver.phpConfigPath": "/media/mikea/86022EF5022EE9BF/web/repos/PHP_Shell_Template/conf/php.ini",
-    "phpserver.relativePath": ".",
+    "phpserver.relativePath": "./web",
     "sqltools.useNodeRuntime": true,
     "sqltools.connections": [
         {
@@ -20,4 +20,5 @@
             "name": "Shell"
         }
     ],
+    "phpserver.port": 3000,
 }

@@ -8,10 +8,8 @@
 //start or continue the session
 session_start();
 
-set_include_path(get_include_path().PATH_SEPARATOR.'/media/mikea/86022EF5022EE9BF/web/repos/PHP_Shell_Template/vendor/aura/sql/');
-spl_autoload_extensions('.php');
-spl_autoload('Aura\Sql');
-spl_autoload_register();
+//load the external packages
+require_once __DIR__ . '/../vendor/autoload.php';
 
 //set the web roots (use https on both now)
 $ApplicationSecureRoot = 'http://localhost:3000/';
