@@ -22,15 +22,6 @@ if(isset($title)){echo (" <title>$title</title>\n");}else{echo(' <title>'.$Websi
  <link rel="icon" href="<?php echo ("$root") ?>img/favicon.ico" />
 
  <base href="<?php echo($root);?>" />
-<?php
-//get the navigation links from the database
-if(isset($MainConnection))
-{
-require_once("$ApplicationPath/functions/getnavigationlinks.php");
-  //require_once("$ApplicationPath/functions/getpagelist.php");
-}
-?>
-
 </head>
 
 <body>
@@ -43,37 +34,20 @@ require_once("$ApplicationPath/functions/getnavigationlinks.php");
    <input type="checkbox" id="hamburger" />
 
  <?php
+//get the navigation links from the database
+require_once("$ApplicationPath/functions/getnavigationlinks.php");
+//require_once("$ApplicationPath/functions/getpagelist.php");
+
 //fix the 'section' links for the admin
 if($MainDirectory === 'control')
 {
-  if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && $_SESSION['UserRole'] && is_numeric($_SESSION['UserRole']))
-  {
-    if(isset($SectionRecordCount) && $SectionRecordCount > 0)
-    {
-	  reset($GetSiteSections);
-	  //This builds the Admin navigation
-	  echo('   <ul class="MainNav">'."\n\n  ");
-      while($row = mysqli_fetch_object($GetSiteSections))
-      {
-		  echo('    <li><a href="control/'.$row->Directory.'/" title="'.$row->Section.'"><img src="img/arrow.gif" alt="'.ucfirst($row->Directory).'List" id="'.ucfirst($row->Directory).'List" />'.$row->Section.'</a>'."\n ");
-          $MenuCall = 'main';
-          require("$ApplicationPath/functions/buildsitemenu.php");
-		  echo('    </li>'."\n\n");
-      }
-	  echo('  </ul>');
-    }
-  }
-  else
-  {
-	echo(' <ul class="MainNav">'."\n   ".'<li><a href="control/" title="Log In">Log In</a></li><ul>'."\n ");
-  }
+  require("$ApplicationPath/functions/buildadminmenu.php");
 }
 elseif(isset($MainConnection))
 {
   echo(' <ul class="MainNav">'."\n\n   ".'<li><a href="">Home</a></li>'."\n ");
-  reset($GetSiteSections);
   //this builds the 'main navigation'
-  foreach($GetSiteSections AS $row)
+  foreach($rows AS $row)
   {
 	  echo('  <li><a href="'.$row['Directory'].'/" title="'.$row['SectionTitle'].'"><img src="img/arrow.gif" alt="'.ucfirst($row['Directory']).'List" />'.$row['Section'].'</a>'."\n ");
       $MenuCall = 'main';
@@ -93,7 +67,7 @@ echo("\n");
  <div class="LeftContent">
 <?php
 //remove comments below if using the left hand column
-//require_once("$LeftContent.php");
+require_once("$LeftContent.php");
   echo("\n");
 ?>
 

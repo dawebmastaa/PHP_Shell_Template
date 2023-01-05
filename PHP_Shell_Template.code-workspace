@@ -35,8 +35,9 @@
         ],
         "phpserver.phpConfigPath": "/media/mikea/86022EF5022EE9BF/web/repos/PHP_Shell_Template/conf/php.ini",
         "phpserver.phpPath": "/usr/bin/php",
-        "phpserver.relativePath": ".",
-        "prettier.enable": false
+        "phpserver.relativePath": "./web",
+        "prettier.enable": false,
+        "projectManager.checkInvalidPathsBeforeListing": false
     },
     "launch": {
         "version": "0.2.0",

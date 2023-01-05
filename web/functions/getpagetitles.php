@@ -55,21 +55,15 @@ else
         FROM SiteSections
         WHERE Directory = '$StripContent'");
 
-        $SectionsCount = $GetSectionTitle->fetchAll();
-        $GetSectionTitle->closeCursor();
+        $Return1 = $GetSectionTitle->fetchAssociative();
 
-        if(count($SectionsCount) != 0)
+        if($Return1 != NULL)
         {
-            $GetSectionTitle->execute();
-            $row = $GetSectionTitle->fetch(PDO::FETCH_ASSOC);
-            
-            $SectionTitle = $row['SectionTitle'];
+            $SectionTitle = $Return1['SectionTitle'];
             $title = $SectionTitle;
-            $keywords = $row['SectionKeywords'];
-            $description = $row['SectionDescription'];
-            $robots = $row['SectionRobots'];
-
-            $GetSectionTitle->closeCursor();
+            $keywords = $Return1['SectionKeywords'];
+            $description = $Return1['SectionDescription'];
+            $robots = $Return1['SectionRobots'];
         }        
         //if it isn't, then it's an internal sub-page
         else
@@ -79,34 +73,24 @@ else
             FROM SiteLinks
             WHERE FileName = '$StripContent'");
 
-            $SubPageCount = $GetSubPageTitle->fetchAll();
-            $GetSubPageTitle->closeCursor();
+            $Return2 = $GetSubPageTitle->fetchAssociative();
             
-            if(count($SubPageCount) != 0)
+            if($Return2 != NULL)
             {
-                $GetSubPageTitle->execute();
-                $row = $GetSubPageTitle->fetch(PDO::FETCH_ASSOC);
-
-                $title = $row['PageTitle'];
-                $keywords = $row['PageKeywords'];
-                $description = $row['PageDescription'];
-                $robots = $row['PageRobots'];
+                $title = $Return2['PageTitle'];
+                $keywords = $Return2['PageKeywords'];
+                $description = $Return2['PageDescription'];
+                $robots = $Return2['PageRobots'];
                 
-                $SectionID = $row['SectionID'];
+                $SectionID = $Return2['SectionID'];
 
-                $GetSubPageTitle->closeCursor();
-                
                 $GetSubPageSectionTitle = $MainConnection->query("
                 SELECT SectionTitle
                 FROM SiteSections
                 WHERE SiteSections.SectionID = $SectionID");
 
-                $GetSubPageSectionTitle->execute();
-                $row = $GetSubPageSectionTitle->fetch(PDO::FETCH_ASSOC);
-                
-                $SectionTitle = $row['SectionTitle'];
-
-                $GetSubPageSectionTitle->closeCursor();
+                $Return3 = $GetSubPageSectionTitle ->fetchAssociative();
+                $SectionTitle = $Return3['SectionTitle'];
             }
             else
             {
@@ -115,19 +99,14 @@ else
                 FROM SiteSubNavLinks
                 WHERE FileName = '$StripContent'");
 
-                $SubPageCount = $GetSubPageTitle->fetchAll();
-                $GetSubPageTitle->closeCursor();
+                $Return4 = $GetSubPageTitle->fetchAssociative();
                 
-                if(count($SubPageCount) != 0)
+                if($Return4 !== NULL)
                 {
-                    $row = $GetSubPageTitle->execute();
-                    
-                    $title = $row['PageTitle'];
-                    $keywords = $row['PageKeywords'];
-                    $description = $row['PageDescription'];
-                    $robots = $row['PageRobots'];
-
-                    $GetSubPageTitle->closeCursor();
+                    $title = $Return4['PageTitle'];
+                    $keywords = $Return4['PageKeywords'];
+                    $description = $Return4['PageDescription'];
+                    $robots = $Return4['PageRobots'];
                 }
             }
         }

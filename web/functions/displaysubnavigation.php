@@ -5,12 +5,14 @@
      $OpenTags = 'N';
      $CloseTags = 'N';
 
-     //reset the query that contains the links
-     $GetLinks->execute();
+     //reset the array that contains the links
+     reset($rows);
+     reset($rows2);
 
-     foreach($GetLinks AS $row)
+     foreach($rows2 AS $row2)
      {
-         if($ThisDirectory === $row['Directory']) {
+         if($ThisDirectory === $row2['Directory'])
+         {
              if($OpenTags == 'N')
              {
                 echo("\n");
@@ -19,26 +21,30 @@
              $OpenTags = 'Y';
              $CloseTags = 'Y';
 
-             if($StripContent === $row['FileName'])
+             if($StripContent === $row2['FileName'])
              {
-                 $PageID = $row['PageID'];
+                 $PageID = $row2['PageID'];
                  
                  $GetSubLinks = $MainConnection->query("
                  SELECT *
                  FROM SiteSubNavLinks
-                 WHERE MakeLive = 'Y' AND SiteLinkID LIKE '%\/$PageID\/%'
+                 WHERE MakeLive = 'Y' AND SiteLinkID LIKE '%/$PageID/%'
                  ORDER BY SiteSubNavLinks.SubNavID");
 
-                 $SubLinkRecordCount = count($GetSectionTitle->fetchAll());
-                 $GetSubLinks->closeCursor();
-                 
-                 //$SubLinkRecordCount = $SubLinkCount;
+                 $rows3 = $GetSubLinks->fetchAllAssociative();
+                 $SubLinkRecordCount = count($rows3);
 
-                 echo('   <li style="background-color: #FFFFFF;"><span>'.$row->Text.'</span></li>'."\n");
+                 if($SubLinkRecordCount > 0)
+                 {
+                    foreach($rows3 AS $row3)
+                    {
+                        echo('   <li style="background-color: #FFFFFF;"><span>'.$row3['LinkText'].'</span></li>'."\n");
+                    }
+                }
              }
              else
              {
-                 echo('   <li><a href="'.$row->URL.'">'.$row->Text.'</a></li>'."\n");
+                 echo('   <li><a href="'.$row2['URL'].'">'.$row2['Text'].'</a></li>'."\n");
              }
          }
      }
@@ -56,17 +62,15 @@
 
   <ul class="LeftMenu">
   <?php
-  $GetSubLinks->execute();
-  //$row = $GetSubLinks->fetch(PDO::FETCH_ASSOC);
-   while($row = $GetSubLinks->fetch(PDO::FETCH_OBJ))
+  foreach($rows3 AS $row3)
    {
-        if($StripContent == $row->FileName)
+        if($StripContent == $row3['FileName'])
         {
-            echo('  <li style="color: #E5E5E5;"><span style="display: block;">'.$row->Text.'</span></li>'."\n");
+            echo('  <li style="color: #E5E5E5;"><span style="display: block;">'.$row3['Text'].'</span></li>'."\n");
         }
         else
         {
-            echo('  <li><a href="'.$row->Link.'">'.$row->LinkText.'</a></li>'."\n");
+            echo('  <li><a href="'.$row3['Link'].'">'.$row3['LinkText'].'</a></li>'."\n");
         }
    }
   }
@@ -77,28 +81,21 @@
   WHERE FileName = '$StripContent'
   LIMIT 1");
 
-  $SubPageCount = $GetSubPage->fetchAll();
-  $GetSubPage->closeCursor();
+  $Return5 = $GetSubPage->fetchAssociative();
+  if($Return5 != NULL){$SubPageCount = 1;}else{$SubPageCount = 0;}
   
-  if(count($SubPageCount) != 0)
+  if($Return5 != NULL)
   {
-      $GetSubPage->execute();
-      $row = $GetSubPage->fetch(PDO::FETCH_OBJ);
-      
-      $SubNavSubPageID = $row->SubNavID;
+      $SubNavSubPageID = $Return5['SubNavID'];
 
-      $GetSubPage->closeCursor();
-      
       $GetSubNavSubLinks = $MainConnection->query("
       SELECT *
       FROM SiteSubNavLinks
-      WHERE MakeLive = 'Y' AND SubNavLinkID LIKE '%\/$SubNavSubPageID\/%'
+      WHERE MakeLive = 'Y' AND SubNavLinkID LIKE '%/$SubNavSubPageID/%'
       ORDER BY SiteSubNavLinks.SubNavID");
 
-      $SubNavSubCount = $GetSubNavSubLinks->fetchAll();
-      $GetSubNavSubLinks->closeCursor();
-      
-      $SubNavSubLinkRecordCount = count($SubNavSubCountbNavSub);
+      $SubNavSubCount = $GetSubNavSubLinks->fetchAllAssociative();      
+      $SubNavSubLinkRecordCount = count($SubNavSubCount);
   }
   
   if((!isset($SubLinkRecordCount) || $SubLinkRecordCount == 0) && isset($SubNavSubLinkRecordCount) && $SubNavSubLinkRecordCount > 0)

@@ -88,12 +88,9 @@ else
 	WHERE MakeLive = 'Y'
 	ORDER By DisplayOrder");
 
-	$GetSiteSections->setFetchMode(PDO::FETCH_ASSOC);
-
-	if($GetSiteSections)
-	{
-		$SectionRecordCount = count($GetSiteSections->fetch(PDO::FETCH_NUM));
-	}
+	$rows = $GetSiteSections->fetchAllAssociative();
+	$SubNavRows = $rows;
+	$SectionRecordCount = count($rows);
 
 	$GetLinks = $MainConnection->query("
 	SELECT   SiteLinks.SiteLinkID AS PageID, SiteLinks.LinkText as Text, SiteLinks.Link as URL, SiteLinks.LinkTitle as Message, SiteSections.Section as Section, SiteSections.SectionID as SectionID, SiteSections.Directory as Directory, SiteSections.MenuWidth AS MenuWidth, SiteLinks.FileName AS FileName, SiteLinks.PageTitle AS Title, SiteLinks.PageKeywords AS Keywords, SiteLinks.PageDescription AS Description
@@ -101,12 +98,7 @@ else
 	WHERE    (SiteLinks.SectionID = SiteSections.SectionID) AND (SiteLinks.MakeLive = 'Y')
 	ORDER BY SiteSections.DisplayOrder,SiteLinks.SiteLinkID");
 
-	$GetLinks->setFetchMode(PDO::FETCH_ASSOC);
-
-	if(count($GetLinks->fetch(PDO::FETCH_NUM)) != 0)
-	{
-		$LinkRecordCount = count($GetLinks->fetch(PDO::FETCH_NUM));
-		$GetLinks->closeCursor();
-	}
+	$rows2 = $GetLinks->fetchAllAssociative();
+	$LinkRecordCount = count($rows2);
 }
 ?>

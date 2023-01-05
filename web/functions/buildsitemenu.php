@@ -5,9 +5,7 @@ if($LinkRecordCount > 0)
     $SectionCounter = 0;
     $CloseTag = 'N';
 
-    $GetLinks->execute();
-
-    foreach($GetLinks AS $row2)
+    foreach($rows2 AS $row2)
     {
         if($row['SectionID'] === $row2['SectionID'])
         {
@@ -32,6 +30,6 @@ if($LinkRecordCount > 0)
         }
     }
     echo("\n".'    </ul>'."\n ");
-    $GetLinks->closeCursor();
+    reset($rows2);
 }
 ?>

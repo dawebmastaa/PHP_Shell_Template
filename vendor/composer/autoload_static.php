@@ -10,6 +10,14 @@ class ComposerStaticInitcd2e699beea252b3d7f48bdcd6b4b2d3
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Cache\\' => 10,
+        ),
+        'D' => 
+        array (
+            'Doctrine\\Deprecations\\' => 22,
+            'Doctrine\\DBAL\\' => 14,
+            'Doctrine\\Common\\Cache\\' => 22,
+            'Doctrine\\Common\\' => 16,
         ),
         'A' => 
         array (
@@ -22,6 +30,26 @@ class ComposerStaticInitcd2e699beea252b3d7f48bdcd6b4b2d3
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
         ),
+        'Psr\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'Doctrine\\Deprecations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/deprecations/lib/Doctrine/Deprecations',
+        ),
+        'Doctrine\\DBAL\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/dbal/src',
+        ),
+        'Doctrine\\Common\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
+        ),
+        'Doctrine\\Common\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/event-manager/src',
+        ),
         'Aura\\Sql\\' => 
         array (
             0 => __DIR__ . '/..' . '/aura/sql/src',
@@ -29,37 +57,7 @@ class ComposerStaticInitcd2e699beea252b3d7f48bdcd6b4b2d3
     );
 
     public static $classMap = array (
-        'Aura\\Sql\\AbstractExtendedPdo' => __DIR__ . '/..' . '/aura/sql/src/AbstractExtendedPdo.php',
-        'Aura\\Sql\\ConnectionLocator' => __DIR__ . '/..' . '/aura/sql/src/ConnectionLocator.php',
-        'Aura\\Sql\\ConnectionLocatorInterface' => __DIR__ . '/..' . '/aura/sql/src/ConnectionLocatorInterface.php',
-        'Aura\\Sql\\DecoratedPdo' => __DIR__ . '/..' . '/aura/sql/src/DecoratedPdo.php',
-        'Aura\\Sql\\Exception' => __DIR__ . '/..' . '/aura/sql/src/Exception.php',
-        'Aura\\Sql\\Exception\\CannotBindValue' => __DIR__ . '/..' . '/aura/sql/src/Exception/CannotBindValue.php',
-        'Aura\\Sql\\Exception\\CannotDisconnect' => __DIR__ . '/..' . '/aura/sql/src/Exception/CannotDisconnect.php',
-        'Aura\\Sql\\Exception\\ConnectionNotFound' => __DIR__ . '/..' . '/aura/sql/src/Exception/ConnectionNotFound.php',
-        'Aura\\Sql\\Exception\\MissingParameter' => __DIR__ . '/..' . '/aura/sql/src/Exception/MissingParameter.php',
-        'Aura\\Sql\\ExtendedPdo' => __DIR__ . '/..' . '/aura/sql/src/ExtendedPdo.php',
-        'Aura\\Sql\\ExtendedPdoInterface' => __DIR__ . '/..' . '/aura/sql/src/ExtendedPdoInterface.php',
-        'Aura\\Sql\\Parser\\AbstractParser' => __DIR__ . '/..' . '/aura/sql/src/Parser/AbstractParser.php',
-        'Aura\\Sql\\Parser\\MysqlParser' => __DIR__ . '/..' . '/aura/sql/src/Parser/MysqlParser.php',
-        'Aura\\Sql\\Parser\\NullParser' => __DIR__ . '/..' . '/aura/sql/src/Parser/NullParser.php',
-        'Aura\\Sql\\Parser\\ParserInterface' => __DIR__ . '/..' . '/aura/sql/src/Parser/ParserInterface.php',
-        'Aura\\Sql\\Parser\\PgsqlParser' => __DIR__ . '/..' . '/aura/sql/src/Parser/PgsqlParser.php',
-        'Aura\\Sql\\Parser\\SqliteParser' => __DIR__ . '/..' . '/aura/sql/src/Parser/SqliteParser.php',
-        'Aura\\Sql\\Parser\\SqlsrvParser' => __DIR__ . '/..' . '/aura/sql/src/Parser/SqlsrvParser.php',
-        'Aura\\Sql\\PdoInterface' => __DIR__ . '/..' . '/aura/sql/src/PdoInterface.php',
-        'Aura\\Sql\\Profiler\\MemoryLogger' => __DIR__ . '/..' . '/aura/sql/src/Profiler/MemoryLogger.php',
-        'Aura\\Sql\\Profiler\\Profiler' => __DIR__ . '/..' . '/aura/sql/src/Profiler/Profiler.php',
-        'Aura\\Sql\\Profiler\\ProfilerInterface' => __DIR__ . '/..' . '/aura/sql/src/Profiler/ProfilerInterface.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Psr\\Log\\AbstractLogger' => __DIR__ . '/..' . '/psr/log/src/AbstractLogger.php',
-        'Psr\\Log\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/log/src/InvalidArgumentException.php',
-        'Psr\\Log\\LogLevel' => __DIR__ . '/..' . '/psr/log/src/LogLevel.php',
-        'Psr\\Log\\LoggerAwareInterface' => __DIR__ . '/..' . '/psr/log/src/LoggerAwareInterface.php',
-        'Psr\\Log\\LoggerAwareTrait' => __DIR__ . '/..' . '/psr/log/src/LoggerAwareTrait.php',
-        'Psr\\Log\\LoggerInterface' => __DIR__ . '/..' . '/psr/log/src/LoggerInterface.php',
-        'Psr\\Log\\LoggerTrait' => __DIR__ . '/..' . '/psr/log/src/LoggerTrait.php',
-        'Psr\\Log\\NullLogger' => __DIR__ . '/..' . '/psr/log/src/NullLogger.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
