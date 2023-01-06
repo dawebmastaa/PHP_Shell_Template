@@ -66,7 +66,7 @@ echo("\n");
  <div id="LeftContent" class="LeftContent">
 <?php
 //remove comments below if using the left hand column
-//require_once("$LeftContent.php");
+require_once("$LeftContent.php");
 echo("\n");
 ?>
 
