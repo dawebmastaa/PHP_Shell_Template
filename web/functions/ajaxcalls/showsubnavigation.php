@@ -7,11 +7,6 @@ reset($rows2);
 
 // Let's save some stuff
 $ActiveRecord  = array();
-// By default we're at the home page
-$ActiveRecord["SectionID"] = '1';
-$ActiveRecord["Section"] = 'Home';
-$ActiveRecord["Directory"] = 'main';
-
 $ActivePage = array();
 $SubPageList = '';
 

@@ -89,7 +89,6 @@ else
 	ORDER By DisplayOrder");
 
 	$rows = $GetSiteSections->fetchAllAssociative();
-	$SubNavRows = $rows;
 	$SectionRecordCount = count($rows);
 
 	$GetLinks = $MainConnection->query("

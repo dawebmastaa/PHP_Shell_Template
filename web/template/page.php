@@ -17,11 +17,14 @@ if(isset($title)){echo (" <title>$title</title>\n");}else{echo(' <title>'.$Websi
  <link rel="stylesheet" href="<?php echo ("$root"); ?>css/site.min.css" />
  <?php if(isset($MainDirectory) && $MainDirectory == 'control'){echo('<link rel="stylesheet" href="'.$root.'css/control.min.css" />');} ?>
 
- <link rel="manifest" href="site.webmanifest" />
- <link rel="apple-touch-icon" href="icon.png" />
  <link rel="icon" href="<?php echo ("$root") ?>img/favicon.ico" />
 
  <base href="<?php echo($root);?>" />
+ <?php
+//get the navigation links from the database
+require_once("$ApplicationPath/functions/getnavigationlinks.php");
+require_once("$ApplicationPath/functions/getpagelist.php");
+?>
 </head>
 
 <body>
@@ -34,10 +37,6 @@ if(isset($title)){echo (" <title>$title</title>\n");}else{echo(' <title>'.$Websi
    <input type="checkbox" id="hamburger" />
 
  <?php
-//get the navigation links from the database
-require_once("$ApplicationPath/functions/getnavigationlinks.php");
-//require_once("$ApplicationPath/functions/getpagelist.php");
-
 //fix the 'section' links for the admin
 if($MainDirectory === 'control')
 {
@@ -52,7 +51,7 @@ elseif(isset($MainConnection))
 	  echo('  <li><a href="'.$row['Directory'].'/" title="'.$row['SectionTitle'].'"><img src="img/arrow.gif" alt="'.ucfirst($row['Directory']).'List" />'.$row['Section'].'</a>'."\n ");
       $MenuCall = 'main';
       require("$ApplicationPath/functions/buildsitemenu.php");
-	echo('  </li>'."\n\n");
+      echo('  </li>'."\n\n");
   }echo('  </ul>');
 }
 else
@@ -64,11 +63,11 @@ echo("\n");
   </nav>
  </header>
  
- <div class="LeftContent">
+ <div id="LeftContent" class="LeftContent">
 <?php
 //remove comments below if using the left hand column
-require_once("$LeftContent.php");
-  echo("\n");
+//require_once("$LeftContent.php");
+echo("\n");
 ?>
 
  </div>
@@ -102,6 +101,4 @@ echo("\n\n");
 <?php
 //this file tracks where the user came from.
 require_once("$ApplicationPath/functions/return.php");
-//close all data connections
-//@mysqli_close($MainConnection);
 ?>

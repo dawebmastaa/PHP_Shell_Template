@@ -14,6 +14,10 @@ if(isset($PageCall) && !empty($PageCall))
 {
     switch($PageCall)
     {
+        case 'showsubnavigation':
+            require_once('ajaxcalls/showsubnavigation.php');
+        break;
+        
         case 'showimage':
             require_once('ajaxcalls/showimage.php');
         break;

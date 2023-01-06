@@ -343,6 +343,8 @@ header#top {
   background-color: #00686C;
   border-right: 1px solid #d8e5d9;
   padding-top: 3px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  z-index: 100;
 }
 
 .logo {
@@ -356,7 +358,7 @@ main {
 }
 
 nav {
-  padding: 5px 2px 6px 2px;
+  padding: 6px 2px 6px 2px;
   background-color: #efefef;
   border-left: 1px solid #d8e5d9;
   border-right: 1px solid #d8e5d9;
@@ -484,7 +486,7 @@ Phones and small screens
  */
 @media screen and (max-width: 600px) {
   .logo {
-    content: url("./img/logo1sm.png");
+    content: url("/img/logo1sm.png");
     padding: 4vw 0 4vw 1vw;
   }
   .MainNav {

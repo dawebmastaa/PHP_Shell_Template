@@ -16,6 +16,9 @@ if(isset($title)){echo (" <title>$title</title>\n");}else{echo(' <title>'.$Websi
 
  <link rel="stylesheet" href="<?php echo ("$root"); ?>layout.css" />
  <link rel="stylesheet" href="<?php echo ("$root");?>main.css" />
+
+ <link rel="manifest" href="site.webmanifest" />
+ <link rel="apple-touch-icon" href="icon.png" />
  <link rel="icon" href="<?php echo ("$root") ?>favicon.ico" />
 
  <script src="<?php echo($root);?>scripts.js"></script>

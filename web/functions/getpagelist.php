@@ -1,20 +1,30 @@
 <?php
-if(isset($LinkRecordCount) && $LinkRecordCount > 0)
+if($LinkRecordCount > 0 && $SectionRecordCount > 0)
 {
-	reset($GetLinks);
+	reset($rows);
+	reset($rows2);
 	$PageList = '';
+	$SectionList = '';
 	
-	foreach($GetLinks AS $Page)
+	foreach($rows2 AS $Page)
 	{
 		$PageList .= ' "'.$Page['Text'].'",';
 	}
 	$PageList = trim(rtrim($PageList,','),' ');
+	
+	foreach($rows AS $Section)
+	{
+		$SectionList .= ' "'.$Section['Section'].'",';
+	}
+	$SectionList = trim(rtrim($SectionList,','),' ');
 	//echo ('Page List: ' . $PageList);
+	//echo ("\n".'SectionList: ' . $SectionList);
 ?>
 
- <script>
+ <script type="JavaScript">
  <!--
-  let Pages = [<?php echo($PageList); ?>];	
+  let Pages = [<?php echo($PageList); ?>];
+  let Sections = [<?php echo($SectionList); ?>];	
  -->
  </script> 
  <?php
