@@ -1,6 +1,5 @@
 <?php
 //this checks for cached pages, caches the requested one if it should be, or fetches the requested one if needed.
-//it is called by the directory index files
 
 //initialize the variables needed for this page (EVERYTHING must be in here now).
 $VariableArray = array('caching','recache');
@@ -46,7 +45,7 @@ if(empty($caching))
             else
             {
                 //otherwise, create the cache file by bypassing the cache mechanism, and display the page
-                $CacheUrl = rtrim($ApplicationNonSecureRoot,'/').rtrim($_SERVER['REQUEST_URI'], '/').'/?caching=yes';
+                $CacheUrl = rtrim('http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'],'/').'/?caching=yes';
                 $data = file_get_contents($CacheUrl);
 
                 file_put_contents($CacheDirectory.$id,stristr($data,'<'),LOCK_EX);

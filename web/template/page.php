@@ -44,7 +44,7 @@ if($MainDirectory === 'control')
 }
 elseif(isset($MainConnection))
 {
-  echo(' <ul class="MainNav">'."\n\n   ".'<li><a href="">Home</a></li>'."\n ");
+  echo(' <ul class="MainNav">'."\n\n   ".'<li><a href=""><img src="img/arrow.gif" alt="Home" />Home</a></li>'."\n ");
   //this builds the 'main navigation'
   foreach($rows AS $row)
   {
@@ -92,10 +92,17 @@ echo("\n\n");
     <footer><cite>&copy;<?php echo(date("Y"));?> <?php print("$WebsiteName");?></cite></footer>
 
  </div>
+
  <script src="js/main.min.js"></script>
- <script src="js/vendor/jquery-3.4.1.min.js"></script>
  <script src="js/vendor/modernizr-3.8.0.min.js"></script>
  <script src="js/plugins.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+ <script>
+//   $(document).ready(function ()
+//   {
+//      $( '.LeftContent' ).load( 'http://localhost:3000/functions/ajaxcall.php?PageCall=showimage' );
+//   });
+ </script>
 </body>
 </html>
 <?php

@@ -1,8 +1,6 @@
 <?php
 if($LinkRecordCount > 0 && $SectionRecordCount > 0)
 {
-	reset($rows);
-	reset($rows2);
 	$PageList = '';
 	$SectionList = '';
 	

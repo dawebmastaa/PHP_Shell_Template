@@ -81,7 +81,7 @@ else
 }
 
 //this file controls caching
-//require_once("$ApplicationPath/functions/cache.php");
+require_once("$ApplicationPath/functions/cache.php");
 
 //include the file that builds the page
 require("$ApplicationPath/template/page.php");

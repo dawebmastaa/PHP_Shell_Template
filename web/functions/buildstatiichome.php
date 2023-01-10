@@ -7,7 +7,8 @@ if(file_exists($ApplicationPath.'/index.html')) {
 else
 {
     //make a new one
-    $StaticPage = include_once('main/index.php');
+    $StaticPage = file_get_contents($root.'main/');
+    //file_put_contents($ApplicationPath.'/index.html', fopen("$root".'main/index.php', 'r'));
     file_put_contents($ApplicationPath.'/index.html',$StaticPage, LOCK_EX);
 }
 ?>
