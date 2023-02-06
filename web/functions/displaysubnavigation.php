@@ -27,7 +27,7 @@ foreach($rows AS $row)
         $ActiveRecord["Section"] = $row['Section'];
         $ActiveRecord["Directory"] = $row['Directory'];
         $ActiveRecord["SectionTitle"] = $row['SectionTitle'];
-        $PageList .='   <li><a href="'.$row['Directory'].'">'.$row['Section'].'</a></li>'."\n";
+        $PageList .='   <li><a href="'.$row['Directory'].'/">'.$row['Section'].'</a></li>'."\n";
     }
 }
 // now on to the links query
