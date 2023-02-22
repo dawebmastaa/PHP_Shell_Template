@@ -3,19 +3,19 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 {
 ?>
  <script>
- <!--
  let divList = ["StartDiv", "AddPage", "AddNewPage", "AddNewSubPage", "EditSiteSection", "NewSectionDiv", "EditSiteSections", "EditSitePages", "SectionOrdering", "EditPage", "EditSection", "AddSiteSectionForm", "EditSubPagesBlurb", "EditSubPages", "EditSubPage", "AddSubPages", "AddSubPageLinks", "Messages"];
-  -->
+ let showDivs = '';
+ let el = '';
  </script>
 
   <div id="StartDiv"> <div id="Messages"><?php if(isset($Message)){echo($Message);} ?></div>
    <h1>Manage Site Content</h1>
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="Start">
-    <input type="submit" class="SmallWhiteButton" value="Site Sections" title="This is where you create or edit main 'sections' or directories for the site" onclick="ShowPageContent(divList, 'sections'); return false" />
-    <input type="submit" class="SmallWhiteButton" value="Site Pages" title="This is where you create or edit individual pages on the site. These pages will display in the drop-down navigation menus." onclick="ShowPageContent(divList, 'pages'); return false"  />
-    <input type="submit" class="SmallWhiteButton" value="Site Sub-Pages" title="This is where you create or edit pages that appear in the sub-navigation of individual pages." onclick="ShowPageContent(divList, 'subpages'); return false" />
-    <input type="submit" class="SmallWhiteButton" value="Reset" title="Reset this page to the default display" onclick="ShowPageContent(divList, 'start'); return false" />
-    <input type="submit" class="SmallWhiteButton" value="Recache Site Pages" title="Click here to delete all cached pages on the site" onclick="ShowPageContent(divList, 'recache'); return false" />
+    <input type="submit" class="SmallWhiteButton" value="Site Sections" title="This is where you create or edit main 'sections' or directories for the site" onclick="ShowPageContent(divList, 'sections'); return false;" />
+    <input type="submit" class="SmallWhiteButton" value="Site Pages" title="This is where you create or edit individual pages on the site. These pages will display in the drop-down navigation menus." onclick="ShowPageContent(divList, 'pages'); return false;"  />
+    <input type="submit" class="SmallWhiteButton" value="Site Sub-Pages" title="This is where you create or edit pages that appear in the sub-navigation of individual pages." onclick="ShowPageContent(divList, 'subpages'); return false;" />
+    <input type="submit" class="SmallWhiteButton" value="Reset" title="Reset this page to the default display" onclick="ShowPageContent(divList, 'start'); return false;" />
+    <input type="submit" class="SmallWhiteButton" value="Recache Site Pages" title="Click here to delete all cached pages on the site" onclick="ShowPageContent(divList, 'recache'); return false;" />
    </form>
   </div>
 
@@ -26,10 +26,9 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
      <select name="SiteSection" onchange="changeStyle('AddPageButton','display','block');">
         <option value="">Choose A Site Section</option>
     <?php
-     mysqli_data_seek($GetSiteSectionsAdmin,0);
-    while($row = mysqli_fetch_object($GetSiteSectionsAdmin))
+    foreach($rows AS $row)
     {
-      echo('    <option value="'.$row->SectionID.'">'.$row->Section.' | '.$row->Directory.'</option>'."\n".'    ');
+      echo('    <option value="'.$row['SectionID'].'">'.$row['Section'].' | '.$row['Directory'].'</option>'."\n".'    ');
     }
   ?>
    </select><br />
@@ -109,10 +108,9 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
     <select name="SiteSection" id="SiteSection" required title="Please make a selection"  onchange="">
         <option value="">Choose A Site Section</option>
     <?php
-     mysqli_data_seek($GetSiteSectionsAdmin,0);
-    while($row = mysqli_fetch_object($GetSiteSectionsAdmin))
+     foreach($rows AS $row)
     {
-      echo('    <option value="'.$row->SectionID.'">'.$row->Section.'</option>'."\n".'    ');
+      echo('    <option value="'.$row['SectionID'].'">'.$row['Section'].'</option>'."\n".'    ');
     }
   ?>
     </select><br />
@@ -120,7 +118,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
     <input type="submit" name="Operation" value="Edit Content" class="SmallWhiteButton" id="EditContentButton" disabled /><br  />
     <input type="submit" name="Operation" value="Change Section Display Order" class="SmallWhiteButton" id="SectionOrderButton" disabled onclick="changeStyle('SectionOrdering','display','block'), changeStyle('SectionOrdering','visibility','visible', changeStyle('NewSectionDiv','display','none')); return false;" /><br  />
     <input type="submit" name="Operation" value="Cache Page" class="SmallWhiteButton" id="ManageCacheButton" disabled onclick="if(confirm('Are you sure you want to add this page to the site cache?')) return true,submit(); else return false;" /><br  />
-    <input  type="submit" name="Operation" value="Remove From Cache" class="SmallWhiteButton" id="UnCacheButton" disabled onclick="if(confirm('Are you sure you want to remove this page from the site cache?')) return true,submit(); else return false;" />
+    <input type="submit" name="Operation" value="Remove From Cache" class="SmallWhiteButton" id="UnCacheButton" disabled onclick="if(confirm('Are you sure you want to remove this page from the site cache?')) return true,submit(); else return false;" />
    </form>
   </div>
 
@@ -160,10 +158,9 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
        <select name="SiteSectionMenu" id="SiteSectionMenu" onchange="UpdatePages(this.selectedIndex);">
         <option value="">Choose A Site Section</option>
     <?php
-     mysqli_data_seek($GetSiteSectionsAdmin,0);
-    while($row = mysqli_fetch_object($GetSiteSectionsAdmin))
+     foreach($rows AS $row)
     {
-      echo('    <option value="'.$row->SectionID.'">'.$row->Section.'</option>'."\n".'    ');
+      echo('    <option value="'.$row['SectionID'].'">'.$row['Section'].'</option>'."\n".'    ');
     }
   ?>
    </select><br />
@@ -186,12 +183,10 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
      <label for="PageOrder">Hit 'up' or 'down' after choosing a Section to re-order it.</label>
      <select name="PageOrder" id="PageOrder" size="5" style="width: 300px;">
 <?php
-  mysqli_data_seek($GetSiteSectionsAdmin,0);
-  while($row = mysqli_fetch_object($GetSiteSectionsAdmin))
+  foreach($rows AS $row)
   {
-    echo('    <option value="'.$row->SectionID.'">'.$row->Directory.'</option>'."\n".'    ');
+    echo('    <option value="'.$row['SectionID'].'">'.$row['Directory'].'</option>'."\n".'    ');
   }
-  mysqli_data_seek($GetSiteSectionsAdmin,0);
 ?>
         </select>
 
@@ -252,7 +247,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
     <input type="hidden" name="SectionDirectory" value="<?php if(!empty($Directory)){echo(htmlentities($Directory));} ?>" />
 
     <label for="Section">Link Text</label>
-    <input type="text" name="Section" id="Section" value="<?php if(!empty($Section)){echo(htmlentities($Section));} ?>" />
+    <input type="text" name="Section" id="Section" value="<?php if(!empty($Section)){echo($Section);} ?>" />
 
     <label for="SectionTitle">Section Page Title</label>
     <input type="text" name="SectionTitle" id="SectionTitle" value="<?php if(!empty($SectionTitle)){echo(htmlentities($SectionTitle));} ?>" />
@@ -325,10 +320,9 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
        <select name="SiteSubPageMenu" id="SiteSubPageMenu" onchange="changeStyle('EditSubPageButton','display','inline'); changeStyle('AddLinksButton','display','inline'); changeStyle('ManageSubPageCacheButton','display','inline'); changeStyle('UnCacheSubPageButton','display','inline');">
          <option value="">Choose A SubPage</option>
     <?php
-     mysqli_data_seek($GetSiteSubNavLinksAdmin,0);
-    while($row = mysqli_fetch_object($GetSiteSubNavLinksAdmin))
+     while($row = $GetSiteSubNavLinksAdmin->fetchAssociative())
     {
-      echo('    <option value="'.$row->SubNavID.'">'.$row->LinkText.'</option>'."\n".'    ');
+      echo('    <option value="'.$row['SubNavID'].'">'.$row['LinkText'].'</option>'."\n".'    ');
     }
   ?>
     </select><br />
@@ -392,10 +386,9 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
      <select name="SiteSubPageSection" id="SiteSubPageSection" onchange="changeStyle('AddSubPageButton','display','inline');">
         <option value="">Choose A Site Section</option>
     <?php
-     mysqli_data_seek($GetSiteSectionsAdmin,0);
-    while($row = mysqli_fetch_object($GetSiteSectionsAdmin))
+     while($row = $GetSiteSectionsAdmin->fetchAssociative())
     {
-      echo('    <option value="'.$row->SectionID.'">'.$row->Section.' | '.$row->Directory.'</option>'."\n".'    ');
+      echo('    <option value="'.$row['SectionID'].'">'.$row['Section'].' | '.$row['Directory'].'</option>'."\n".'    ');
     }
   ?>
    </select><br />
@@ -414,16 +407,15 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
             echo('<label for="SubPageLinks">Link Pages</label>'."\n");
             echo('<select name="SubPageLinks[]" size="10" multiple="multiple" id="SubPageLinks" class="EditArtworkInput">');
 
-            mysqli_data_seek($GetLinksAdmin,0);
-            while($row = mysqli_fetch_object($GetLinksAdmin))
+            while($row = $GetLinksAdmin->fetchAssociative())
             {
-                if(in_array($row->PageID,$PageList))
+                if(in_array($row['PageID'],$PageList))
                 {
-                    echo('<option value="'.$row->PageID.'" selected="selected">'.$row->Text.'</option>'."\n".'     ');
+                    echo('<option value="'.$row['PageID'].'" selected="selected">'.$row['Text'].'</option>'."\n".'     ');
                 }
                 else
                 {
-                    echo('<option value="'.$row->PageID.'">'.$row->Text.'</option>'."\n".'     ');
+                    echo('<option value="'.$row['PageID'].'">'.$row['Text'].'</option>'."\n".'     ');
                 }
             }
 
@@ -435,29 +427,27 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    </form>
   </div>
 
- <script>
+ <script type="JavaScript">
  <!--
- var sectionslist=document.SiteSectionForm.SiteSectionMenu
- var pageslist=document.SiteSectionForm.SitePageMenu
+ var sectionslist = document.SiteSectionForm.SiteSectionMenu
+ var pageslist = document.SiteSectionForm.SitePageMenu
 
- var SitePageMenu=new Array()
+ var SitePageMenu = new Array()
  SitePageMenu[0]=""
  <?php
- mysqli_data_seek($GetSiteSectionsAdmin,0);
  $i = 0;
  $SubCount = 0;
- while($row = mysqli_fetch_object($GetSiteSectionsAdmin))
+ foreach($rows AS $row)
  {
-   mysqli_data_seek($GetLinksAdmin,0);
    $i++;
-   $TheSection = $row->SectionID;
+   $TheSection = $row['SectionID'];
    print('SitePageMenu['.$i.']=["Choose Page|",');
-   while($row = mysqli_fetch_object($GetLinksAdmin))
+   foreach($rows2 AS $row2)
    {
-     if($row->SectionID == $TheSection)
+     if($row2['SectionID'] == $TheSection)
      {
        $SubCount++;
-       print('"'.$row->Text.'|'.$row->PageID.'",');
+       print('"'.$row2['Text'].'|'.$row2['PageID'].'",');
      }
    }
    print(']'."\n");

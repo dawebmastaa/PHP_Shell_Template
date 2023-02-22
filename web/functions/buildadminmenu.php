@@ -1,19 +1,35 @@
 <?php
-  if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && $_SESSION['UserRole'] && is_numeric($_SESSION['UserRole']))
-  {
-    if(isset($SectionRecordCount) && $SectionRecordCount > 0)
+//this builds the navigation drop down menus as unordered lists.
+if($LinkRecordCount > 0)
+{
+    $SectionCounter = 0;
+    $CloseTag = 'N';
+
+    foreach($rows2 AS $row2)
     {
-	  reset($GetSiteSections);
-	  //This builds the Admin navigation
-	  echo('   <ul class="MainNav">'."\n\n  ");
-      while($row = mysqli_fetch_object($GetSiteSections))
-      {
-		  echo('    <li><a href="control/'.$row->Directory.'/" title="'.$row->Section.'"><img src="img/arrow.gif" alt="'.ucfirst($row->Directory).'List" id="'.ucfirst($row->Directory).'List" />'.$row->Section.'</a>'."\n ");
-          $MenuCall = 'main';
-          require("$ApplicationPath/functions/buildsitemenu.php");
-		  echo('    </li>'."\n\n");
-      }
-	  echo('  </ul>');
+        if($row['SectionID'] === $row2['SectionID'])
+        {
+            if($SectionCounter != $row2['SectionID'] && $CloseTag == 'Y')
+            {
+                echo("\n".'  </ul>'."\n");
+                $CloseTag = 'N';
+            }
+
+            if($SectionCounter != $row2['SectionID'])
+            {
+                echo('   <ul');
+                if(isset($MenuCall) && $MenuCall == 'main'){echo(' class="SubNav">');}else{echo('>');}
+                $CloseTag = 'Y';
+                $SectionCounter = $row2['SectionID'];
+            }
+            else
+            {
+                $CloseTag = 'Y';
+            }
+            echo("\n".'      <li><a href="'.$row2['URL'].'" title="'.$row2['Message'].'">'.$row2['Text'].'</a></li>');
+        }
     }
-  }
+    echo("\n".'    </ul>'."\n ");
+    reset($rows2);
+}
 ?>

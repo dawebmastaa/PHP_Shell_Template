@@ -196,7 +196,7 @@ function ShowPageContent(divList,PageView)
     case 'subpages' :
 
       showDivs = ["StartDiv", "EditSubPages", "EditSubPagesBlurb", "AddSubPages", "Messages"];
-      ajaxLoader('http://127.0.0.1/shell1/functions/ajaxcall.php?PageCall=sitemanager','Messages');
+      $('#Messages').load( 'http://localhost:3000/functions/ajaxcall.php?PageCall=sitemanager' );
 
       break;
 
@@ -221,7 +221,7 @@ function ShowPageContent(divList,PageView)
     case 'recache' :
 
       showDivs = ["StartDiv", "Messages"];
-      ajaxLoader('http://127.0.0.1/shell1/functions/ajaxcall.php?PageCall=recache','Messages');
+      $('#Messages').load( 'http://localhost:3000/functions/ajaxcall.php?PageCall=recache' );
 
     break;
 

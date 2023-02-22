@@ -1,46 +1,34 @@
 <?php
 //these are the admin links.
-if($MainDirectory === 'control')
+if($MainDirectory === 'control' && isset($_SESSION["UserLoggedIn"]))
 {
 	if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && $_SESSION['UserRole'] && is_numeric($_SESSION['UserRole']))
 	{
 	    $GetSiteSectionsAdmin = $MainConnection->query("
 	    SELECT SectionID, Section, Directory, MakeLive, MenuWidth
-	    FROM SiteSections
+	    FROM AdminSiteSections
 	    ORDER By DisplayOrder");
 
-		$GetSiteSectionsAdmin->setFetchMode(PDO::FETCH_ASSOC);
-
-	    if($GetSiteSectionsAdmin)
-	    {
-	        $SectionRecordCountAdmin = count($GetSiteSectionsAdmin->fetch(PDO::FETCH_NUM));
-	    }
+		$rows = $GetSiteSectionsAdmin->fetchAllAssociative();
+		$SectionRecordCountAdmin = count($rows);
 
 	    $GetLinksAdmin = $MainConnection->query("
-	    SELECT   SiteLinks.SiteLinkID AS PageID, SiteLinks.LinkText as Text, SiteLinks.Link as URL, SiteLinks.LinkTitle as Message, SiteSections.Section as Section, SiteSections.SectionID as SectionID, SiteSections.Directory as Directory, SiteLinks.FileName AS FileName, SiteLinks.PageTitle AS Title, SiteLinks.PageKeywords AS Keywords, SiteLinks.PageDescription AS Description
-	    FROM SiteLinks, SiteSections
-	    WHERE (SiteLinks.SectionID = SiteSections.SectionID)
-	    ORDER BY SiteSections.DisplayOrder, SectionID,SiteLinks.SiteLinkID");
+	    SELECT   AdminSiteLinks.SiteLinkID AS PageID, AdminSiteLinks.LinkText as Text, AdminSiteLinks.Link as URL, AdminSiteLinks.LinkTitle as Message, AdminSiteSections.Section as Section, AdminSiteSections.SectionID as SectionID, AdminSiteSections.Directory as Directory, AdminSiteLinks.FileName AS AdminFileName, AdminSiteLinks.PageTitle AS Title, AdminSiteLinks.PageKeywords AS Keywords, AdminSiteLinks.PageDescription AS Description
+	    FROM AdminSiteLinks, AdminSiteSections
+	    WHERE (AdminSiteLinks.SectionID = AdminSiteSections.SectionID)
+	    ORDER BY AdminSiteSections.DisplayOrder, SectionID,AdminSiteLinks.SiteLinkID");
 
-		$GetLinksAdmin->setFetchMode(PDO::FETCH_ASSOC);
-
-	    if($GetLinksAdmin)
-	    {
-	        $LinkRecordCountAdmin = count($GetLinksAdmin->fetch(PDO::FETCH_NUM));
-	    }
+		$rows2 = $GetLinksAdmin->fetchAllAssociative();
+		$LinkRecordCountAdmin = count($rows2);
 
 	    $GetSiteSubNavLinksAdmin = $MainConnection->query("
 	    SELECT SubNavID, SiteLinkID, LinkText, Link, LinkTitle, FileName, PageTitle, PageKeywords, PageDescription
-	    FROM SiteSubNavLinks
+	    FROM AdminSiteSubNavLinks
 	    ORDER By SubNavID");
 
-		$GetSiteSubNavLinksAdmin->setFetchMode(PDO::FETCH_ASSOC);
-
-	    if($GetSiteSubNavLinksAdmin)
-	    {
-	        $SubNavLinksRecordCountAdmin = count($GetSiteSubNavLinksAdmin->fetch(PDO::FETCH_NUM));
-	    }
-
+		$rows3 = $GetSiteSubNavLinksAdmin->fetchAllAssociative();
+        $SubNavLinksRecordCountAdmin = count($rows3);
+			
 	    if($_SESSION["IsAdmin"] && $_SESSION["IsAdmin"] == 'Y')
 		{
 			$WhereClause = '';
@@ -58,12 +46,8 @@ if($MainDirectory === 'control')
 		$WhereClause
 		ORDER By DisplayOrder");
 
-		$GetSiteSections->setFetchMode(PDO::FETCH_ASSOC);
-
-		if($GetSiteSections)
-		{
-			$SectionRecordCount = count($GetSiteSections->fetch(PDO::FETCH_NUM));
-		}
+		$rows = $GetSiteSections->fetchAllAssociative();
+		$SectionRecordCount = count($rows);
 
 		$GetLinks = $MainConnection->query("
 		SELECT   AdminSiteLinks.SiteLinkID AS PageID, AdminSiteLinks.LinkText as Text, AdminSiteLinks.Link as URL, AdminSiteLinks.LinkTitle as Message, AdminSiteSections.Section as Section, AdminSiteSections.SectionID as SectionID, AdminSiteSections.Directory as Directory, AdminSiteSections.MenuWidth AS MenuWidth, AdminSiteLinks.FileName AS FileName, AdminSiteLinks.PageTitle AS Title
@@ -71,12 +55,8 @@ if($MainDirectory === 'control')
 		$WhereClause2
 		ORDER BY SectionID, AdminSiteLinks.SiteLinkID");
 
-		$GetLinks->setFetchMode(PDO::FETCH_ASSOC);
-
-		if($GetLinks)
-		{
-			$LinkRecordCount = count($GetLinks->fetch(PDO::FETCH_NUM));
-		}
+		$rows2 = $GetLinks->fetchAllAssociative();
+		$LinkRecordCount = count($rows2);
 	}
 }
 //these are the normal site links

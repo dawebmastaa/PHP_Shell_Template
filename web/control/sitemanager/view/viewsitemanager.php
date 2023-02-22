@@ -6,14 +6,11 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    <h1>Site Manager</h1>
    <ul>  
   <?php
-  //reset the query that contains the links
-  mysqli_data_seek($GetLinks,0);
-  
-  while($row = mysqli_fetch_object($GetLinks))
+  foreach($rows2 AS $row2)
   {
-   if($ThisDirectory == $row->Directory)
+   if($ThisDirectory == $row2['Directory'])
    {
-    	echo('  <li><a href="'.$row->URL.'">'.$row->Text.'</a></li>'."\n".'  ');
+    	echo('  <li><a href="'.$row2['URL'].'">'.$row2['Text'].'</a></li>'."\n".'  ');
    }	
   }
 ?>
@@ -22,17 +19,16 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
       
 <?php
 if(isset($SubLinkRecordCount) && $SubLinkRecordCount > 0)
-{
- 	mysqli_data_seek($GetSubLinks,0); 
+{ 
 ?>
   <br clear="all" />
   
   <header class="SingleColumn">
    <ul>
   <?php
-   while($row = mysqli_fetch_object($GetSubLinks))
+   foreach($rows3 AS $row3)
    {
-    echo('<li><a href="'.$row->Link.'">'.$row->LinkTitle.'</a></li>');
+    echo('<li><a href="'.$row['Link'].'">'.$row['LinkTitle'].'</a></li>');
    }
 ?>
     </ul>

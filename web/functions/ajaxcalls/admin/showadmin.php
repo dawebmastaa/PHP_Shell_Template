@@ -1,5 +1,6 @@
 <?php
-switch (PageView){
+switch ($PageView)
+{
 	case "StartDiv":
 	
 	echo('something');

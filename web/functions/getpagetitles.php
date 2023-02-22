@@ -12,13 +12,12 @@ if($MainDirectory == 'control')
 	WHERE Directory = '$ThisDirectory'
 	LIMIT 1");
 
-    $GetSectionTitle->setFetchMode(PDO::FETCH_OBJ);
+    $Return1 = $GetSectionTitle->fetchAssociative();
 	
-	if($GetSectionTitle)
+	if($Return1 != NULL)
 	{
-		//$row = mysqli_fetch_object($GetSectionTitle);
-		$title = $GetSectionTitle['SectionTitle, 0'];
-		$SectionTitle = $GetSectionTitle['SectionTitle, 0'];
+		$title = $Return1['SectionTitle'];
+		$SectionTitle = $Return1['SectionTitle'];
 	}
 	
 	$GetPageTitle = $MainConnection->query("
@@ -27,10 +26,12 @@ if($MainDirectory == 'control')
 	WHERE FileName = '$StripContent'
 	LIMIT 1");
 		
-	if($GetPageTitle)
+	$Return2 = $GetPageTitle->fetchAssociative();
+
+    if($Return2 != NULL)
 	{
 		//$row2 = mysqli_fetch_object($GetPageTitle);
-		$title = $GetPageTitle['PageTitle'];
+		$title = $Return2['PageTitle'];
 	}
 }
 else

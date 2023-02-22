@@ -6,22 +6,19 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && $_S
      <h1>User Manager</h1>
 <?php
   //reset the query that contains the links
-  mysqli_data_seek($GetLinks,0);
-  
-  while($row = mysqli_fetch_object($GetLinks))
+  foreach($rows2 AS $row2)
   {
-   if($ThisDirectory == $row->Directory)
+   if($ThisDirectory == $row2['Directory'])
    {
-    	echo('     <a href="'.$row->URL.'">'.$row->Text.'</a><br />'."\n");
+    	echo('     <a href="'.$row2['URL'].'">'.$row2['Text'].'</a><br />'."\n");
    }	
   }
 
   if(isset($SubLinkRecordCount) && $SubLinkRecordCount > 0)
   {
-      mysqli_data_seek($GetSubLinks,0);
-      while($row = mysqli_fetch_object($GetSubLinks))
+    foreach($rows3 AS $row3)
       {
-          echo('   <a href="'.$row->Link.'">'.$row->LinkTitle.'</a><br />'."\n".'  ');
+          echo('   <a href="'.$row3['Link'].'">'.$row3['LinkTitle'].'</a><br />'."\n".'  ');
       }
   }
 ?>    </section>

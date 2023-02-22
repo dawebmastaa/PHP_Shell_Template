@@ -19,49 +19,52 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
       if(!empty($SiteSection) && is_numeric($SiteSection))
       {
-          $GetSectionInfo = mysqli_query($MainConnection,"
+          $GetSectionInfo = $MainConnection->query("
           SELECT *
           FROM SiteSections
           WHERE SectionID = $SiteSection
           LIMIT 1");
 
-          if(mysqli_num_rows($GetSectionInfo))
+          $row = $GetSectionInfo->fetchAssociative();
+
+          if($row != NULL)
           {
-            $row = mysqli_fetch_object($GetSectionInfo);
-            $Directory = $row->Directory;
-            $FileName = $row->Directory;
+            $Directory = $row['Directory'];
+            $FileName = $row['Directory'];
           }
        }
 
        if(!empty($SitePageMenu) && is_numeric($SitePageMenu))
        {
-         $GetPageInfo = mysqli_query($MainConnection,"
+         $GetPageInfo = $MainConnection->query("
          SELECT SiteLinks.SiteLinkID, SiteLinks.FileName, SiteLinks.SectionID, SiteSections.Directory, SiteSections.Section
          FROM SiteLinks, SiteSections
          WHERE SiteLinkID = $SitePageMenu AND SiteLinks.SectionID = SiteSections.SectionID
          LIMIT 1");
 
-         if(mysqli_num_rows($GetPageInfo))
+         $row = $GetPageInfo->fetchAssociative();
+
+         if($row != NULL)
          {
-           $row = mysqli_fetch_object($GetPageInfo);
-           $Directory = $row->Directory;
-           $FileName = $row->FileName;
+           $Directory = $row['Directory'];
+           $FileName = $row['FileName'];
          }
        }
 
        if(!empty($SiteSubPageMenu) && is_numeric($SiteSubPageMenu))
        {
-         $GetSubPageInfo = mysqli_query($MainConnection,"
+         $GetSubPageInfo = $MainConnection->query("
          SELECT SiteSubNavLinks.SubNavID, SiteSubNavLinks.FileName, SiteSubNavLinks.Link
          FROM SiteSubNavLinks
          WHERE SubNavID = $SiteSubPageMenu
          LIMIT 1");
 
-         if(mysqli_num_rows($GetSubPageInfo))
+         $row = $GetSubPageInfo->fetchAssociative();
+
+         if($row != NULL)
          {
-           $row = mysqli_fetch_object($GetSubPageInfo);
-           $Directory = substr(strrev(strrchr(strrev($row->Link),'/')),0,-1);
-           $FileName = $row->FileName;
+           $Directory = substr(strrev(strrchr(strrev($row['Link']),'/')),0,-1);
+           $FileName = $row['FileName'];
          }
        }
 
@@ -107,49 +110,52 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
        if(!empty($SiteSection) && is_numeric($SiteSection))
        {
-         $GetSectionInfo = mysqli_query($MainConnection,"
+         $GetSectionInfo = $MainConnection->query("
          SELECT *
          FROM SiteSections
          WHERE SectionID = $SiteSection
          LIMIT 1");
 
-         if(mysqli_num_rows($GetSectionInfo))
+         $row = $GetSectionInfo->fetchAssociative();
+
+         if($row != NULL)
          {
-           $row = mysqli_fetch_object($GetSectionInfo);
-           $Directory = $row->Directory;
-           $FileName = $row->Directory;
+           $Directory = $row['Directory'];
+           $FileName = $row['Directory'];
          }
        }
 
        if(!empty($SitePageMenu) && is_numeric($SitePageMenu))
        {
-         $GetPageInfo = mysqli_query($MainConnection,"
+         $GetPageInfo = $MainConnection->query("
          SELECT SiteLinks.SiteLinkID, SiteLinks.FileName, SiteLinks.SectionID, SiteSections.Directory, SiteSections.Section
          FROM SiteLinks, SiteSections
          WHERE SiteLinkID = $SitePageMenu AND SiteLinks.SectionID = SiteSections.SectionID
          LIMIT 1");
 
-         if(mysqli_num_rows($GetPageInfo))
+         $row = $GetPageInfo->fetchAssociative();
+
+         if($row != NULL)
          {
-           $row = mysqli_fetch_object($GetPageInfo);
-           $Directory = $row->Directory;
-           $FileName = $row->FileName;
+          $Directory = $row['Directory'];
+          $FileName = $row['Directory'];
          }
        }
 
        if(!empty($SiteSubPageMenu) && is_numeric($SiteSubPageMenu))
        {
-         $GetSubPageInfo = mysqli_query($MainConnection,"
+         $GetSubPageInfo = $MainConnection->query("
          SELECT SiteSubNavLinks.SubNavID, SiteSubNavLinks.FileName, SiteSubNavLinks.Link
          FROM SiteSubNavLinks
          WHERE SubNavID = $SiteSubPageMenu
          LIMIT 1");
 
-         if(mysqli_num_rows($GetSubPageInfo))
+         $row = $GetSubPageInfo->fetchAssociative();
+
+         if($row != NULL)
          {
-           $row = mysqli_fetch_object($GetSubPageInfo);
-           $Directory = substr(strrev(strrchr(strrev($row->Link),'/')),0,-1);
-           $FileName = $row->FileName;
+          $Directory = $row['Directory'];
+          $FileName = $row['Directory'];
          }
        }
 
@@ -205,7 +211,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
       if(isset($EditSiteSection) && isset($TheSectionID))
       {
-        $UpdateSiteSection = mysqli_query($MainConnection,"
+        $UpdateSiteSection = $MainConnection->query("
         UPDATE SiteSections
         SET Section = '$EditSiteSection'
         WHERE SectionID = $TheSectionID
@@ -233,7 +239,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
       if(!empty($SiteSection) && is_numeric($SiteSection))
       {
-          $GetSectionInfo = mysqli_query($MainConnection,"
+          $GetSectionInfo = $MainConnection->query("
           SELECT *
           FROM SiteSections
           WHERE SectionID = $SiteSection
@@ -275,7 +281,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
       if(!empty($NewSiteSectionName) && !empty($NewSiteSectionDirectory) && !empty($NewSiteSectionTitle) && !empty($NewSiteSectionKeywords) && !empty($NewSiteSectionDescription))
       {
-        $AddSiteSection = mysqli_query($MainConnection,"
+        $AddSiteSection = $MainConnection->query("
         INSERT INTO SiteSections (Section, Directory, SectionTitle, SectionKeywords, SectionDescription, SectionRobots)
         VALUES ('$NewSiteSectionName','$NewSiteSectionDirectory','$NewSiteSectionTitle','$NewSiteSectionKeywords','$NewSiteSectionDescription', '$NewSiteSectionRobots')");
 
@@ -323,7 +329,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
       if(isset($SectionID) && isset($SectionFilePath) && isset($Section) && isset($SectionTitle) && isset($SectionDirectory) && isset($SectionKeywords) && isset($SectionDescription) && isset($SectionEditArea) && isset($MakeSectionLive))
       {
-        $UpdateSection = mysqli_query($MainConnection,"
+        $UpdateSection = $MainConnection->query("
         UPDATE SiteSections
         SET Section = '$Section', SectionTitle = '$SectionTitle', Directory = '$SectionDirectory', SectionRobots = '$SectionRobots', SectionKeywords = '$SectionKeywords', SectionDescription = '$SectionDescription', MakeLive = '$MakeSectionLive', MenuWidth = '$SectionMenuWidth'
         WHERE SectionID = $SectionID
@@ -369,7 +375,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
       foreach($UpdateDisplayOrder AS $value)
       {
         //echo('Directory: '.$value.' Value: '.$i.'<br />');
-        $UpdateSectionOrder = mysqli_query($MainConnection,"
+        $UpdateSectionOrder = $MainConnection->query("
         UPDATE SiteSections
         SET DisplayOrder = $i
         WHERE SiteSections.Directory = '$value'
@@ -400,7 +406,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
         $FilePath2 = str_replace('view/view','',$SectionFilePath);
         $FilePath3 = str_replace('view/view','model/model',$SectionFilePath);
 
-        $DeleteSection = mysqli_query($MainConnection,"
+        $DeleteSection = $MainConnection->query("
         DELETE FROM SiteSections
         WHERE (SiteSections.SectionID = $SectionID)");
 
@@ -419,7 +425,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
           }
         }
 
-        $DeletePages = mysqli_query($MainConnection,"
+        $DeletePages = $MainConnection->query("
         DELETE FROM SiteLinks
         WHERE (SiteLinks.SectionID = $SectionID)");
 
@@ -432,7 +438,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
           $Message.='<span class="AlertText">No pages deleted from database.<br /></span>';
         }
 
-        $DeleteSubPages = mysqli_query($MainConnection,"
+        $DeleteSubPages = $MainConnection->query("
         DELETE FROM SiteSubNavLinks
         WHERE (SiteSubNavLinks.SectionID = $SectionID)");
 
@@ -461,7 +467,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
       if(!empty($SitePageMenu) && is_numeric($SitePageMenu))
       {
-        $GetPageInfo = mysqli_query($MainConnection,"
+        $GetPageInfo = $MainConnection->query("
         SELECT *
         FROM SiteLinks
         WHERE SiteLinkID = $SitePageMenu
@@ -507,7 +513,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
       {
         $NewSitePageUrl.= $NewSitePageFileName.'/';
 
-         $AddPageToSection = mysqli_query($MainConnection,"
+         $AddPageToSection = $MainConnection->query("
          INSERT INTO SiteLinks (SectionID, LinkText, Link, LinkTitle, FileName, PageTitle, PageKeywords, PageDescription, PageRobots)
          VALUES ($NewPageSectionID,'$NewSitePage','$NewSitePageUrl','$NewSiteLinkTitle','$NewSitePageFileName','$NewSitePageTitle','$NewSitePageKeywords','$NewSitePageDescription','$NewSitePageRobots')");
 
@@ -539,7 +545,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
       if(isset($PageID) && isset($LinkTitle) && isset($PageTitle) && isset($PageKeywords) && isset($PageDescription) && isset($PageURL) && isset($PageEditArea) && isset($MakeLive))
       {
-        $UpdatePage = mysqli_query($MainConnection,"
+        $UpdatePage = $MainConnection->query("
         UPDATE SiteLinks
         SET LinkTitle = '$LinkTitle', LinkText = '$LinkText', Link = '$PageURL', PageTitle = '$PageTitle', PageKeywords = '$PageKeywords', PageDescription = '$PageDescription', PageRobots= '$PageRobots', MakeLive = '$MakeLive'
         WHERE SiteLinkID = $PageID
@@ -583,7 +589,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
         $FilePath2 = str_replace('view/view','',$FilePath);
         $FilePath3 = str_replace('view/view','model/model',$FilePath);
 
-        $DeletePage = mysqli_query($MainConnection,"
+        $DeletePage = $MainConnection->query("
         DELETE FROM SiteLinks
         WHERE SiteLinkID = $PageID
         LIMIT 1");
@@ -614,7 +620,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
       $VariableArray = array('SiteSubPageMenu');
       GetVariables($VariableArray);
 
-      $GetSubPage = mysqli_query($MainConnection,"
+      $GetSubPage = $MainConnection->query("
       SELECT *
       FROM SiteSubNavLinks
       WHERE SubNavID = $SiteSubPageMenu
@@ -657,7 +663,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
       if(!empty($SiteSubPageMenu) && is_numeric($SiteSubPageMenu))
       {
-        $GetSubPage = mysqli_query($MainConnection,"
+        $GetSubPage = $MainConnection->query("
         SELECT SiteLinkID
         FROM SiteSubNavLinks
         WHERE SubNavID = $SiteSubPageMenu
@@ -679,15 +685,15 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
       if(!empty($SiteSubPageMenu) && is_numeric($SiteSubPageMenu))
       {
-        $GetSubPage = mysqli_query($MainConnection,"
+        $GetSubPage = $MainConnection->query("
         SELECT SubNavLinkID
         FROM SiteSubNavLinks
         WHERE SubNavID = $SiteSubPageMenu
         LIMIT 1");
 
-        $row = mysqli_fetch_object($GetSubPage);
+        $row = $GetSubPage->fetchAssociative();
 
-        $SubPageList = explode(' ',trim(str_replace('/','',$row->SubNavLinkID)));
+        $SubPageList = explode(' ',trim(str_replace('/','',$row['SubNavLinkID'])));
         $SubPageCount = substr_count($SubPageList,' ') + 1;
       }
 
@@ -701,7 +707,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
       if(isset($SubPageID) && is_numeric($SubPageID) && isset($FilePath) && isset($SubPageName) && isset($SubPageURL) && isset($SubPageLinkTitle) && isset($SubPageTitle) && isset($SubPageKeywords) && isset($SubPageDescription) && isset($SubPageEditArea) && isset($MakeLive))
       {
-        $UpdateSubPage = mysqli_query($MainConnection,"
+        $UpdateSubPage = $MainConnection->query("
         UPDATE SiteSubNavLinks
         SET LinkText = '$SubPageName', Link = '$SubPageURL', LinkTitle = '$SubPageLinkTitle', PageTitle = '$SubPageTitle', PageKeywords = '$SubPageKeywords', PageDescription = '$SubPageDescription', PageRobots = '$SubPageRobots', MakeLive = '$MakeLive'
         WHERE SubNavID = $SubPageID");
@@ -745,7 +751,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
         $FilePath2 = str_replace('view/view','',$FilePath);
         $FilePath3 = str_replace('view/view','model/model',$FilePath);
 
-        $DeletePage = mysqli_query($MainConnection,"
+        $DeletePage = $MainConnection->query("
         DELETE FROM SiteSubNavLinks
         WHERE SubNavID = $SubPageID
         LIMIT 1");
@@ -783,7 +789,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
         foreach($_POST['SubPageLinks'] AS $key => $value){$Pages .= '/'.$value.'/ ';}
         rtrim($Pages);
 
-        $UpdateSubPageLinks = mysqli_query($MainConnection,"
+        $UpdateSubPageLinks = $MainConnection->query("
         UPDATE SiteSubNavLinks
         SET SiteLinkID = '$Pages'
         WHERE SubNavID = $AddLinkSubPageID
@@ -815,7 +821,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
         foreach($_POST['SubPageSubLinks'] AS $key => $value){$Pages .= '/'.$value.'/ ';}
         rtrim($Pages);
 
-        $UpdateSubPageLinks = mysqli_query($MainConnection,"
+        $UpdateSubPageLinks = $MainConnection->query("
         UPDATE SiteSubNavLinks
         SET SubNavLinkID = '$Pages'
         WHERE SubNavID = $AddSubLinkSubPageID
@@ -843,7 +849,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
       if(isset($SiteSubPageMenu) && is_numeric($SiteSubPageMenu))
       {
-        $RemoveSubPageLinks = mysqli_query($MainConnection,"
+        $RemoveSubPageLinks = $MainConnection->query("
         UPDATE SiteSubNavLinks
         SET SiteLinkID = ''
         WHERE SubNavID = $SiteSubPageMenu
@@ -874,7 +880,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
       if(isset($SiteSubPageMenu) && is_numeric($SiteSubPageMenu))
       {
-        $RemoveSubPageSubLinks = mysqli_query($MainConnection,"
+        $RemoveSubPageSubLinks = $MainConnection->query("
         UPDATE SiteSubNavLinks
         SET SubNavLinkID = ''
         WHERE SubNavID = $SiteSubPageMenu
@@ -907,7 +913,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
       {
         $NewSiteSubPageUrl.= $NewSiteSubPageFileName;
 
-        $AddSubPage = mysqli_query($MainConnection,"
+        $AddSubPage = $MainConnection->query("
         INSERT INTO SiteSubNavLinks (SectionID, LinkText, Link, LinkTitle, FileName, PageTitle, PageKeywords, PageDescription, PageRobots)
         VALUES ('$NewSubPageSectionID','$NewSiteSubPage','$NewSiteSubPageUrl','$NewSiteSubLinkTitle','$NewSiteSubPageFileName','$NewSiteSubPageTitle','$NewSiteSubPageKeywords','$NewSiteSubPageDescription','$NewSiteSubPageRobots')");
 

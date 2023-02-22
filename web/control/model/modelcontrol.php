@@ -7,23 +7,24 @@ GetVariables($VariableArray);
 
 if(isset($UserName) && isset($Password))
 {
-    $UserName = mysqli_real_escape_string($MainConnection,$UserName);
-    $Password = mysqli_real_escape_string($MainConnection,$Password);
+    //Sanitize($UserName);
+    //Sanitize($Password);
     
-    $LoginUser=mysqli_query($MainConnection,"
-    SELECT UserID, RoleID, concat(FirstName,' ',LastName) AS Name, Admin
+    $LoginUser = $MainConnection->query("
+    SELECT UserID, RoleID, FirstName ||\" \"|| LastName AS Name, Admin
     FROM Users
-    WHERE UserName = '$UserName' AND Password = password('$Password')
+    WHERE UserName = '$UserName' AND Password = '$Password'
     LIMIT 1");
+
+    $row = $LoginUser->fetchAssociative();
     
-    if(mysqli_num_rows($LoginUser) === 1)
+    if($row != NULL)
     {
-        $row = mysqli_fetch_object($LoginUser);
         $_SESSION['UserLoggedIn'] = 'Yes';
-        $_SESSION['TheUser'] = $row->UserID;
-        $_SESSION['Name'] = $row->Name;
-        $_SESSION['UserRole'] = $row->RoleID;
-        $_SESSION['IsAdmin'] = $row->Admin;
+        $_SESSION['TheUser'] = $row['UserID'];
+        $_SESSION['Name'] = $row['Name'];
+        $_SESSION['UserRole'] = $row['RoleID'];
+        $_SESSION['IsAdmin'] = $row['Admin'];
         
         header("location: $ApplicationNonSecureRoot"."$ThisDirectory".'/');
     }

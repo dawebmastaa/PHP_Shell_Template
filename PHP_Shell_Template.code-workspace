@@ -27,6 +27,7 @@
         "compile-hero.generate-minified-css": true,
         "compile-hero.watch": "/**/_*.scss",
         "compile-hero.disable-compile-files-on-did-save-code": false,
+        "projectManager.checkInvalidPathsBeforeListing": false,
         "projectManager.git.baseFolders": [
             "/media/mikea/86022EF5022EE9BF/web/repos/PHP_Shell_Template"
         ],
@@ -36,8 +37,7 @@
         "phpserver.phpConfigPath": "/media/mikea/86022EF5022EE9BF/web/repos/PHP_Shell_Template/conf/php.ini",
         "phpserver.phpPath": "/usr/bin/php",
         "phpserver.relativePath": "./web",
-        "prettier.enable": false,
-        "projectManager.checkInvalidPathsBeforeListing": false
+        "prettier.enable": false
     },
     "launch": {
         "version": "0.2.0",
