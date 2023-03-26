@@ -19,7 +19,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    </form>
   </div>
 
-  <div id="AddPage" style="display: none;">
+  <div id="AddPage">
    <h2>Add Page To A Section</h2>
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="SitePageEdit">
        <label for="SiteSection">Choose A Section</label>
@@ -36,7 +36,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    </form>
   </div>
 
-  <div id="AddNewPage" style="display: none;">
+  <div id="AddNewPage">
    <h2>Add A New Page</h2>
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="SitePageAdd" id="SitePageAdd">
     <input type="hidden" name="NewPageSectionID" id="NewPageSectionID" value="" />
@@ -68,7 +68,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    </form>
   </div>
 
-  <div id="AddNewSubPage" style="display: none;">
+  <div id="AddNewSubPage">
    <h2>Add A New SubPage</h2>
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="SiteSubPageAdd" id="SiteSubPageAdd">
     <input type="hidden" name="NewSubPageSectionID" id="NewSubPageSectionID" value="" />
@@ -100,7 +100,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    </form>
   </div>
 
-  <div id="EditSiteSection" style="display: none;">
+  <div id="EditSiteSection">
    <h2>Edit Site Section</h2>
 
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="SiteSectionEdit">
@@ -122,7 +122,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    </form>
   </div>
 
-  <div id="NewSectionDiv" style="display: none;">
+  <div id="NewSectionDiv">
    <h2>Add A Site Section</h2>
 
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="SiteSectionAdd">
@@ -135,7 +135,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 
   </div>
 
-  <div id="EditSiteSections" style="display: none;">
+  <div id="EditSiteSections">
    <h2>Update Section</h2>
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="SiteSectionEdit2" id="SiteSectionEdit2">
     <input type="hidden" name="TheSectionID" id="TheSectionID" value="" />
@@ -147,7 +147,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    </form>
   </div>
 
-  <div id="EditSitePages" style="display: none;">
+  <div id="EditSitePages">
    <h2>Edit Site Pages</h2>
    <?php
     if(isset($SectionRecordCountAdmin) && $SectionRecordCountAdmin > 0)
@@ -177,7 +177,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    </form>
   </div><br />
 
-  <div id="SectionOrdering" style="display: none">
+  <div id="SectionOrdering">
    <h2>Update Display Order</h2>
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="ReorderSections" id="ReorderSections">
      <label for="PageOrder">Hit 'up' or 'down' after choosing a Section to re-order it.</label>
@@ -199,7 +199,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
     </form>
   </div>
 
-  <div id="EditPage" style="<?php if(isset($Operation) && $Operation == 'Edit Page'){echo('display: block;');}else{echo('display: none;');}?>">
+  <div id="EditPage">
    <h2 style="padding-top: 0px; padding-bottom: 10px;">Edit Page</h2>
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="PageEditForm">
     <input type="hidden" name="PageID" id="PageID" value="<?php if(!empty($PageID)){echo($PageID);} ?>" />
@@ -239,7 +239,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    </form>
   </div>
 
-  <div id="EditSection" style="<?php if(isset($Operation) && $Operation == 'Edit Content'){echo('display: block;');}else{echo('display: none;');}?>">
+  <div id="EditSection">
    <h2>Edit Section</h2>
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="SectionEditForm">
     <input type="hidden" name="SectionID" id="SectionID" value="<?php if(!empty($SectionID)){echo($SectionID);} ?>" />
@@ -277,7 +277,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    </form>
   </div>
 
-  <div id="AddSiteSectionForm" style="display: none;">
+  <div id="AddSiteSectionForm">
    <h2>Add Site Section</h2>
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="AddSiteSection" style="padding: 0; margin: 0">
 
@@ -304,12 +304,12 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    </form>
   </div>
 
-  <div id="EditSubPagesBlurb" style="display: none;">
+  <div id="EditSubPagesBlurb">
    <h2>Site Sub-Pages</h2>
    <p>Sub-Pages are stand alone pages that you can link to from any arbitrary page. They do NOT display in the main navigation menus, only in the left column sub-navigation on the pages you specify.</p>
   </div>
 
-  <div id="EditSubPages" style="display: none;">
+  <div id="EditSubPages">
    <h2>Edit Site Sub-Pages</h2>
    <?php
     if(isset($SubNavLinksRecordCountAdmin) && $SubNavLinksRecordCountAdmin > 0)
@@ -339,7 +339,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    ?>
   </div>
 
-  <div id="EditSubPage" style="<?php if(isset($Operation) && $Operation == 'Edit SubPage'){echo('display: block;');}else{echo('display: none;');}?>">
+  <div id="EditSubPage">
    <h2 style="padding-bottom: 10px;">Edit SubPage</h2>
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="EditSiteSubPageForm2">
     <input  type="hidden" name="SubPageID" value="<?php if(!empty($SubPageID)){echo($SubPageID);}?>" />
@@ -379,7 +379,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    </form>
   </div>
 
-  <div id="AddSubPages" style="display: none;">
+  <div id="AddSubPages">
    <h2>Add SubPage</h2>
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" name="SiteSubPageEdit">
        <label for="SiteSubPageSection">Choose A Section</label>
@@ -396,7 +396,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
    </form>
   </div>
 
-  <div id="AddSubPageLinks" style="<?php if(isset($Operation) && $Operation == 'Add Link To Site Pages') {echo('display: block;');} else {echo('display: none;');} ?>">
+  <div id="AddSubPageLinks">
    <p class="AlertText">Select the pages you want to display this link on. Control-Click to select multiple pages.</p>
    <form action="<?php print("$root"."$DirectoryPath".'/index/content/'."$StripContent".'/'); ?>" method="post" enctype="multipart/form-data" name="AddSubPageLinksForm">
 

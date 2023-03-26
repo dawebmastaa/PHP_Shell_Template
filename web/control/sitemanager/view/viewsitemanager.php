@@ -4,17 +4,7 @@ if(isset($_SESSION["UserLoggedIn"]) && $_SESSION["UserLoggedIn"] == 'Yes' && ($_
 ?>
   <header id="List">
    <h1>Site Manager</h1>
-   <ul>  
-  <?php
-  foreach($rows2 AS $row2)
-  {
-   if($ThisDirectory == $row2['Directory'])
-   {
-    	echo('  <li><a href="'.$row2['URL'].'">'.$row2['Text'].'</a></li>'."\n".'  ');
-   }	
-  }
-?>
- </ul>
+   <a href="control/sitemanager/index/content/editpages">Edit Site Structure</a>
   </header>
       
 <?php

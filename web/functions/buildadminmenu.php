@@ -30,6 +30,8 @@ if($LinkRecordCount > 0)
         }
     }
     echo("\n".'    </ul>'."\n ");
-    reset($rows2);
+    $MainDirectory = 'main';
+    require("$ApplicationPath/functions/getnavigationlinks.php");
+    $MainDirectory = 'control';
 }
 ?>

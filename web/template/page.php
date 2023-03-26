@@ -22,8 +22,8 @@ if(isset($title)){echo (" <title>$title</title>\n");}else{echo(' <title>'.$Websi
  <base href="<?php echo($root);?>" />
  <?php
 //get the navigation links from the database
-require_once("$ApplicationPath/functions/getnavigationlinks.php");
-require_once("$ApplicationPath/functions/getpagelist.php");
+require("$ApplicationPath/functions/getnavigationlinks.php");
+//require_once("$ApplicationPath/functions/getpagelist.php");
 ?>
 </head>
 
@@ -47,6 +47,7 @@ if($MainDirectory === 'control')
 	  $MenuCall = 'main';
     echo('  <li><a href="control/'.$row['Directory'].'/" title="'.$row['SectionTitle'].'"><img src="img/arrow.gif" alt="'.ucfirst($row['Directory']).'List" />'.$row['Section'].'</a>'."\n ");
     require("$ApplicationPath/functions/buildadminmenu.php");
+    require_once("$ApplicationPath/functions/getpagelist.php");
     echo('  </li>'."\n\n");
   }echo('  </ul>');
 }
@@ -58,6 +59,7 @@ elseif(isset($MainConnection))
   {
 	  echo('  <li><a href="'.$row['Directory'].'/" title="'.$row['SectionTitle'].'"><img src="img/arrow.gif" alt="'.ucfirst($row['Directory']).'List" />'.$row['Section'].'</a>'."\n ");
       $MenuCall = 'main';
+      require_once("$ApplicationPath/functions/getpagelist.php");
       require("$ApplicationPath/functions/buildsitemenu.php");
       echo('  </li>'."\n\n");
   }echo('  </ul>');
@@ -103,13 +105,18 @@ echo("\n\n");
 
  <script src="js/main.min.js"></script>
  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
- <?php if($MainDirectory === 'control'){echo('<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>');}?>
+ <?php if($MainDirectory === 'control')
+ {
+  echo('<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>');
+?>
  <script>
-//   $(document).ready(function ()
-//   {
-//      $( '.LeftContent' ).load( 'http://localhost:3000/functions/ajaxcall.php?PageCall=showimage' );
-//   });
+   $(document).ready(function ()
+   {
+      ShowPageContent(divList)
+//$( '.LeftContent' ).load( '<?php echo($root);?>functions/ajaxcall.php?PageCall=showimage' );
+   });
  </script>
+<?php }?>
 </body>
 </html>
 <?php
