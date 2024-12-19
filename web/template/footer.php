@@ -3,8 +3,7 @@
 
 </div>
 <script src="js/main.js"></script>
-<script src="js/vendor/jquery-3.4.1.min.js"></script>
-<script src="js/vendor/modernizr-3.8.0.min.js"></script>
+<script src="https://unpkg.com/htmx.org@1.9.10"></script>
 <script src="js/plugins.js"></script>
 </body>
 </html>

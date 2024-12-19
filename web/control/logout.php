@@ -1,5 +1,5 @@
 <?php
 session_destroy();
-header("location: $ApplicationNonSecureRoot"."control/");
+header("location: $ApplicationSecureRoot"."control/");
 ?>
 Logged Out

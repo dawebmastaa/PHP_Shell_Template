@@ -9,16 +9,21 @@
     "scss.lint.ieHack": "warning",
     "php.validate.executablePath": "/usr/bin/php",
     "liveSassCompile.settings.forceBaseDirectory": "/scss",
-    "phpserver.phpConfigPath": "/media/mikea/86022EF5022EE9BF/web/repos/PHP_Shell_Template/conf/php.ini",
+    "phpserver.phpConfigPath": "/home/mikes/Work/web/repos/PHP_Shell_Template/conf/php.ini",
     "phpserver.relativePath": "./web",
-    "sqltools.useNodeRuntime": true,
-    "sqltools.connections": [
-        {
-            "previewLimit": 50,
-            "driver": "SQLite",
-            "database": "${workspaceFolder:PHP_Shell_Template}/conf/shell.sqlite",
-            "name": "Shell"
-        }
-    ],
     "phpserver.port": 3000,
+    "compile-hero.html-output-toggle": false,
+    "compile-hero.jade-output-toggle": false,
+    "compile-hero.html-output-directory": "",
+    "compile-hero.jade-output-directory": "",
+    "compile-hero.javascript-output-directory": "./web/js",
+    "compile-hero.less-output-directory": "./web/css",
+    "compile-hero.pug-output-directory": "",
+    "compile-hero.pug-output-toggle": false,
+    "compile-hero.sass-output-directory": "./web/css",
+    "compile-hero.typescript-output-directory": "./web/js",
+    "compile-hero.typescriptx-output-directory": "./web/js",
+    "compile-hero.x-compile-files-in-mixin-folders": true,
+    "compile-hero.x-omit-dev-ext-js": true,
+    "editor.fontFamily": "'Jetbrains Mono','Droid Sans Mono', 'monospace', monospace",
 }

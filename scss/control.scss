@@ -6,6 +6,7 @@
 //This is for the new fancy site manager stuff
 #SiteBuilder {
   display: none; /* Hidden by default */
+  visibility: hidden;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */

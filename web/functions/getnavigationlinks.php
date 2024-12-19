@@ -9,7 +9,7 @@ if($MainDirectory === 'control' && isset($_SESSION["UserLoggedIn"]))
 	    FROM AdminSiteSections
 	    ORDER By DisplayOrder");
 
-		$rows = $GetSiteSectionsAdmin->fetchAllAssociative();
+		$rows = $GetSiteSectionsAdmin->fetch(PDO::FETCH_ASSOC);
 		$SectionRecordCountAdmin = count($rows);
 
 	    $GetLinksAdmin = $MainConnection->query("
@@ -18,7 +18,7 @@ if($MainDirectory === 'control' && isset($_SESSION["UserLoggedIn"]))
 	    WHERE (AdminSiteLinks.SectionID = AdminSiteSections.SectionID)
 	    ORDER BY AdminSiteSections.DisplayOrder, SectionID,AdminSiteLinks.SiteLinkID");
 
-		$rows2 = $GetLinksAdmin->fetchAllAssociative();
+		$rows2 = $GetLinksAdmin->fetch(PDO::FETCH_ASSOC);
 		$LinkRecordCountAdmin = count($rows2);
 
 	    $GetSiteSubNavLinksAdmin = $MainConnection->query("
@@ -26,7 +26,7 @@ if($MainDirectory === 'control' && isset($_SESSION["UserLoggedIn"]))
 	    FROM AdminSiteSubNavLinks
 	    ORDER By SubNavID");
 
-		$rows3 = $GetSiteSubNavLinksAdmin->fetchAllAssociative();
+		$rows3 = $GetSiteSubNavLinksAdmin->fetchAll();
         $SubNavLinksRecordCountAdmin = count($rows3);
 			
 	    if($_SESSION["IsAdmin"] && $_SESSION["IsAdmin"] == 'Y')
@@ -46,7 +46,7 @@ if($MainDirectory === 'control' && isset($_SESSION["UserLoggedIn"]))
 		$WhereClause
 		ORDER By DisplayOrder");
 
-		$rows = $GetSiteSections->fetchAllAssociative();
+		$rows = $GetSiteSections->fetchAll();
 		$SectionRecordCount = count($rows);
 
 		$GetLinks = $MainConnection->query("
@@ -55,7 +55,7 @@ if($MainDirectory === 'control' && isset($_SESSION["UserLoggedIn"]))
 		$WhereClause2
 		ORDER BY SectionID, AdminSiteLinks.SiteLinkID");
 
-		$rows2 = $GetLinks->fetchAllAssociative();
+		$rows2 = $GetLinks->fetch(PDO::FETCH_ASSOC);
 		$LinkRecordCount = count($rows2);
 	}
 }
@@ -68,7 +68,7 @@ else
 	WHERE MakeLive = 'Y'
 	ORDER By DisplayOrder");
 
-	$rows = $GetSiteSections->fetchAllAssociative();
+	$rows = $GetSiteSections->fetchAll();
 	$SectionRecordCount = count($rows);
 
 	$GetLinks = $MainConnection->query("
@@ -77,7 +77,7 @@ else
 	WHERE    (SiteLinks.SectionID = SiteSections.SectionID) AND (SiteLinks.MakeLive = 'Y')
 	ORDER BY SiteSections.DisplayOrder,SiteLinks.SiteLinkID");
 
-	$rows2 = $GetLinks->fetchAllAssociative();
+	$rows2 = $GetLinks->fetchAll();
 	$LinkRecordCount = count($rows2);
 }
 ?>

@@ -1,6 +1,7 @@
 {
     "require": {
         "aura/sql": "^5.0",
-        "doctrine/dbal": "3.5.2"
+        "doctrine/dbal": "^4.2",
+        "tomwright/extended-pdo": "*"
     }
 }

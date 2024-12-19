@@ -4,35 +4,34 @@
 //this is for the 'site control' admin
 if($MainDirectory == 'control')
 {
- 	$title = 'Admin';
-	
-	$GetSectionTitle = $MainConnection->query("
-	SELECT SectionTitle
-	FROM AdminSiteSections
-	WHERE Directory = '$ThisDirectory'
-	LIMIT 1");
+    $title = 'Admin';
+    
+    $GetSectionTitle = $MainConnection->query("
+    SELECT SectionTitle
+    FROM AdminSiteSections
+    WHERE Directory = '$ThisDirectory'
+    LIMIT 1");
 
-    $Return1 = $GetSectionTitle->fetchAssociative();
-	
-	if($Return1 != NULL)
-	{
-		$title = $Return1['SectionTitle'];
-		$SectionTitle = $Return1['SectionTitle'];
-	}
-	
-	$GetPageTitle = $MainConnection->query("
-	SELECT PageTitle, PageKeywords, PageDescription
-	FROM AdminSiteLinks
-	WHERE FileName = '$StripContent'
-	LIMIT 1");
-		
-	$Return2 = $GetPageTitle->fetchAssociative();
-
+    $Return1 = $GetSectionTitle->fetch(PDO::FETCH_ASSOC);
+    
+    if($Return1 != NULL)
+    {
+        $title = $Return1['SectionTitle'];
+        $SectionTitle = $Return1['SectionTitle'];
+    }
+    
+    $GetPageTitle = $MainConnection->query("
+    SELECT PageTitle, PageKeywords, PageDescription
+    FROM AdminSiteLinks
+    WHERE FileName = '$StripContent'
+    LIMIT 1");
+        
+    $Return2 = $GetPageTitle->fetch(PDO::FETCH_ASSOC);
     if($Return2 != NULL)
-	{
-		//$row2 = mysqli_fetch_object($GetPageTitle);
-		$title = $Return2['PageTitle'];
-	}
+    {
+        //$row2 = mysqli_fetch_object($GetPageTitle);
+        $title = $Return2['PageTitle'];
+    }
 }
 else
 {
@@ -56,7 +55,7 @@ else
         FROM SiteSections
         WHERE Directory = '$StripContent'");
 
-        $Return1 = $GetSectionTitle->fetchAssociative();
+        $Return1 = $GetSectionTitle->fetch(PDO::FETCH_ASSOC);
 
         if($Return1 != NULL)
         {
@@ -74,7 +73,7 @@ else
             FROM SiteLinks
             WHERE FileName = '$StripContent'");
 
-            $Return2 = $GetSubPageTitle->fetchAssociative();
+            $Return2 = $GetSubPageTitle->fetch(PDO::FETCH_ASSOC);
             
             if($Return2 != NULL)
             {
@@ -90,7 +89,7 @@ else
                 FROM SiteSections
                 WHERE SiteSections.SectionID = $SectionID");
 
-                $Return3 = $GetSubPageSectionTitle ->fetchAssociative();
+                $Return3 = $GetSubPageSectionTitle ->fetch(PDO::FETCH_ASSOC);
                 $SectionTitle = $Return3['SectionTitle'];
             }
             else
@@ -100,7 +99,7 @@ else
                 FROM SiteSubNavLinks
                 WHERE FileName = '$StripContent'");
 
-                $Return4 = $GetSubPageTitle->fetchAssociative();
+                $Return4 = $GetSubPageTitle->fetch(PDO::FETCH_ASSOC);
                 
                 if($Return4 !== NULL)
                 {

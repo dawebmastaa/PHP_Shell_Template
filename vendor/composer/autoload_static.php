@@ -16,8 +16,6 @@ class ComposerStaticInitcd2e699beea252b3d7f48bdcd6b4b2d3
         array (
             'Doctrine\\Deprecations\\' => 22,
             'Doctrine\\DBAL\\' => 14,
-            'Doctrine\\Common\\Cache\\' => 22,
-            'Doctrine\\Common\\' => 16,
         ),
         'A' => 
         array (
@@ -41,14 +39,6 @@ class ComposerStaticInitcd2e699beea252b3d7f48bdcd6b4b2d3
         'Doctrine\\DBAL\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/dbal/src',
-        ),
-        'Doctrine\\Common\\Cache\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
-        ),
-        'Doctrine\\Common\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/event-manager/src',
         ),
         'Aura\\Sql\\' => 
         array (

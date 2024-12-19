@@ -16,8 +16,7 @@ if(isset($UserName) && isset($Password))
     WHERE UserName = '$UserName' AND Password = '$Password'
     LIMIT 1");
 
-    $row = $LoginUser->fetchAssociative();
-    
+    $row = $LoginUser->fetch(PDO::FETCH_ASSOC);
     if($row != NULL)
     {
         $_SESSION['UserLoggedIn'] = 'Yes';
@@ -26,7 +25,7 @@ if(isset($UserName) && isset($Password))
         $_SESSION['UserRole'] = $row['RoleID'];
         $_SESSION['IsAdmin'] = $row['Admin'];
         
-        header("location: $ApplicationNonSecureRoot"."$ThisDirectory".'/');
+        header("location: $ApplicationSecureRoot"."$ThisDirectory".'/');
     }
     else
     {

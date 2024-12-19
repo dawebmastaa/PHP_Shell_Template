@@ -14,12 +14,12 @@ if(isset($title)){echo (" <title>$title</title>\n");}else{echo(' <title>'.$Websi
  <meta name="robots" content="<?php if(isset($robots) && !empty($robots)){echo($robots);}else{echo('index, follow, NOYDIR');}?>" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
- <?php if(isset($MainDirectory) && $MainDirectory == 'control'){echo('<link rel="stylesheet" href="'.$root.'css/control.min.css" />'."\r\n".' <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">'."\r\n");} ?>
- <link rel="stylesheet" href="<?php echo ("$root"); ?>css/site.min.css" />  
+ <?php if(isset($MainDirectory) && $MainDirectory == 'control'){echo('<link rel="stylesheet" href="'.$ApplicationSecureRoot.'css/control.min.css" />'."\r\n".' <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">'."\r\n");} ?>
+ <link rel="stylesheet" href="<?php echo ("$ApplicationSecureRoot"); ?>css/site.min.css" />  
  
- <link rel="icon" href="<?php echo ("$root") ?>img/favicon.ico" />
+ <link rel="icon" href="<?php echo ("$ApplicationSecureRoot") ?>img/favicon.ico" />
 
- <base href="<?php echo($root);?>" />
+ <base href="<?php echo($ApplicationSecureRoot);?>" />
  <?php
 //get the navigation links from the database
 require("$ApplicationPath/functions/getnavigationlinks.php");
@@ -104,19 +104,13 @@ echo("\n\n");
  </div>
 
  <script src="js/main.min.js"></script>
- <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
- <?php if($MainDirectory === 'control')
- {
-  echo('<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>');
-?>
  <script>
    $(document).ready(function ()
    {
       ShowPageContent(divList)
-//$( '.LeftContent' ).load( '<?php echo($root);?>functions/ajaxcall.php?PageCall=showimage' );
+//$( '.LeftContent' ).load( '<?php echo($ApplicationSecureRoot);?>functions/ajaxcall.php?PageCall=showimage' );
    });
  </script>
-<?php }?>
 </body>
 </html>
 <?php

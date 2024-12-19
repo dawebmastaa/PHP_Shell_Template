@@ -11,9 +11,8 @@ session_start();
 //load the external packages
 require_once __DIR__ . '/../vendor/autoload.php';
 
-//set the web roots (use https on both now)
+//set the web root (use https in production)
 $ApplicationSecureRoot = 'http://localhost:3000/';
-$ApplicationNonSecureRoot = 'http://localhost:3000/';
 
 //set the user and group for permissions purposes
 $ApplicationUser = 'mikea';
@@ -65,6 +64,4 @@ if (!isset($content))
 {
     $content = 'main';
 }
-// set root variable (simplified to only use SSL now)
-$root = "$ApplicationSecureRoot";
 ?>

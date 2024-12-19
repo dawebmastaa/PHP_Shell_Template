@@ -49,7 +49,7 @@ foreach($rows2 AS $row2)
             WHERE MakeLive = 'Y' AND SiteLinkID LIKE '%/$PageID/%'
             ORDER BY SiteSubNavLinks.SubNavID");
 
-            $rows3 = $GetSubLinks->fetchAllAssociative();
+            $rows3 = $GetSubLinks->fetchAll();
             $SubLinkRecordCount = count($rows3);
 
             if($SubLinkRecordCount > 0)

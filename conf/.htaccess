@@ -12,7 +12,7 @@ ForceType application/x-httpd-php
 SetHandler application/x-httpd-php
 </FilesMatch>
 
-php_value auto_prepend_file '/home/vol13_7/byethost13.com/b13_33061184/htdocs'
+php_value auto_prepend_file '/home/mikes/work/repos/PHP_Shell_Template/web/Application.php'
 
 php_value session.use_trans_sid 0
 
@@ -32,5 +32,5 @@ ForceType application/x-httpd-php
 SetHandler application/x-httpd-php
 </FilesMatch>
 
-php_value auto_prepend_file '/home/vol13_7/byethost13.com/b13_33061184/htdocs/Application.php'
+php_value auto_prepend_file '/home/mikes/work/repos/PHP_Shell_Template/web/Application.php'
 php_value session.use_trans_sid 0

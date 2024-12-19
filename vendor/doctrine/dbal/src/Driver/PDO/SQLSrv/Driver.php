@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Doctrine\DBAL\Driver\PDO\SQLSrv;
 
 use Doctrine\DBAL\Driver\AbstractSQLServerDriver;
@@ -7,20 +9,26 @@ use Doctrine\DBAL\Driver\AbstractSQLServerDriver\Exception\PortWithoutHost;
 use Doctrine\DBAL\Driver\Exception;
 use Doctrine\DBAL\Driver\PDO\Connection as PDOConnection;
 use Doctrine\DBAL\Driver\PDO\Exception as PDOException;
+use Doctrine\DBAL\Driver\PDO\Exception\InvalidConfiguration;
+use Doctrine\DBAL\Driver\PDO\PDOConnect;
 use PDO;
+use SensitiveParameter;
 
 use function is_int;
+use function is_string;
 use function sprintf;
 
 final class Driver extends AbstractSQLServerDriver
 {
+    use PDOConnect;
+
     /**
-     * {@inheritdoc}
-     *
-     * @return Connection
+     * {@inheritDoc}
      */
-    public function connect(array $params)
-    {
+    public function connect(
+        #[SensitiveParameter]
+        array $params,
+    ): Connection {
         $driverOptions = $dsnOptions = [];
 
         if (isset($params['driverOptions'])) {
@@ -37,9 +45,18 @@ final class Driver extends AbstractSQLServerDriver
             $driverOptions[PDO::ATTR_PERSISTENT] = true;
         }
 
+        foreach (['user', 'password'] as $key) {
+            if (isset($params[$key]) && ! is_string($params[$key])) {
+                throw InvalidConfiguration::notAStringOrNull($key, $params[$key]);
+            }
+        }
+
+        $safeParams = $params;
+        unset($safeParams['password']);
+
         try {
-            $pdo = new PDO(
-                $this->constructDsn($params, $dsnOptions),
+            $pdo = $this->doConnect(
+                $this->constructDsn($safeParams, $dsnOptions),
                 $params['user'] ?? '',
                 $params['password'] ?? '',
                 $driverOptions,

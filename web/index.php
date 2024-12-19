@@ -1,5 +1,5 @@
 <?php
-include_once('functions/buildstatiichome.php');
+//include_once('functions/buildstatiichome.php');
 
 if(file_exists($ApplicationPath.'/index.html'))
 {

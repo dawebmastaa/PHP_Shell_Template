@@ -6,12 +6,12 @@
     ],
     "settings": {
         "compile-hero.typescriptx-output-toggle": false,
-        "compile-hero.typescript-output-toggle": false,
+        "compile-hero.typescript-output-toggle": true,
         "compile-hero.stylus-output-toggle": false,
         "compile-hero.scss-output-toggle": true,
         "compile-hero.sass-output-toggle": true,
         "compile-hero.pug-output-toggle": false,
-        "compile-hero.less-output-toggle": true,
+        "compile-hero.less-output-toggle": false,
         "compile-hero.javascript-output-toggle": true,
         "compile-hero.jade-output-toggle": false,
         "compile-hero.html-output-toggle": false,
@@ -29,15 +29,23 @@
         "compile-hero.disable-compile-files-on-did-save-code": false,
         "projectManager.checkInvalidPathsBeforeListing": false,
         "projectManager.git.baseFolders": [
-            "/media/mikea/86022EF5022EE9BF/web/repos/PHP_Shell_Template"
+            "/media/mikea/86022EF5022EE9BF/web/repos"
         ],
         "projectManager.vscode.baseFolders": [
-            "/media/mikea/86022EF5022EE9BF/web/repos/PHP_Shell_Template"
+            "/home/mikes/work/repos"
         ],
-        "phpserver.phpConfigPath": "/media/mikea/86022EF5022EE9BF/web/repos/PHP_Shell_Template/conf/php.ini",
+        "editor.fontFamily": "'Jetbrains Mono', 'Droid Sans Mono', 'monospace', monospace",
+        "editor.fontSize": 14,
+        "phpserver.phpConfigPath": "/home/mikes/Work/web/repos/PHP_Shell_Template/conf/php.ini",
         "phpserver.phpPath": "/usr/bin/php",
         "phpserver.relativePath": "./web",
-        "prettier.enable": false
+        "prettier.enable": true,
+        "prettier.bracketSameLine": true,
+        "compile-hero.typescriptx-output-directory": "../web/js",
+        "compile-hero.x-compile-files-on-save": true,
+        "compile-hero.x-generate-sourcemap-js": false,
+        "multiCommand.commands": [],
+        "php.validate.executablePath": ""
     },
     "launch": {
         "version": "0.2.0",
